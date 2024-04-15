@@ -14,4 +14,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
+    public void addNewUser(User user) {
+        // todo - add new User
+    }
+
 }
