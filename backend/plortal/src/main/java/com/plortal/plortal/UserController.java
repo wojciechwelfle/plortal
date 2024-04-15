@@ -1,21 +1,36 @@
 package com.plortal.plortal;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
 
-    @GetMapping
-    public List<User> fetchAllUsers() {
-        return userService.getUsers();
+    ObjectMapper objectMapper;
+
+    @GetMapping("api/v1/users")
+    public ResponseEntity fetchAllUsers() throws JsonProcessingException {
+        List<User> users = userService.getUsers();
+        return ResponseEntity.ok(objectMapper.writeValueAsString(users));
+    }
+
+    @PostMapping("api/v1/users")
+    public ResponseEntity addNewUser(@RequestBody User user) {
+        try {
+            userService.addNewUser(user);
+        } catch (IllegalStateException userExistException) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+        }
+        return ResponseEntity.ok(user);
     }
 
 }
