@@ -5,18 +5,55 @@ import Button from "react-bootstrap/Button";
 import "./Register.css";
 
 class Register extends Component {
-    handleRegistration = event => {
+    API_URL = "http://localhost:8080/api/v1/users";
+
+    handleRegistration = (event) => {
         console.log("Handle Submit");
 
         event.preventDefault();
-        this.addUserToDatabase(event.target.username.value, event.target.password.value);
+        this.addUserToDatabase(
+            event.target.email.value,
+            event.target.password.value
+        );
+    };
+
+    addUserToDatabase(email, password) {
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        };
+        console.log(
+            JSON.stringify({
+                email: email,
+                password: password,
+            })
+        );
+        console.log(requestOptions);
+
+        fetch(this.API_URL, requestOptions)
+            .then((response) => {
+                console.log(response.status);
+
+                if (response.status === 200) {
+                    console.log("User added to Datebase!");
+                } else if (response.status === 422) {
+                    console.log("User email is taken!");
+                } else {
+                    console.log("Other error");
+                }
+            })
+            .catch((error) => {
+                console.log(error.stringify);
+                console.error("Run backend server!!!");
+            });
     }
 
-    addUserToDatabase() {
-        // todo - connect with REST API
-    }
-
-    render() { 
+    render() {
         return (
             <>
                 <div className="Register">
@@ -28,8 +65,8 @@ class Register extends Component {
                             controlId="username"
                             size="lg"
                         >
-                            <Form.Label> Username </Form.Label>
-                            <Form.Control autoFocus name="username" />
+                            <Form.Label> Email </Form.Label>
+                            <Form.Control autoFocus name="email" />
                         </Form.Group>
 
                         <Form.Group
@@ -40,6 +77,7 @@ class Register extends Component {
                             <Form.Label> Password </Form.Label>
                             <Form.Control type="password" name="password" />
                         </Form.Group>
+
                         <div className="d-grid gap-2 myDiv">
                             <Button
                                 variant="dark"
