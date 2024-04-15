@@ -1,0 +1,19 @@
+.Register {
+    margin: 29vh auto;
+    max-width: 320px;
+}
+
+.RegisterHeader {
+    margin: 0 auto;
+    max-width: 320px;
+}
+
+.Group {
+    margin-top: 20px;
+}
+
+.Btn {
+    background-color: #8e0000;
+    margin-top: 20px;
+}
+
