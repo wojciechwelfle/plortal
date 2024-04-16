@@ -34,4 +34,12 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @PostMapping("api/v1/users/login")
+    public ResponseEntity loginUser(@RequestBody User user) {
+        if(!userService.isUserRegister(user)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok("User");
+    }
+
 }
