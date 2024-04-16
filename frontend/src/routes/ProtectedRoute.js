@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
+import { isUserLogin } from "./userAuthorization";
 
 class ProtectedRoute extends Component {
     render() {
-        const { isAuth, component: Component, ...rest } = this.props;
-        if (isAuth) {
+        var { component: Component, ...rest } = this.props;
+        if (isUserLogin()) {
             return <Component {...rest} />;
         } else {
             return <Navigate to="/login" />;
