@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Register from "./register-login/Register.js";
 import "./App.css";
+import PageRouter from "./routes/PageRouter.js";
 
 class App extends Component {
     render() {
         return (
             <>
-                <Register />
+                <PageRouter />
             </>
         );
     }
