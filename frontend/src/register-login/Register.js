@@ -3,10 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import "./Register.css";
-import {
-    BrowserRouter as Router,
-    Link
-} from "react-router-dom";
+
 
 class Register extends Component {
     API_URL = "http://localhost:8080/api/v1/users";
@@ -81,14 +78,12 @@ class Register extends Component {
                             <Form.Control type="password" name="password" />
                         </Form.Group>
 
-                        <Router>
-                            <div className="TextContainer">
-                                Masz już konto?
-                                <Link className='TextLink' to="/login">
-                                    Zaloguj się
-                                </Link>
-                            </div>
-                        </Router>
+                        <div className="TextContainer">
+                            Masz już konto?
+                            <a href="/login" className="TextLink">
+                                Zaloguj się
+                            </a>
+                        </div>
 
                         <div className="d-grid gap-2 myDiv">
                             <Button
