@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { loginUser } from "../routes/userAuthorization.js";
 
 class Login extends Component {
     API_URL = "http://localhost:8080/api/v1/users/login";
@@ -23,26 +24,21 @@ class Login extends Component {
                 password: password,
             }),
         };
-        console.log(
-            JSON.stringify({
-                email: email,
-                password: password,
-            })
-        );
-        console.log(requestOptions);
 
         fetch(this.API_URL, requestOptions)
             .then((response) => {
                 console.log(response.status);
                 if (response.status === 200) {
                     console.log("User Authorized!");
+                    loginUser();
+                    window.location.href = "/home";
                 } else {
                     console.log("User Unauthorized");
                 }
             })
             .catch((error) => {
                 console.log(error.stringify);
-                console.error("Run backend server!!!");
+                console.log("Run backend server!!!");
             });
     }
 
