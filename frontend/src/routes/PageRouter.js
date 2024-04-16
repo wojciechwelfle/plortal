@@ -12,9 +12,9 @@ class PageRouter extends Component {
             <>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" Component={ Register }/>
-                        <Route path="/login" Component={ Login }/>
-                        <Route exact path='/home' element={<ProtectedRoute path="/accounts" component={ Home } isAuth={ true }/>} />
+                        <Route path='/' element={<Register />} />
+                        <Route path='/login' element={<Login />}/>
+                        <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/>
                     </Routes>
                 </BrowserRouter>
             </>
