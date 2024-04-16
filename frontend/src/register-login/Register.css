@@ -4,8 +4,7 @@
 }
 
 .RegisterHeader {
-    margin: 0 auto;
-    max-width: 320px;
+    font-size: 38px;
 }
 
 .Group {
@@ -14,6 +13,23 @@
 
 .Btn {
     background-color: #8e0000;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+.TextContainer {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center; 
+}
+
+.TextLink {
+    margin-left: 5px;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block; 
+}
+
+.TextLink:hover {
+    text-decoration: underline; 
+}
