@@ -1,0 +1,9 @@
+package com.plortal.plortal;
+
+public class EmailValidator {
+
+     public static boolean validateEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        return email.matches(emailRegex);
+    }
+}
