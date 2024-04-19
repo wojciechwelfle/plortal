@@ -1,9 +1,6 @@
 package com.plortal.plortal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,6 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class News {
     @Id
+    @Column(name = "newsId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @NonNull
