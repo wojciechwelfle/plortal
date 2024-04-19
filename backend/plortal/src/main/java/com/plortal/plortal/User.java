@@ -1,5 +1,4 @@
 package com.plortal.plortal;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -17,7 +16,7 @@ public class User {
     private int id;
 
     @NonNull
-    @Column(name = "email")
+    @Column(name = "email", length = 100)
     private String email;
 
     @NonNull
