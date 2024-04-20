@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Alert from 'react-bootstrap/Alert'
-import './alertNotification.css';
+import './AlertNotification.css';
 
 class AlertNotification extends Component {
     constructor(props){
@@ -16,12 +16,15 @@ class AlertNotification extends Component {
     setAlert = (message) => {
         this.setState({message : message});
     }
+
     setHeading = (heading) => {
         this.setState({heading : heading});
     }
+
     setVariant = (variant) => {
         this.setState({variant : variant});
     }
+
     setVisible = (visible) => {
         this.setState({visible: visible});
     }
@@ -31,7 +34,7 @@ class AlertNotification extends Component {
             return (
                 <>
                     <div className = "RegisterAlert">
-                        <Alert variant={this.state.variant} onClose={() => this.setState({ visible: false })} dismissible>
+                        <Alert variant = {this.state.variant} onClose = {() => this.setState({ visible: false })} dismissible >
                          <Alert.Heading>{this.state.heading}</Alert.Heading>
                             <p>
                                 {this.state.message}
