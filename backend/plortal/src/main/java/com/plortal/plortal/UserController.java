@@ -25,11 +25,17 @@ public class UserController {
     }
 
     @PostMapping("api/v1/users")
-    public ResponseEntity addNewUser(@RequestBody User user) {
+    public ResponseEntity<?> addNewUser(@RequestBody User user) {
         try {
             userService.addNewUser(user);
-        } catch (IllegalStateException userExistException) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+        } catch (IllegalStateException e) {
+            if (e.getMessage().contains(" does not meet the requirements")) {
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                        .body(e.getMessage());
+            } else if (e.getMessage().contains("is taken")) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body(e.getMessage());
+            }
         }
         return ResponseEntity.ok(user);
     }
