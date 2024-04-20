@@ -40,9 +40,9 @@ class Login extends Component {
                     loginUser();
                     window.location.href = "/home";
                 } else if (response.status === 409) {
-                    this.showAlertNotification("danger","Wrong email or password!","Enter correct data");
-                } else if (response.status === 401) {
                     this.showAlertNotification("danger","User is not in the base!","Enter new email or click to register");
+                } else if (response.status === 401) {
+                    this.showAlertNotification("danger","Wrong email or password!","Enter correct data");
                 } else {
                     this.showAlertNotification("danger","Other error occured!","Contact administrator");
                 }

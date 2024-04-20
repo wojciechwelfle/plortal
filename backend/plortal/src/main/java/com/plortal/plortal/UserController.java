@@ -42,9 +42,9 @@ public class UserController {
 
     @PostMapping("api/v1/users/login")
     public ResponseEntity loginUser(@RequestBody User user) {
-        if (userService.isUserPresent(user)) {
+        if (!userService.isUserPresent(user)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
-        } else if (!userService.isUserRegister(user)) {
+        } else if (!userService.isPasswordCorrectForUser(user)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.ok("User");
