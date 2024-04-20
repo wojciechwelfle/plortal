@@ -21,16 +21,18 @@ public class UserService {
 
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
-        if(!isEmailValid(user.getEmail())){
-            throw new IllegalStateException("Email " + user.getEmail() + " does not meet the requirements");
-        }
         if (userOptional.isPresent()) {
             throw new IllegalStateException("Email " + user.getEmail() + " is taken");
         }
         userRepository.save(user);
     }
 
-    public boolean isUserRegister(User user) {
+    public boolean isUserPresent(User user){
+        Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
+        return userOptional.isPresent();
+    }
+
+    public boolean isPasswordCorrectForUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         return isPasswordCorrect(userOptional, user);
     }
@@ -39,9 +41,4 @@ public class UserService {
         return userOptional.isPresent() && userOptional.get().getPassword().equals(user.getPassword());
     }
 
-    private boolean isEmailValid(String email){
-        return EmailValidator.validateEmail(email);
-    }
-
 }
-

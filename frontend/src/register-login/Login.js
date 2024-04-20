@@ -2,9 +2,16 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { loginUser } from "../routes/userAuthorization.js";
+import './AlertNotification.css';
+import AlertNotification from "./AlertNotification";
 
 class Login extends Component {
     API_URL = "http://localhost:8080/api/v1/users/login";
+
+    constructor(props){
+        super(props);
+        this.AlertNotification = React.createRef();
+    }
 
     handleLogin = (event) => {
         console.log("User try log");
@@ -29,17 +36,28 @@ class Login extends Component {
             .then((response) => {
                 console.log(response.status);
                 if (response.status === 200) {
-                    console.log("User Authorized!");
+                    this.showAlertNotification("success","Login success!","Moving to main page");
                     loginUser();
                     window.location.href = "/home";
+                } else if (response.status === 409) {
+                    this.showAlertNotification("danger","User is not in the base!","Enter new email or click to register");
+                } else if (response.status === 401) {
+                    this.showAlertNotification("danger","Wrong email or password!","Enter correct data");
                 } else {
-                    console.log("User Unauthorized");
+                    this.showAlertNotification("danger","Other error occured!","Contact administrator");
                 }
             })
             .catch((error) => {
                 console.log(error.stringify);
-                console.log("Run backend server!!!");
+                this.showAlertNotification("danger","Error","Run backend server!");
             });
+    }
+
+    showAlertNotification(variant, heading, alert){
+        this.AlertNotification.current.setAlert(alert);
+        this.AlertNotification.current.setHeading(heading);
+        this.AlertNotification.current.setVariant(variant);
+        this.AlertNotification.current.setVisible(true);
     }
 
     render() {
@@ -84,6 +102,7 @@ class Login extends Component {
                         </div>
                     </Form>
                 </div>
+                <AlertNotification ref={this.AlertNotification}/>
             </>
         );
     }
