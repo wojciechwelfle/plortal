@@ -39,6 +39,11 @@ public class UserService {
         return userOptional.isPresent() && userOptional.get().getPassword().equals(user.getPassword());
     }
 
+    public boolean isUserPresent(User user){
+        Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
+        return userOptional.isPresent();
+    }
+
     private boolean isEmailValid(String email){
         return EmailValidator.validateEmail(email);
     }
