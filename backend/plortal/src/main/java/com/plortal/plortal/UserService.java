@@ -24,6 +24,9 @@ public class UserService {
         if (!isEmailValid(user.getEmail())) {
             throw new IllegalStateException("Email " + user.getEmail() + " does not meet the requirements");
         }
+        if (!isPasswordValid(user.getPassword())) {
+            throw new IllegalStateException("Password " + user.getPassword() + " does not meet the requirements");
+        }
         if (userOptional.isPresent()) {
             throw new IllegalStateException("Email " + user.getEmail() + " is taken");
         }
@@ -48,4 +51,7 @@ public class UserService {
         return EmailValidator.validateEmail(email);
     }
 
+    private boolean isPasswordValid(String password) {
+        return PasswordValidator.validatePassword(password);
+    }
 }
