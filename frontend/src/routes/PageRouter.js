@@ -5,6 +5,8 @@ import "../App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute.js";
 import Home from "../home/Home.js";
+import Sidebar from "../components/Sidebar.jsx";
+
 
 class PageRouter extends Component {
     render() {
@@ -14,7 +16,9 @@ class PageRouter extends Component {
                     <Routes>
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
+                        <Route path='/tests' element={<Sidebar />}/>
                         <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/>
+                        
                     </Routes>
                 </BrowserRouter>
             </>
@@ -23,3 +27,4 @@ class PageRouter extends Component {
 }
 
 export default PageRouter;
+/*  linia 17: <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/> */
