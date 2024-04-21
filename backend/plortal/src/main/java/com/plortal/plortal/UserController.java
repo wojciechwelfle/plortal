@@ -25,18 +25,29 @@ public class UserController {
     }
 
     @PostMapping("api/v1/users")
-    public ResponseEntity addNewUser(@RequestBody User user) {
+    public ResponseEntity<?> addNewUser(@RequestBody User user) {
         try {
             userService.addNewUser(user);
-        } catch (IllegalStateException userExistException) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+        } catch (IllegalStateException e) {
+            if (e.getMessage().contains("is taken")) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body(e.getMessage());
+            } else if (e.getMessage().contains("is wrong")) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(e.getMessage());
+            } else if (e.getMessage().contains(" does not meet the requirements")) {
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                        .body(e.getMessage());
+            }
         }
         return ResponseEntity.ok(user);
     }
 
     @PostMapping("api/v1/users/login")
     public ResponseEntity loginUser(@RequestBody User user) {
-        if(!userService.isUserRegister(user)) {
+        if (!userService.isUserPresent(user)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } else if (!userService.isPasswordCorrectForUser(user)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.ok("User");
