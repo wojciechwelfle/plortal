@@ -47,7 +47,10 @@ class Register extends Component {
                 console.log(response.status);
 
                 if (response.status === 200) {
-                    this.showAlertNotification("success", "User has been registered!", "Go to the login page to log in");
+                    this.showAlertNotification("success", "User has been registered!", "Moving to the login page in 3 sec...");
+                    setTimeout(() => {
+                        window.location.href = "/login";
+                    }, 3000);
                 } else if (response.status === 422) {
                     this.showAlertNotification("danger","Wrong email format!","Example of correct email: example@domain.com");
                 } else if(response.status === 400) {
