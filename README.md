@@ -57,18 +57,19 @@ Wait until the database server starts completely, it may take a while.
 [NODE JS](https://nodejs.org/en/download)
 
 ### 4. Install and run the nmp using IntelliJ IDEA OR VSC
-
-install npm --force
-install nmp --hard 
+```
+npm install --force
+```
+```
 nmp start
-
+```
 ### 5. Run the project
 
 Next, you can run the project using IntelliJ IDEA:
 
 Run PlortalApplication
 
-Now you can navigate to http://localhost:8080 in your browser.
+Now you can navigate to http://localhost:3000 in your browser.
 
 ### Development
 - [Java 17 LTS](https://openjdk.org/projects/jdk/17/)
