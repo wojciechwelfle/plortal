@@ -52,17 +52,17 @@ You can use your local server installation from this project.
 **Remember:** if you are using your local server instance, change parameters for the database connection.
 Wait until the database server starts completely, it may take a while.
 
-### 4. Install and configure Node js
+### 3. Install and configure Node js
 
 [NODE JS](https://nodejs.org/en/download)
 
-### 3. Install and run the nmp using IntelliJ IDEA OR VSC
+### 4. Install and run the nmp using IntelliJ IDEA OR VSC
 
 install npm --force
 install nmp --hard 
 nmp start
 
-### 3. Run the project
+### 5. Run the project
 
 Next, you can run the project using IntelliJ IDEA:
 
