@@ -54,11 +54,11 @@ Możesz użyć lokalnej instalacji serwera z tego projektu.
 **Pamiętaj:** jeśli używasz instancji serwera lokalnego, zmień parametry połączenia z bazą danych.
 Poczekaj, aż serwer bazy danych uruchomi się całkowicie, może to chwilę potrwać.
 
-### 4. Zainstaluj i skonfiguruj NODE JS
+### 3. Zainstaluj i skonfiguruj NODE JS
 
 [NODE JS](https://nodejs.org/en/download)
 
-### 3. Zainstaluj i uruchom the nmp używająć IntelliJ IDEA lub VSC
+### 4. Zainstaluj i uruchom the nmp używająć IntelliJ IDEA lub VSC
 
 install npm --force
 
@@ -66,7 +66,7 @@ install nmp --hard
 
 nmp start
 
-### 3. Uruchom projekt
+### 5. Uruchom projekt
 
 Następnie, uruchom aplikacje używająć IntelliJ IDEA:
 
