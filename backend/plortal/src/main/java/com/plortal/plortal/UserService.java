@@ -21,14 +21,14 @@ public class UserService {
 
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
+        if (userOptional.isPresent()) {
+            throw new IllegalStateException("Email " + user.getEmail() + " is taken");
+        }
         if (!isEmailValid(user.getEmail())) {
             throw new IllegalStateException("Email " + user.getEmail() + " does not meet the requirements");
         }
         if (!isPasswordValid(user.getPassword())) {
-            throw new IllegalStateException("Password " + user.getPassword() + " does not meet the requirements");
-        }
-        if (userOptional.isPresent()) {
-            throw new IllegalStateException("Email " + user.getEmail() + " is taken");
+            throw new IllegalStateException("Password " + user.getPassword() + " is wrong");
         }
         userRepository.save(user);
     }

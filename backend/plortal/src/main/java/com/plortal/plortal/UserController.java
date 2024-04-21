@@ -29,11 +29,14 @@ public class UserController {
         try {
             userService.addNewUser(user);
         } catch (IllegalStateException e) {
-            if (e.getMessage().contains(" does not meet the requirements")) {
-                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                        .body(e.getMessage());
-            } else if (e.getMessage().contains("is taken")) {
+            if (e.getMessage().contains("is taken")) {
                 return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body(e.getMessage());
+            } else if (e.getMessage().contains("is wrong")) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(e.getMessage());
+            } else if (e.getMessage().contains(" does not meet the requirements")) {
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                         .body(e.getMessage());
             }
         }
