@@ -36,9 +36,11 @@ class Login extends Component {
             .then((response) => {
                 console.log(response.status);
                 if (response.status === 200) {
-                    this.showAlertNotification("success","Login success!","Moving to main page");
+                    this.showAlertNotification("success","Login success!","Moving to main page in 3 sec...");
                     loginUser();
-                    window.location.href = "/home";
+                    setTimeout(() => {
+                        window.location.href = "/home";
+                    }, 3000);
                 } else if (response.status === 409) {
                     this.showAlertNotification("danger","User is not in the base!","Enter new email or click to register");
                 } else if (response.status === 401) {
