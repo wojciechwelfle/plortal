@@ -4,7 +4,6 @@
 * [Początkowe założenia aplikacji](#pocztkowe-zaoenia-aplikacji)
 * [Wymagane aplikacje/narzędzia](#wymagane-aplikacje-narzedzia)
 * [Jak zacząć](#jak-zaczacz)
-  - [Repozytorium backend](#repozytorium-backend)
     
 ![image](https://github.com/wojciechwelfle/plortal/assets/167070778/80beb792-75b9-4061-9342-ce26d4442a0b)
 
@@ -59,20 +58,19 @@ Poczekaj, aż serwer bazy danych uruchomi się całkowicie, może to chwilę pot
 [NODE JS](https://nodejs.org/en/download)
 
 ### 4. Zainstaluj i uruchom the nmp używająć IntelliJ IDEA lub VSC
-
-install npm --force
-
-install nmp --hard 
-
+```
+npm install --force
+```
+```
 nmp start
-
+```
 ### 5. Uruchom projekt
 
 Następnie, uruchom aplikacje używająć IntelliJ IDEA:
 
 Run PlortalApplication
 
-Teraz możesz przejść do http://localhost:8080 w twojej przeglądarce.
+Teraz możesz przejść do http://localhost:3000 w twojej przeglądarce.
 
 ### Development
 - [Java 17 LTS](https://openjdk.org/projects/jdk/17/)
