@@ -47,18 +47,20 @@ class Register extends Component {
                 console.log(response.status);
 
                 if (response.status === 200) {
-                    this.showAlertNotification("success","User has been registered!","Go to the login page to log in");
+                    this.showAlertNotification("success", "User has been registered!", "Go to the login page to log in");
                 } else if (response.status === 422) {
                     this.showAlertNotification("danger","Wrong email format!","Example of correct email: example@domain.com");
+                } else if(response.status === 400) {
+                    this.showAlertNotification("danger","Wrong password format!","Password must contains min 8 letters, 1 lowercase letter and 1 uppercase letter and a number");
                 } else if(response.status === 409) {
                     this.showAlertNotification("danger","Email is already taken!","Please enter new email");
                 } else {
                     this.showAlertNotification("danger","Other error occured!","Contact administrator");
                 }
             }).catch((error) => {
-                console.log(error.stringify);
-                this.showAlertNotification("danger","Error","Run backend server!");
-            });
+            console.log(error.stringify);
+            this.showAlertNotification("danger","Error","Run backend server!");
+        });
     }
 
     showAlertNotification(variant, heading, alert){
