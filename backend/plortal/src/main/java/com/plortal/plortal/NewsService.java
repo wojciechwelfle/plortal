@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-
 public class NewsService {
     private final NewsRepository newsRepository;
 
@@ -15,7 +14,6 @@ public class NewsService {
     public NewsService(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
     }
-
 
     public void addNews(News news) {
         newsRepository.save(news);
