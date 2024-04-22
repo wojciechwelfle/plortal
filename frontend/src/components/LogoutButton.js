@@ -15,7 +15,7 @@ class LogoutButton extends Component {
                             type="submit"
                             onClick={logoutUser}
                         >
-                            Logout
+                            Logout      l
                         </Button>
                     </div>
                 </div>

@@ -16,7 +16,6 @@ class PageRouter extends Component {
                     <Routes>
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
-                        <Route path='/home' element={<Sidebar />}/>
                         <Route path='/home' element={<ProtectedRoute path='/home' component={Home}  /> }/>
                         
                     </Routes>
