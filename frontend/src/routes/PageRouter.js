@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute.js";
 import Home from "../home/Home.js";
 import Sidebar from "../components/Sidebar.jsx";
+import wykladowcy from "../home/wykladowcy.js";
 
 
 class PageRouter extends Component {
@@ -17,7 +18,7 @@ class PageRouter extends Component {
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
                         <Route path='/home' element={<ProtectedRoute path='/home' component={Home}  /> }/>
-                        
+                        <Route path='/wykladowcy' element={<ProtectedRoute path='/wykladowcy' component={wykladowcy}  /> }/>
                     </Routes>
                 </BrowserRouter>
             </>
