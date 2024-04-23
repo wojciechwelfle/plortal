@@ -5,10 +5,7 @@ import "../App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute.js";
 import Home from "../home/Home.js";
-import Sidebar from "../components/Sidebar.jsx";
-import wykladowcy from "../home/wykladowcy.js";
-
-
+import Lecturers from "../home/Lecturers.js";
 class PageRouter extends Component {
     render() {
         return (
@@ -18,7 +15,7 @@ class PageRouter extends Component {
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
                         <Route path='/home' element={<ProtectedRoute path='/home' component={Home}  /> }/>
-                        <Route path='/wykladowcy' element={<ProtectedRoute path='/wykladowcy' component={wykladowcy}  /> }/>
+                        <Route path='/lecturers' element={<ProtectedRoute path='/lecturers' component={Lecturers}  /> }/>
                     </Routes>
                 </BrowserRouter>
             </>
@@ -27,4 +24,3 @@ class PageRouter extends Component {
 }
 
 export default PageRouter;
-/*  linia 17: <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/> */

@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.css';
-import { Col } from 'react-bootstrap';
 
 const sidebarNavItems = [
     {
         display: 'Strona główna',
         icon: <i className='icon'></i>,
-        
         to: '/home',
         section: 'home'
     },
     {
         display: 'Wykładowcy',
         icon: <i className='icon'></i>,
-        to: '/wykladowcy',
-        section: 'wykladowcy'
+        to: '/lecturers',
+        section: 'lecturers'
     },
     {
         display: 'Mapa PŁ',

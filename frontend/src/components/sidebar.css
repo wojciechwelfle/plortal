@@ -47,11 +47,9 @@
 .sidebar__menu__item__icon {
     display:block;
     margin-right: 10px;
-    /* Ustaw szerokość ikony w zależności od rozmiaru tekstu */
-    width: 0.1em; /* Ustaw szerokość ikony na 1em */
-    height: auto; /* Użyj auto dla wysokości, aby zachować proporcje */
+    width: 0.1em; 
+    height: auto;
 }
-
 
 .sidebar__menu__indicator {
     position: absolute;
@@ -69,7 +67,6 @@
     color: #24bd3e;
 }
 
-/* Media query to shrink sidebar on smaller screens */
 @media (max-width: 768px) {
     .sidebar {
         width: 80px;
