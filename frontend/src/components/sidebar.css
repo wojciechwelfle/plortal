@@ -19,7 +19,6 @@
     padding-top: 20px;
     text-align:justify;
     padding-bottom: 1px;
-    
 }
 
 .sidebar__menu__item {
@@ -37,9 +36,8 @@
     text-align: center;
     vertical-align: middle;
     font-size: 14px; 
-    
-    
 }
+
 .sidebar__menu__item.active {
     background-color: #7a1010;
 }
