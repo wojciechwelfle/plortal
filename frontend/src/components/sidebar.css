@@ -1,57 +1,103 @@
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 25%;
-    background-color: #fff;
+    width: 280px;
+    background-color: #d3cdcd;
+    color: white;
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 80px;
 }
 
 .sidebar__logo {
-    display: grid;
-    place-items: center;
-    height: 120px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'Mochiy Pop P one', sans-serif;
-    color: #fff;
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .sidebar__menu {
-    position: relative;
+    padding-top: 20px;
+    text-align:justify;
+    padding-bottom: 1px;
+    
 }
 
 .sidebar__menu__item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1rem 3rem;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #555555;
-    transition: color 0.3s ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 40px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: white;
 }
-
+.sidebar__menu__item__text {
+    display:inline;
+    margin: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px; 
+    
+    
+}
 .sidebar__menu__item.active {
-    color: #fff;
+    background-color: #7a1010;
 }
 
 .sidebar__menu__item__icon {
-    margin-right: 1rem;
+    display:block;
+    margin-right: 10px;
+    /* Ustaw szerokość ikony w zależności od rozmiaru tekstu */
+    width: 0.1em; /* Ustaw szerokość ikony na 1em */
+    height: auto; /* Użyj auto dla wysokości, aby zachować proporcje */
 }
 
-.sidebar__menu__item__icon i {
-    font-size: 1.75rem;
-}
 
 .sidebar__menu__indicator {
     position: absolute;
+    left: 0;
     top: 0;
-    left: 50%;
-    width: calc(100% - 40px);
-    border-radius: 10px;
-    background-color: #9e0606;
-    z-index: -1;
-    transform: translateX(-50%);
-    transition: 0.3s ease-in-out;
+    width: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+
+.list-item {
+    display: flex;
+    text-decoration: none;
+    color: #24bd3e;
+}
+
+/* Media query to shrink sidebar on smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar.collapsed {
+        width: 80px;
+    }
+
+    .sidebar__logo {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .sidebar__menu__item {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .sidebar__menu__item__text {
+        display: none;
+    }
+
+    .sidebar__menu__item__icon {
+        margin-right: 0;
+    }
+
+    .sidebar__menu__indicator {
+        top: 0;
+    }
 }
