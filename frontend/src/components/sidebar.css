@@ -23,9 +23,6 @@
 }
 
 .sidebar__menu__item {
- /* Ustawienie elementu jako flex container */
-   
-    
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
@@ -35,12 +32,11 @@
     color: white;
 }
 .sidebar__menu__item__text {
-    
     display:inline;
     margin: 30px;
     text-align: center;
     vertical-align: middle;
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px; 
     
     
 }
@@ -69,7 +65,6 @@
 
 .list-item {
     display: flex;
-    
     text-decoration: none;
     color: #24bd3e;
 }
