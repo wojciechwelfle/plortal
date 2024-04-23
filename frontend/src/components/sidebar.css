@@ -18,10 +18,10 @@
 .sidebar__menu {
     padding-top: 20px;
     text-align:justify;
+    padding-bottom: 1px;
+    
 }
-.icon{
-    padding-left: 20px;
-}
+
 .sidebar__menu__item {
  /* Ustawienie elementu jako flex container */
    
@@ -29,16 +29,19 @@
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    margin: 50px;
+    padding: 40px;
     transition: background-color 0.3s ease;
     text-decoration: none;
     color: white;
 }
 .sidebar__menu__item__text {
-    display:block;
+    
+    display:inline;
+    margin: 30px;
     text-align: center;
     vertical-align: middle;
     font-size: 14px; /* Reduced font size */
+    
     
 }
 .sidebar__menu__item.active {
@@ -53,9 +56,6 @@
     height: auto; /* Użyj auto dla wysokości, aby zachować proporcje */
 }
 
-.sidebar__menu__item__text {
-    display: block;
-}
 
 .sidebar__menu__indicator {
     position: absolute;
@@ -69,15 +69,9 @@
 
 .list-item {
     display: flex;
-    align-items: center;
-    padding: 10px;
+    
     text-decoration: none;
     color: #24bd3e;
-}
-
-.icon {
-    margin-right: 10px;
-    vertical-align: middle; /* Wyśrodkowanie ikony SVG */
 }
 
 /* Media query to shrink sidebar on smaller screens */
