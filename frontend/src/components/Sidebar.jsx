@@ -49,7 +49,7 @@ const sidebarNavItems = [
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [expanded, setExpanded] = useState(true); // State to track if sidebar is expanded
+    const [expanded, setExpanded] = useState(true); 
     const [stepHeight, setStepHeight] = useState(0);
     const sidebarRef = useRef();
     const indicatorRef = useRef();
@@ -63,14 +63,12 @@ const Sidebar = () => {
         }, 50);
     }, []);
 
-    // change active index
     useEffect(() => {
         const curPath = window.location.pathname.split('/')[1];
         const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
-    // Handle sidebar toggle
     const toggleSidebar = () => {
         setExpanded(!expanded);
     };
