@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { logoutUser } from "../routes/userAuthorization";
 import LogoutButton from "../components/LogoutButton";
 import Sidebar from "../components/Sidebar";
-class Home extends Component {
+class Lecturers extends Component {
     render() {
         return (
             <>
@@ -16,4 +16,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Lecturers;
