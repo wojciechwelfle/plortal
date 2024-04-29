@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import "./Register.css";
 import './AlertNotification.css';
 import AlertNotification from "./AlertNotification";
+import PasswordStrength from "./PasswordStrength";
 
 
 class Register extends Component {
@@ -12,6 +13,9 @@ class Register extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            passwordStrength: '',
+        };
         this.AlertNotification = React.createRef();
     }
 
@@ -23,6 +27,38 @@ class Register extends Component {
             event.target.email.value,
             event.target.password.value
         );
+    };
+
+    handlePasswordChange = (event) => {
+        const password = event.target.value;
+        let strengthPoints = 0;
+    
+        if (password.length >= 8) {
+            strengthPoints += 1;
+        }
+        if (password.length >= 12) {
+            strengthPoints += 1;
+        }
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) {
+            strengthPoints += 1;
+        }
+        if (/\d/.test(password)) {
+            strengthPoints += 1;
+        }
+        if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            strengthPoints += 1;
+        }
+    
+        let strength;
+        if (strengthPoints < 3) {
+            strength = 'Weak';
+        } else if (strengthPoints < 5) {
+            strength = 'Medium';
+        } else {
+            strength = 'Strong';
+        }
+    
+        this.setState({ password: strength });
     };
 
     addUserToDatabase(email, password) {
@@ -95,7 +131,8 @@ class Register extends Component {
                             size="lg"
                         >
                             <Form.Label> Password </Form.Label>
-                            <Form.Control type="password" name="password" />
+                            <Form.Control type="password" name="password" onChange={this.handlePasswordChange}/>
+                            <PasswordStrength strength={this.state.password}/>
                         </Form.Group>
 
                         <div className="TextContainer">
