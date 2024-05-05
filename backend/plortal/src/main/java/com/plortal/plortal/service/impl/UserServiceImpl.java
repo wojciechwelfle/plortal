@@ -1,5 +1,6 @@
 package com.plortal.plortal.service.impl;
 
+import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
 import com.plortal.plortal.repository.UserRepository;
 import com.plortal.plortal.service.UserService;
@@ -29,13 +30,13 @@ public class UserServiceImpl implements UserService {
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         if (userOptional.isPresent()) {
-            throw new IllegalStateException("Email " + user.getEmail() + " is taken");
+            throw new EmailTakenException();
         }
         if (!isEmailValid(user.getEmail())) {
-            throw new IllegalStateException("Email " + user.getEmail() + " does not meet the requirements");
+            throw new EmailInvalidException();
         }
         if (!isPasswordValid(user.getPassword())) {
-            throw new IllegalStateException("Password " + user.getPassword() + " is wrong");
+            throw new PasswordInvalidException();
         }
         userRepository.save(user);
     }
@@ -44,9 +45,9 @@ public class UserServiceImpl implements UserService {
     public void authenticateUser(String email, String password) {
         User user = new User(email, password);
         if (!isUserPresent(user)) {
-            throw new IllegalStateException("User is not exist");
+            throw new UserNotExistException();
         } else if (!isPasswordCorrectForUser(user)) {
-            throw new IllegalStateException("Password is incorrect");
+            throw new IncorrectPasswordException();
         }
     }
 
