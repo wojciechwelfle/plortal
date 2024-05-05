@@ -17,11 +17,10 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000/")
 public class UserController {
     private final UserService userService;
-
     ObjectMapper objectMapper;
 
     @GetMapping("api/v1/users")
-    public ResponseEntity fetchAllUsers() throws JsonProcessingException {
+    public ResponseEntity<?> fetchAllUsers() throws JsonProcessingException {
         List<User> users = userService.getUsers();
         return ResponseEntity.ok(objectMapper.writeValueAsString(users));
     }
@@ -46,13 +45,16 @@ public class UserController {
     }
 
     @PostMapping("api/v1/users/login")
-    public ResponseEntity loginUser(@RequestBody User user) {
-        if (!userService.isUserPresent(user)) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-        } else if (!userService.isPasswordCorrectForUser(user)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    public ResponseEntity<?> loginUser(@RequestBody User user) {
+        try {
+            userService.authenticateUser(user.getEmail(), user.getPassword());
+        } catch (IllegalStateException e) {
+            if (e.getMessage().contains("User is not exist")) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            } else if (e.getMessage().contains("Password is incorrect")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
         }
         return ResponseEntity.ok("User");
     }
-
 }
