@@ -4,7 +4,8 @@ import Login from "../register-login/Login.js";
 import "../App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute.js";
-import Home from "../home/Home.js";
+import Home from "../pages/Home.js";
+import Schedule from "../pages/Schedule.js";
 
 class PageRouter extends Component {
     render() {
@@ -15,6 +16,7 @@ class PageRouter extends Component {
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
                         <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/>
+                        <Route path='/schedule' element={<ProtectedRoute path='/schedule' component={Schedule} />}/>
                     </Routes>
                 </BrowserRouter>
             </>
