@@ -1,0 +1,142 @@
+.MuiPickersArrowSwitcher-root {
+    visibility: hidden;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 10px;
+    margin-top: 100px;
+}
+.left-column, .right-column {
+    flex: 1;
+    padding: 10px;
+}
+.top-columns {
+    display: flex;
+    gap: 10px;
+}
+.right-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.btn-notes{
+    width: 250px;
+    background-color: #8e0000;
+    border-color:  #8e0000;
+}
+.under-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.under-column div {
+    width: 100%;
+    text-align: center;
+}
+.under-column ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+.under-column li {
+    background-color: #eae4e4;
+    color:black;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 250px;
+    width: 650px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.button-next{
+    border: none;
+    background-color: #8e0000;
+    margin-left: 3px;
+    &:hover {
+        background-color: #a30000 !important;
+    }
+}
+.button-prev{
+    border: none;
+    background-color: #8e0000;
+    margin-right: 3px;
+    &:hover {
+        background-color: #a30000 !important;
+    }
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; 
+}
+.floatingTextarea {
+    max-width: 500px;
+    max-height: 150px;
+}
+.floatingTextarea .form-control {
+    width: 100%;
+    min-width: 150px;
+    max-height: 150px;
+}
+.floatingTextarea {
+    width: calc(100% - 20px);
+    min-width: 140px;
+    max-height: 150px;
+}
+@media (max-width: 400px) {
+    .floatingTextarea .form-control,
+    .floatingTextarea {
+        width: calc(100%);
+        max-height: 150px;
+    }
+}
+.MuiPickersDay-root.Mui-selected {
+    background-color: #8e0000 !important;
+    color: white !important;
+
+    &:hover {
+        background-color: #a30000 !important;
+    }
+}
+.MuiPickersDay-today {
+    border: 1px solid black !important;
+    color: #000000;
+}
+.div.container div.right-column .notification {
+    top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 500px;
+    height: 100px;
+    max-height: 110px;
+    width: 450px;
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+.div.container div.right-column .notification.hidden {
+    visibility: hidden;
+    height: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+.form-text{
+    padding-top: 50px;
+}
+.form-label{
+    padding-top: 14px;
+    padding-left: 15px;
+}
