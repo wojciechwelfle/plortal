@@ -1,4 +1,4 @@
-package com.plortal.plortal;
+package com.plortal.plortal.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;

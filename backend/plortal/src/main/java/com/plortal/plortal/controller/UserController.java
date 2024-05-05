@@ -1,7 +1,9 @@
-package com.plortal.plortal;
+package com.plortal.plortal.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.plortal.plortal.model.User;
+import com.plortal.plortal.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

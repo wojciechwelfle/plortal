@@ -1,5 +1,9 @@
-package com.plortal.plortal;
+package com.plortal.plortal.service;
 
+import com.plortal.plortal.model.User;
+import com.plortal.plortal.repository.UserRepository;
+import com.plortal.plortal.validation.EmailValidator;
+import com.plortal.plortal.validation.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    List<User> getUsers() {
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 

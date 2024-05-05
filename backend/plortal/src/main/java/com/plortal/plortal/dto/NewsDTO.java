@@ -1,4 +1,4 @@
-package com.plortal.plortal;
+package com.plortal.plortal.dto;
 
 public record NewsDTO(
         int id,
