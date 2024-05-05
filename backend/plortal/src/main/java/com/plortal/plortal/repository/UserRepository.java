@@ -1,5 +1,6 @@
-package com.plortal.plortal;
+package com.plortal.plortal.repository;
 
+import com.plortal.plortal.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
