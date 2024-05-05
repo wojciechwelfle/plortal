@@ -1,5 +1,9 @@
-package com.plortal.plortal;
+package com.plortal.plortal.service;
 
+import com.plortal.plortal.model.News;
+import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.mapper.NewsDTOMapper;
+import com.plortal.plortal.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
