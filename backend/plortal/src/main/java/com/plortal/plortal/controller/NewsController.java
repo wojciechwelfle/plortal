@@ -1,5 +1,7 @@
-package com.plortal.plortal;
+package com.plortal.plortal.controller;
 
+import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.service.NewsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
