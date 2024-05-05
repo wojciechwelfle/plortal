@@ -7,18 +7,18 @@ class PasswordStrength extends Component {
         let strengthClass = '';
 
         if (strength === 'Weak') {
-            strengthClass = 'Weak';
+            strengthClass = 'weak';
         } else if (strength === 'Medium') {
-            strengthClass = 'Medium';
+            strengthClass = 'medium';
         } else if (strength === 'Strong') {
-            strengthClass = 'Strong';
+            strengthClass = 'strong';
         }
 
         return (
-            <div className={`PasswordStrength ${strengthClass}`}>
-                <div className={`Rectangle ${strengthClass}`}></div>
-                <div className="Text">Password strength:</div>
-                <div className="Strength">{strength}</div>
+            <div className={`password-strength ${strengthClass}`}>
+                <div className={`rectangle ${strengthClass}`}></div>
+                <div className="text">Password strength:</div>
+                <div className="strength">{strength}</div>
             </div>
         );
     }
