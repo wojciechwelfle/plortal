@@ -20,7 +20,16 @@ const NewsPage = () => {
     return (
         <>
             <div>
-                <h1 className="news" style={{padding:"10px", paddingLeft:"20px", color:"#8E0000"}}>Aktualności</h1>
+                <h1
+                    className="news"
+                    style={{
+                        padding: "10px",
+                        paddingLeft: "20px",
+                        animation: "backgroundChange 4s infinite alternate", color: "#fff", textShadow: "2px 2px 4px #000",
+                    }}
+                >
+                    <b> Aktualności</b>
+                </h1>
                 <News newsData={newsData} />
             </div>
         </>

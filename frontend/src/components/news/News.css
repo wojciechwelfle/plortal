@@ -3,6 +3,7 @@
     max-width: 70%;
     margin: auto;
     margin-top: 20px;
+    border-radius: 5px;
 }
 
 .news-img {
@@ -30,4 +31,16 @@
 
 .card.fade-in {
     opacity: 1;
+}
+
+@keyframes backgroundChange {
+    0% {
+        background-color: #8e0000;
+    }
+    50% {
+        background-color: #a40303;
+    }
+    100% {
+        background-color: #8e0000;
+    }
 }
