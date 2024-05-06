@@ -5,9 +5,11 @@ import ProtectedRoute from "../routes/ProtectedRoute";
 import Register from "../register-login/Register";
 import Login from "../register-login/Login";
 import Home from "../pages/Home";
+import Schedule from "../pages/Schedule";
 import NewsPage from "../pages/NewsPage";
 
 import "../App.css";
+
 
 class PageRouter extends Component {
     render() {
@@ -15,10 +17,14 @@ class PageRouter extends Component {
             <>
                 <BrowserRouter>
                     <Routes>
+                   
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
+                          
                         <Route path='/home' element={<ProtectedRoute path='/home' element={Home} />}/>
+                        <Route path='/schedule' element={<ProtectedRoute path='/schedule' element={Schedule} />}/>
                         <Route path='/news' element={<ProtectedRoute path='/news' element={NewsPage} />}/>
+
                     </Routes>
                 </BrowserRouter>
             </>
