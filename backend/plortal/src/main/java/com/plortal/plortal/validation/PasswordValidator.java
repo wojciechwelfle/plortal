@@ -1,4 +1,4 @@
-package com.plortal.plortal;
+package com.plortal.plortal.validation;
 
 public class PasswordValidator {
     public static boolean validatePassword(String password) {

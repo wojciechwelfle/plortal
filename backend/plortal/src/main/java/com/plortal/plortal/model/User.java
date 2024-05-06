@@ -1,4 +1,5 @@
-package com.plortal.plortal;
+package com.plortal.plortal.model;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -25,6 +26,11 @@ public class User {
 
     public User(int id, String email, String password) {
         this.id = id;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }

@@ -1,5 +1,11 @@
-package com.plortal.plortal;
+package com.plortal.plortal.service.impl;
 
+import com.plortal.plortal.exception.*;
+import com.plortal.plortal.model.User;
+import com.plortal.plortal.repository.UserRepository;
+import com.plortal.plortal.service.UserService;
+import com.plortal.plortal.validation.EmailValidator;
+import com.plortal.plortal.validation.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,38 +13,50 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    List<User> getUsers() {
+    @Override
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 
+    @Override
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         if (userOptional.isPresent()) {
-            throw new IllegalStateException("Email " + user.getEmail() + " is taken");
+            throw new EmailTakenException();
         }
         if (!isEmailValid(user.getEmail())) {
-            throw new IllegalStateException("Email " + user.getEmail() + " does not meet the requirements");
+            throw new EmailInvalidException();
         }
         if (!isPasswordValid(user.getPassword())) {
-            throw new IllegalStateException("Password " + user.getPassword() + " is wrong");
+            throw new PasswordInvalidException();
         }
         userRepository.save(user);
     }
 
-    public boolean isUserPresent(User user) {
+    @Override
+    public void authenticateUser(String email, String password) {
+        User user = new User(email, password);
+        if (!isUserPresent(user)) {
+            throw new UserNotExistException();
+        } else if (!isPasswordCorrectForUser(user)) {
+            throw new IncorrectPasswordException();
+        }
+    }
+
+    private boolean isUserPresent(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         return userOptional.isPresent();
     }
 
-    public boolean isPasswordCorrectForUser(User user) {
+    private boolean isPasswordCorrectForUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         return isPasswordCorrect(userOptional, user);
     }

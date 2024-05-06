@@ -4,9 +4,9 @@ import { isUserLogin } from "./userAuthorization";
 
 class ProtectedRoute extends Component {
     render() {
-        var { component: Component, ...rest } = this.props;
+        var { element: Element, ...rest } = this.props;
         if (isUserLogin()) {
-            return <Component {...rest} />;
+            return <Element {...rest} />;
         } else {
             return <Navigate to="/login" />;
         }
