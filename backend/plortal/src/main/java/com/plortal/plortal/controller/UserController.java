@@ -2,6 +2,7 @@ package com.plortal.plortal.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
 import com.plortal.plortal.service.UserService;
 import lombok.AllArgsConstructor;
@@ -29,17 +30,12 @@ public class UserController {
     public ResponseEntity<?> addNewUser(@RequestBody User user) {
         try {
             userService.addNewUser(user);
-        } catch (IllegalStateException e) {
-            if (e.getMessage().contains("is taken")) {
-                return ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body(e.getMessage());
-            } else if (e.getMessage().contains("is wrong")) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body(e.getMessage());
-            } else if (e.getMessage().contains(" does not meet the requirements")) {
-                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                        .body(e.getMessage());
-            }
+        } catch (EmailTakenException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        } catch (EmailInvalidException e) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
+        } catch (PasswordInvalidException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
         return ResponseEntity.ok(user);
     }
@@ -48,12 +44,10 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody User user) {
         try {
             userService.authenticateUser(user.getEmail(), user.getPassword());
-        } catch (IllegalStateException e) {
-            if (e.getMessage().contains("User is not exist")) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            } else if (e.getMessage().contains("Password is incorrect")) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } catch (IncorrectPasswordException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.ok("User");
     }
