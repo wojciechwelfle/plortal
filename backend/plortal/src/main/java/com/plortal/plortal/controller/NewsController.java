@@ -21,9 +21,9 @@ public class NewsController {
     }
 
     @PostMapping("/api/v1/news")
-    public ResponseEntity addNews(@RequestBody NewsDTO newsDto) {
+    public ResponseEntity<?> addNews(@RequestBody NewsDTO newsDto) {
         newsService.addNews(newsDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("News added!");
     }
 
 }
