@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -9,7 +9,8 @@ import Button from 'react-bootstrap/Button';
 import "./Schedule.css";
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import AlertNotification from "../register-login/AlertNotification";
+import './NotesNotification.css';
+import NotesNotification from "./NotesNotification";
 
 
 
@@ -18,6 +19,7 @@ class Schedule extends Component {
 
     constructor(props) {
         super(props);
+        this.NotesNotification = React.createRef();
         this.state = {
             firstDate: dayjs(),
             currentDate: dayjs(),
@@ -25,8 +27,9 @@ class Schedule extends Component {
             notes: [],
             noteInput: "",
         };
-        this.AlertNotification = React.createRef();
+
     }
+
     componentDidMount() {
         this.fetchNotesForDate(this.state.selectedDate.format('YYYY-MM-DD'));
     }
@@ -40,11 +43,11 @@ class Schedule extends Component {
             const dateString = selectedDate.format('YYYY-MM-DD');
             this.addNoteToData(noteInput,dateString);
         } else{
-            this.showAlertNotification("danger","Failed to add!","Selected date or note input is missing!");
+            this.showNotesNotification("warning","Failed to add! Selected date or note input is missing!");
             console.error("Selected date or note input is missing!");
         }
     };
-        addNoteToData(noteInput,dateString){
+    addNoteToData(noteInput,dateString){
             const requestOptions = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -57,12 +60,12 @@ class Schedule extends Component {
             fetch(this.API_URL, requestOptions)
                 .then(response =>{
                     if (response.ok) {
-                        this.showAlertNotification("success","Adding note completed!","Note is in your account");
+                        this.showNotesNotification("success","Adding note completed! Note is signed to your account");
                         console.log("Note added successfully");
                         this.fetchNotesForDate(dateString);
                         this.setState({ noteInput: '' });
                     } else {
-                        this.showAlertNotification("danger","Failed to add!","Other error occured!");
+                        this.showNotesNotification("danger","Failed to add! Message is above 50 character!");
                         console.error("Failed to add", response.status);
                         response.text().then(text => console.error(text));
                     }
@@ -71,12 +74,6 @@ class Schedule extends Component {
                     console.error("Failed to add note",error);
                     console.error("Full error object:", error);
                 });
-        }
-    showAlertNotification(variant, heading, alert){
-        this.AlertNotification.current.setAlert(alert);
-        this.AlertNotification.current.setHeading(heading);
-        this.AlertNotification.current.setVariant(variant);
-        this.AlertNotification.current.setVisible(true);
     }
 
     selectDate = (newValue) => {
@@ -117,7 +114,11 @@ class Schedule extends Component {
             .catch(error => console.error('Error fetching notes:', error));
     };
 
-
+    showNotesNotification(variant, alert){
+        this.NotesNotification.current.setNote(alert);
+        this.NotesNotification.current.setVariantNote(variant);
+        this.NotesNotification.current.setVisibleNote(true);
+    }
 
     render() {
         const { selectedDate, notes, firstDate } = this.state;
@@ -145,7 +146,7 @@ class Schedule extends Component {
                             </LocalizationProvider>
                         </div>
                         <div className="right-column">
-                            <AlertNotification class="notification" ref={this.AlertNotification}/>
+                            <NotesNotification className="NotesAlert" ref={this.NotesNotification}/>
                             <Form className="form-text">
                                 <Form.Group>
                                     <Form.Label className="form-label"><b>Dodaj notatkę
@@ -156,7 +157,7 @@ class Schedule extends Component {
                                             value={this.state.noteInput}
                                             onChange={this.handleNoteChange}
                                             as="textarea"
-                                            style={{height: '100px', width: '250px'}}
+                                            style={{height: '100px', width: '300px'}}
                                             maxLength="60"
                                         />
                                     </FloatingLabel>
