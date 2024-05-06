@@ -1,0 +1,33 @@
+.news {
+    min-width: 50%;
+    max-width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.news-img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.row-news {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.card.fade-in {
+    opacity: 1;
+}
