@@ -5,9 +5,6 @@ import com.plortal.plortal.repository.ScheduleNotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -38,9 +35,6 @@ public class ScheduleNotesService {
         }
     }
     public boolean isNoteValid(String description){
-        if (description == null || description.length() > 50){
-            return false;
-        }
-        return true;
+        return description != null && description.length() <= 50;
     }
 }
