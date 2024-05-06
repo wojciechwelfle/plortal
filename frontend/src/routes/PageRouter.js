@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import Register from "../register-login/Register.js";
-import Login from "../register-login/Login.js";
-import "../App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "../routes/ProtectedRoute.js";
-import Home from "../home/Home.js";
+import ProtectedRoute from "../routes/ProtectedRoute";
+
+import Register from "../register-login/Register";
+import Login from "../register-login/Login";
+import Home from "../pages/Home";
+import NewsPage from "../pages/NewsPage";
+
+import "../App.css";
 
 class PageRouter extends Component {
     render() {
@@ -14,7 +17,8 @@ class PageRouter extends Component {
                     <Routes>
                         <Route path='/' element={<Register />} />
                         <Route path='/login' element={<Login />}/>
-                        <Route path='/home' element={<ProtectedRoute path='/home' component={Home} />}/>
+                        <Route path='/home' element={<ProtectedRoute path='/home' element={Home} />}/>
+                        <Route path='/news' element={<ProtectedRoute path='/news' element={NewsPage} />}/>
                     </Routes>
                 </BrowserRouter>
             </>
