@@ -17,7 +17,7 @@ class PasswordStrength extends Component {
         return (
             <div className={`password-strength ${strengthClass}`}>
                 <div className={`rectangle ${strengthClass}`}></div>
-                <div className="text">Password strength:</div>
+                {strengthClass.length !== 0 && <div className="text">Password strength:</div>}
                 <div className="strength">{strength}</div>
             </div>
         );
