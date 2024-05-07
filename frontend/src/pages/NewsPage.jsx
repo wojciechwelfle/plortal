@@ -3,6 +3,7 @@ import News from "../components/news/News";
 import { getAllNews } from "../components/news/getAllNews";
 
 import "../components/news/News.css";
+import NewsHeader from "../components/news/NewsHeader";
 
 const NewsPage = () => {
     const [newsData, setNewsData] = useState([]);
@@ -19,19 +20,8 @@ const NewsPage = () => {
 
     return (
         <>
-            <div>
-                <h1
-                    className="news"
-                    style={{
-                        padding: "10px",
-                        paddingLeft: "20px",
-                        animation: "backgroundChange 4s infinite alternate", color: "#fff", textShadow: "2px 2px 4px #000",
-                    }}
-                >
-                    <b> Aktualności</b>
-                </h1>
-                <News newsData={newsData} />
-            </div>
+            <NewsHeader />
+            <News newsData={newsData} />
         </>
     );
 };
