@@ -10,6 +10,6 @@ import java.util.List;
 import java.time.LocalDate;
 
 public interface ScheduleNotesRepository extends JpaRepository<ScheduleNotes, Long> {
-    @Query("SELECT s FROM ScheduleNotes s WHERE s.date = :date")
-    List<ScheduleNotes> findByDate(@Param("date") LocalDate date);
+    @Query("SELECT s FROM ScheduleNotes s WHERE s.date = :date AND s.userEmail = :userEmail")
+    List<ScheduleNotes> findByDate(@Param("date") LocalDate date, @Param("userEmail") String userEmail);
 }
