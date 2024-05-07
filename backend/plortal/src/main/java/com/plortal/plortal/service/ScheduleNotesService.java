@@ -26,10 +26,10 @@ public class ScheduleNotesService {
         return repository.findAll();
     }
 
-    public List<ScheduleNotes> findByDate(String dateString) {
+    public List<ScheduleNotes> findByDate(String dateString,String userEmail) {
         try {
             LocalDate date = LocalDate.parse(dateString);
-            return repository.findByDate(date);
+            return repository.findByDate(date,userEmail);
         } catch (DateTimeParseException e) {
             throw new RuntimeException("Failed to parse date: " + dateString, e);
         }
