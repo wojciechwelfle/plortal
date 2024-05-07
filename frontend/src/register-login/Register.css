@@ -1,28 +1,28 @@
-.Register {
+.register {
     margin: 29vh auto;
     max-width: 320px;
 }
 
-.RegisterHeader {
+.register-header {
     font-size: 38px;
 }
 
-.Group {
+.group {
     margin-top: 20px;
 }
 
-.Btn {
+.btn {
     background-color: #8e0000;
     margin-top: 10px;
 }
 
-.TextContainer {
+.text-container {
     margin-top: 10px;
     font-size: 15px;
     text-align: center; 
 }
 
-.TextLink {
+.text-link {
     margin-left: 5px;
     color: #007bff;
     text-decoration: none;
@@ -30,6 +30,6 @@
     display: inline-block; 
 }
 
-.TextLink:hover {
+.text-link:hover {
     text-decoration: underline; 
 }

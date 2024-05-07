@@ -11,30 +11,31 @@ import java.util.List;
 
 @Service
 public class ScheduleNotesService {
-    private final ScheduleNotesRepository repository;
+    private final ScheduleNotesRepository scheduleNotesRepository;
 
     @Autowired
     public ScheduleNotesService(ScheduleNotesRepository repository) {
-        this.repository = repository;
+        this.scheduleNotesRepository = repository;
     }
 
     public ScheduleNotes saveOrUpdate(ScheduleNotes note) {
-        return repository.save(note);
+        return scheduleNotesRepository.save(note);
     }
 
     public List<ScheduleNotes> findAll() {
-        return repository.findAll();
+        return scheduleNotesRepository.findAll();
     }
 
-    public List<ScheduleNotes> findByDate(String dateString,String userEmail) {
+    public List<ScheduleNotes> findByDateAndEmail(String dateString, String userEmail) {
         try {
             LocalDate date = LocalDate.parse(dateString);
-            return repository.findByDate(date,userEmail);
+            return scheduleNotesRepository.findByDateAndEmail(date, userEmail);
         } catch (DateTimeParseException e) {
             throw new RuntimeException("Failed to parse date: " + dateString, e);
         }
     }
-    public boolean isNoteValid(String description){
+
+    public boolean isNoteValid(String description) {
         return description != null && description.length() <= 50;
     }
 }
