@@ -1,6 +1,16 @@
+body{
+    overflow: hidden;
+}
+
 .Register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 29vh auto;
-    max-width: 320px;
+    max-width: 500px;
+    overflow: hidden;
+    max-height: 800px;
 }
 
 .RegisterHeader {
@@ -9,11 +19,17 @@
 
 .Group {
     margin-top: 20px;
+    width: 100%;
+}
+
+.Group input, .Group label {
+    width: 35vh;
 }
 
 .Btn {
     background-color: #8e0000;
     margin-top: 10px;
+    width: 100%;
 }
 
 .TextContainer {
@@ -32,4 +48,10 @@
 
 .TextLink:hover {
     text-decoration: underline; 
+}
+
+.alertContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

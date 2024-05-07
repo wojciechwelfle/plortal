@@ -122,7 +122,7 @@ class Register extends Component {
                             size="lg"
                         >
                             <Form.Label> Email </Form.Label>
-                            <Form.Control autoFocus name="email" />
+                            <Form.Control autoFocus name="email"/>
                         </Form.Group>
 
                         <Form.Group
@@ -131,8 +131,8 @@ class Register extends Component {
                             size="lg"
                         >
                             <Form.Label> Password </Form.Label>
-                            <Form.Control type="password" name="password" onChange={this.handlePasswordChange} />
-                            <PasswordStrength strength={this.state.password} />
+                            <Form.Control type="password" name="password" onChange={this.handlePasswordChange}/>
+                            <PasswordStrength strength={this.state.password}/>
                         </Form.Group>
 
                         <div className="TextContainer">
@@ -152,8 +152,11 @@ class Register extends Component {
                             </Button>
                         </div>
                     </Form>
+                    <div className="alertContainer">
+                        <AlertNotification ref={this.AlertNotification}/>
+                    </div>
                 </div>
-                <AlertNotification ref={this.AlertNotification} />
+
             </>
         );
     }
