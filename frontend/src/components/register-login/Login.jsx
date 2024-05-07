@@ -89,7 +89,7 @@ const Login = () => {
                         size="lg"
                     >
                         <Form.Label> Email </Form.Label>
-                        <Form.Control autoFocus name="email" />
+                        <Form.Control autoFocus name="email"/>
                     </Form.Group>
                     <Form.Group
                         className="group"
@@ -97,7 +97,7 @@ const Login = () => {
                         size="lg"
                     >
                         <Form.Label> Password </Form.Label>
-                        <Form.Control type="password" name="password" />
+                        <Form.Control type="password" name="password"/>
                     </Form.Group>
 
                     <div className="text-container">
@@ -113,8 +113,10 @@ const Login = () => {
                         </Button>
                     </div>
                 </Form>
+                <div className="alert-container">
+                    <AlertNotification ref={AlertNotificationRef}/>
+                </div>
             </div>
-            <AlertNotification ref={AlertNotificationRef} />
         </>
     );
 };

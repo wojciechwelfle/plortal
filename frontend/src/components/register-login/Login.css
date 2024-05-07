@@ -1,6 +1,16 @@
+body{
+    overflow: hidden;
+}
+
 .register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 29vh auto;
-    max-width: 320px;
+    max-width: 500px;
+    overflow: hidden;
+    max-height: 800px;
 }
 
 .register-header {
@@ -9,11 +19,17 @@
 
 .group {
     margin-top: 20px;
+    width: 100%;
+}
+
+.group input, .group label {
+    width: 35vh;
 }
 
 .btn {
     background-color: #8e0000;
     margin-top: 10px;
+    width: 100%;
 }
 
 .text-container {
@@ -32,4 +48,10 @@
 
 .text-link:hover {
     text-decoration: underline;
+}
+
+.alert-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
