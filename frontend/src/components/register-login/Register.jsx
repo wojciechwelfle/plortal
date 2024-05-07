@@ -135,7 +135,7 @@ const Register = () => {
                         size="lg"
                     >
                         <Form.Label> Email </Form.Label>
-                        <Form.Control autoFocus name="email" />
+                        <Form.Control autoFocus name="email"/>
                     </Form.Group>
 
                     <Form.Group
@@ -149,7 +149,7 @@ const Register = () => {
                             name="password"
                             onChange={handlePasswordChange}
                         />
-                        <PasswordStrength strength={passwordStrength} />
+                        <PasswordStrength strength={passwordStrength}/>
                     </Form.Group>
 
                     <div className="text-container">
@@ -165,8 +165,11 @@ const Register = () => {
                         </Button>
                     </div>
                 </Form>
+                <div className="alertContainer">
+                    <AlertNotification ref={AlertNotificationRef}/>
+                </div>
             </div>
-            <AlertNotification ref={AlertNotificationRef} />
+
         </>
     );
 };
