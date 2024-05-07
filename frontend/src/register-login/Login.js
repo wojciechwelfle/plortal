@@ -37,7 +37,7 @@ class Login extends Component {
                 console.log(response.status);
                 if (response.status === 200) {
                     this.showAlertNotification("success","Login success!","Moving to main page in 3 sec...");
-                    loginUser();
+                    loginUser(email);
                     setTimeout(() => {
                         window.location.href = "/home";
                     }, 3000);
