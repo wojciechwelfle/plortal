@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { loginUser } from "../routes/userAuthorization.js";
 import './AlertNotification.css';
 import AlertNotification from "./AlertNotification";
+import './Register.css';
 
 class Login extends Component {
     API_URL = "http://localhost:8080/api/v1/users/login";
@@ -75,7 +76,7 @@ class Login extends Component {
                             size="lg"
                         >
                             <Form.Label> Email </Form.Label>
-                            <Form.Control autoFocus name="email" />
+                            <Form.Control autoFocus name="email"/>
                         </Form.Group>
                         <Form.Group
                             className="Group"
@@ -83,7 +84,7 @@ class Login extends Component {
                             size="lg"
                         >
                             <Form.Label> Password </Form.Label>
-                            <Form.Control type="password" name="password" />
+                            <Form.Control type="password" name="password"/>
                         </Form.Group>
 
                         <div className="TextContainer">
@@ -103,8 +104,11 @@ class Login extends Component {
                             </Button>
                         </div>
                     </Form>
+                    <div className="alertContainer">
+                        <AlertNotification ref={this.AlertNotification}/>
+                    </div>
                 </div>
-                <AlertNotification ref={this.AlertNotification}/>
+
             </>
         );
     }
