@@ -1,5 +1,6 @@
-export function loginUser() {
+export function loginUser(userEmail) {
     localStorage.setItem("isAuth", true);
+    localStorage.setItem("email",userEmail);
 }
 
 export function logoutUser() {

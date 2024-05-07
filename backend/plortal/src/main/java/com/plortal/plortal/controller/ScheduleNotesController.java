@@ -44,11 +44,11 @@ public class ScheduleNotesController {
     }
 
     @GetMapping("/api/v1/schedulenotes/date")
-    public ResponseEntity<List<ScheduleNotes>> getNotesByDate(@RequestParam String date) {
+    public ResponseEntity<List<ScheduleNotes>> getNotesByDate(@RequestParam String date,String email) {
         LocalDate parsedDate = LocalDate.parse(date);
         String dateString = parsedDate.toString();
         try {
-            List<ScheduleNotes> notes = service.findByDate(dateString);
+            List<ScheduleNotes> notes = service.findByDate(dateString,email);
             if (notes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

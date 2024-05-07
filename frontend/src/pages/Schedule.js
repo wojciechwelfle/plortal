@@ -26,34 +26,36 @@ class Schedule extends Component {
             selectedDate: dayjs(),
             notes: [],
             noteInput: "",
+            userMail: localStorage.getItem("email"),
         };
 
     }
 
     componentDidMount() {
-        this.fetchNotesForDate(this.state.selectedDate.format('YYYY-MM-DD'));
+        this.fetchNotesForDate(this.state.selectedDate.format('YYYY-MM-DD'),this.state.userMail);
     }
     handleNoteChange = (event) => {
         this.setState({ noteInput: event.target.value });
     };
 
     addNote = () => {
-        const {selectedDate, noteInput} = this.state;
+        const {selectedDate, noteInput, userMail} = this.state;
         if (selectedDate && noteInput) {
             const dateString = selectedDate.format('YYYY-MM-DD');
-            this.addNoteToData(noteInput,dateString);
+            this.addNoteToData(noteInput,dateString,userMail);
         } else{
             this.showNotesNotification("warning","Failed to add! Selected date or note input is missing!");
             console.error("Selected date or note input is missing!");
         }
     };
-    addNoteToData(noteInput,dateString){
+    addNoteToData(noteInput,dateString,userMail){
             const requestOptions = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     date: dateString,
                     description: noteInput,
+                    userEmail : userMail
                 }),
             };
 
@@ -62,7 +64,7 @@ class Schedule extends Component {
                     if (response.ok) {
                         this.showNotesNotification("success","Adding note completed! Note is signed to your account");
                         console.log("Note added successfully");
-                        this.fetchNotesForDate(dateString);
+                        this.fetchNotesForDate(dateString,userMail);
                         this.setState({ noteInput: '' });
                     } else {
                         this.showNotesNotification("danger","Failed to add! Message is above 50 character!");
@@ -78,7 +80,8 @@ class Schedule extends Component {
 
     selectDate = (newValue) => {
         const dateString = newValue.format('YYYY-MM-DD');
-        this.fetchNotesForDate(dateString);
+        const userMail = this.state.userMail;
+        this.fetchNotesForDate(dateString,userMail);
         this.setState({
             selectedDate: newValue,
             noteInput: '',
@@ -102,13 +105,13 @@ class Schedule extends Component {
             firstDate: prevState.firstDate.subtract(1, 'month'),
         }));
     };
-    fetchNotesForDate = (dateString) => {
-        fetch(`${this.API_URL}?date=${dateString}`)
+    fetchNotesForDate = (dateString,userMail) => {
+        fetch(`${this.API_URL}?date=${dateString}&userEmail=${userMail}`)
             .then(response => response.json())
             .then(data => {
                 console.log(`Notes for ${dateString}:`, data);
                 this.setState(prevState => ({
-                    notes: { ...prevState.notes, [dateString]: data.filter(note => note.date === dateString) }
+                    notes: { ...prevState.notes, [dateString]: data.filter(note => note.date === dateString && note.userEmail === userMail)  }
                 }));
             })
             .catch(error => console.error('Error fetching notes:', error));

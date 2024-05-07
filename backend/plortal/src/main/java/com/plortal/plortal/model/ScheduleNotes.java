@@ -31,4 +31,7 @@ public class ScheduleNotes
     @NonNull
     @Column(name = "date",nullable = false)
     private LocalDate date;
+
+    @Column(name = "userEmail", nullable = false)
+    private String userEmail;
 }
