@@ -1,10 +1,10 @@
-.NotesAlert{
+.notes-alert {
     font-size: 0.9rem;
     left: 12vh;
     width: 300px;
     max-width: 300px;
     min-width: 100px;
-    top : 8px;
+    top: 8px;
     justify-content: center;
     align-items: center;
     border-radius: 4px;

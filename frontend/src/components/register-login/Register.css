@@ -1,0 +1,35 @@
+.register {
+    margin: 29vh auto;
+    max-width: 320px;
+}
+
+.register-header {
+    font-size: 38px;
+}
+
+.group {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #8e0000;
+    margin-top: 10px;
+}
+
+.text-container {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center; 
+}
+
+.text-link {
+    margin-left: 5px;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block; 
+}
+
+.text-link:hover {
+    text-decoration: underline; 
+}

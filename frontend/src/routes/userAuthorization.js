@@ -1,13 +1,13 @@
-export function loginUser(userEmail) {
+export const loginUser = (userEmail) => {
     localStorage.setItem("isAuth", true);
-    localStorage.setItem("email",userEmail);
+    localStorage.setItem("email", userEmail);
 }
 
-export function logoutUser() {
+export const logoutUser = () => {
     localStorage.clear();
     window.location.href = "/login";
 }
 
-export function isUserLogin() {
-    return localStorage.getItem("isAuth") === 'true';
+export const isUserLogin = () => {
+    return localStorage.getItem("isAuth") === "true";
 }
