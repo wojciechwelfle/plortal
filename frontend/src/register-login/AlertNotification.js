@@ -33,7 +33,7 @@ class AlertNotification extends Component {
         if (this.state.visible){
             return (
                 <>
-                    <div className = "RegisterAlert">
+                    <div className = "registerAlert">
                         <Alert variant = {this.state.variant} onClose = {() => this.setState({ visible: false })} dismissible >
                          <Alert.Heading>{this.state.heading}</Alert.Heading>
                             <p>
