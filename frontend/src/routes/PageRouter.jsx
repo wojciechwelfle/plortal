@@ -2,28 +2,31 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
-import Register from "../register-login/Register";
-import Login from "../register-login/Login";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import HomePage from "../pages/HomePage";
 import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 
 import "../App.css";
 
-
 const PageRouter = () => {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route exact path="/" element={<RegisterPage />} />
+                    <Route exact path="/login" element={<LoginPage />} />
 
                     <Route
+                        exact
                         path="/home"
-                        element={<ProtectedRoute path="/home" element={HomePage} />}
+                        element={
+                            <ProtectedRoute path="/home" element={HomePage} />
+                        }
                     />
                     <Route
+                        exact
                         path="/schedule"
                         element={
                             <ProtectedRoute
@@ -33,6 +36,7 @@ const PageRouter = () => {
                         }
                     />
                     <Route
+                        exact
                         path="/news"
                         element={
                             <ProtectedRoute path="/news" element={NewsPage} />
