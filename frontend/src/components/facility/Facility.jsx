@@ -36,6 +36,9 @@ const Facility = () => {
                             <input name="input-theme" className="input-theme" defaultValue="Obecny motyw"/>
                         </div>
                     </div>
+                    <div className="bottom-div">
+                            <button className="button-submit"><b>Zastosuj</b></button>
+                    </div>
                 </div>
             </>
         );
