@@ -12,6 +12,10 @@
     height: 1000px;
 }
 
+body{
+    overflow: hidden;
+}
+
 .top-column {
     width: 100%;
     text-align: left;
