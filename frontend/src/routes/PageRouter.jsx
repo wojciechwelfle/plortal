@@ -7,6 +7,7 @@ import RegisterPage from "../pages/RegisterPage";
 import HomePage from "../pages/HomePage";
 import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
+import Facility from "../pages/FacilityPage";
 
 import "../App.css";
 
@@ -40,6 +41,13 @@ const PageRouter = () => {
                         path="/news"
                         element={
                             <ProtectedRoute path="/news" element={NewsPage} />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/facility"
+                        element={
+                            <ProtectedRoute path="/facility" element={Facility} />
                         }
                     />
                 </Routes>
