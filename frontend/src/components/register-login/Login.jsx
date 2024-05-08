@@ -42,7 +42,7 @@ const Login = () => {
                     );
                     loginUser(email);
                     setTimeout(() => {
-                        window.location.href = "/home";
+                        window.location.href = "/news";
                     }, 3000);
                 } else if (response.status === 409) {
                     showAlertNotification(
