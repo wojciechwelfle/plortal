@@ -113,8 +113,10 @@ const Login = () => {
                         </Button>
                     </div>
                 </Form>
+                <div className="alert-container">
+                    <AlertNotification ref={AlertNotificationRef}/>
+                </div>
             </div>
-            <AlertNotification ref={AlertNotificationRef} />
         </>
     );
 };
