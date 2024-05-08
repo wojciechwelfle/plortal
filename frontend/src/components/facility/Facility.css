@@ -21,6 +21,7 @@ body{
     text-align: left;
     margin-bottom: 20px;
     color: #8e0000;
+    font-size: 40px;
 }
 
 .left-column, .right-column {
@@ -58,7 +59,7 @@ body{
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .buttons {
@@ -69,8 +70,8 @@ body{
 }
 
 .button {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: none;
     background-color: #c6bfbf;
     color: black;
@@ -94,7 +95,7 @@ body{
     border: 1px solid #c6bfbf;
     color: black;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 0 10px;
     box-sizing: border-box;
     margin-top: 20px;
@@ -107,3 +108,19 @@ body{
     border-color: #a0a0a0;
 }
 
+.bottom-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-right: 12px;
+}
+
+.button-submit {
+    width: 18vw;
+    height: 7vh;
+    background-color: #8e0000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
