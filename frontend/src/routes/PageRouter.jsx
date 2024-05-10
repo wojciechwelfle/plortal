@@ -9,6 +9,7 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 
 import "../App.css";
+import MapPage from "../pages/MapPage";
 
 const PageRouter = () => {
     return (
@@ -40,6 +41,13 @@ const PageRouter = () => {
                         path="/news"
                         element={
                             <ProtectedRoute path="/news" element={NewsPage} />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/map"
+                        element={
+                            <ProtectedRoute path="/map" element={MapPage} />
                         }
                     />
                 </Routes>
