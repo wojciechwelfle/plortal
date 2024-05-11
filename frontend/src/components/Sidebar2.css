@@ -1,0 +1,17 @@
+.Btn {
+    background-color: rgb(141, 15, 15); /* Changes the color to red */
+    color: white;
+}
+.Nav{
+    background-color:rgb(216, 216, 216);
+    border-color: black;
+    border-right-width: 20px;
+    border: 5px;
+}
+.redColor{
+    color:rgb(141, 15, 15);
+}
+.nav-pills li a:hover{
+    background-color: rgb(155, 155, 155);
+}
+
