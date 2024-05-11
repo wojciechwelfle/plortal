@@ -1,83 +1,48 @@
-import { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Offcanvas from "react-bootstrap/Offcanvas";
+//import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap-icons/font/bootstrap-icons.css'
+import React from 'react'; // Import React
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import Button from 'react-bootstrap/Button';
+import { ButtonGroup } from 'react-bootstrap';
 
-function Sidebar2() {
-  const [showOffcanvas, setShowOffcanvas] = useState(window.innerWidth < 768);
+function SidebarMenu(){
+  return(
+    <div className='container-fluid' >
+      <div className='row'>
+        <div className='bg-dark col-auto col-md-3 min-vh-100'>
+          
+          <Button className='text-decoration-none text-white d-flex align-itemcenter'>
+            <i className='fs-4 bi bi-speedometer'></i>
+              <span className='ms-1 fs-4'>Brand</span>
+          </Button>
+          <ButtonGroup vertical>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item text-white fs-4">
+              <Button href="#" class="nav-link text-white active d-grid gap-2" aria-current="page" size="lg">Link</Button>
+              <i className='bi bi-speedometer2'></i>
+              <span className='ms-2'>Dashboard</span>
+            </li>
+            <li class="nav-item text-white fs-4">
+              <Button href="#" class="nav-link text-white active d-grid gap-2" aria-current="page">
+              <i className='bi bi-grid'></i>
+              <span className='ms-2'>Home</span>
+              </Button>
+            </li>
+            <li class="nav-item text-white fs-4">
+              <Button href="#" class="nav-link text-white active d-grid gap-2" aria-current="page" >
+              <i className='bi bi-table'></i>
+              <span className='ms-2'>Orders</span>
+              </Button>
+            </li>
 
-  // Function to handle click on Toggle button
-  const handleToggleClick = () => {
-    setShowOffcanvas(!showOffcanvas);
-  };
 
-  // Function to close Offcanvas
-  const handleOffcanvasClose = () => {
-    setShowOffcanvas(false);
-  };
-
-  // Function to handle window resize
-  const handleResize = () => {
-    setShowOffcanvas(window.innerWidth < 768);
-  };
-
-  // Add event listener when component mounts
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize); // Remove event listener when component unmounts
-    };
-  }, []); // Empty dependency array ensures the effect runs only once after initial render
-
-  return (
-    <>
-      <Button
-        variant="primary"
-        onClick={handleToggleClick}
-        style={{ marginBottom: "1rem" }}
-      >
-        Open Offcanvas
-      </Button>
-      <Offcanvas
-        show={showOffcanvas}
-        onHide={handleOffcanvasClose}
-        scroll // Use scroll prop directly
-      >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Nav className="justify-content-end flex-grow-1 pe-3">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
+          </ul>
+          </ButtonGroup>
+        </div>
+        </div> 
+    </div>
+  )
 }
 
-export default Sidebar2;
+export default SidebarMenu
+ 
