@@ -27,9 +27,9 @@ public class UserController {
     }
 
     @PostMapping("api/v1/users")
-    public ResponseEntity<?> addNewUser(@RequestBody User user) {
+    public ResponseEntity<?> registerStudent(@RequestBody User user) {
         try {
-            userService.addNewUser(user);
+            userService.registerStudent(user);
         } catch (EmailTakenException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         } catch (EmailInvalidException e) {
@@ -49,6 +49,6 @@ public class UserController {
         } catch (IncorrectPasswordException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok("User");
+        return ResponseEntity.ok(user);
     }
 }
