@@ -11,19 +11,25 @@ const pinIcon = new Icon({
     iconSize: [40, 40]
 })
 
+const MapWrapper = ({ children }) => {
+    return <div className="map-wrapper">{children}</div>
+};
+
 const MapComponent = () => {
     return (
-        <MapContainer center={position} zoom={13}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position} icon={pinIcon}>
-                <Popup>
-                    Aleja Politechniki
-                </Popup>
-            </Marker>
-        </MapContainer>
+        <MapWrapper>
+            <MapContainer center={position} zoom={13}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={position} icon={pinIcon}>
+                    <Popup>
+                        Aleja Politechniki
+                    </Popup>
+                </Marker>
+            </MapContainer>
+        </MapWrapper>
     )
 }
 export default MapComponent;
