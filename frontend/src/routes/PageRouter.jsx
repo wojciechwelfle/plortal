@@ -4,12 +4,13 @@ import ProtectedRoute from "./ProtectedRoute";
 
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import HomePage from "../pages/HomePage";
 import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
+import Facility from "../pages/FacilityPage";
+import MapPage from "../pages/MapPage";
 
 import "../App.css";
-import MapPage from "../pages/MapPage";
+
 
 const PageRouter = () => {
     return (
@@ -18,14 +19,6 @@ const PageRouter = () => {
                 <Routes>
                     <Route exact path="/" element={<RegisterPage />} />
                     <Route exact path="/login" element={<LoginPage />} />
-
-                    <Route
-                        exact
-                        path="/home"
-                        element={
-                            <ProtectedRoute path="/home" element={HomePage} />
-                        }
-                    />
                     <Route
                         exact
                         path="/schedule"
@@ -48,6 +41,13 @@ const PageRouter = () => {
                         path="/map"
                         element={
                             <ProtectedRoute path="/map" element={MapPage} />
+                        } 
+                    />
+                    <Route
+                        exact
+                        path="/facility"
+                        element={
+                            <ProtectedRoute path="/facility" element={Facility} />
                         }
                     />
                 </Routes>

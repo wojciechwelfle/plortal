@@ -1,5 +1,13 @@
-.MuiPickersArrowSwitcher-root {
-    visibility: hidden;
+body{
+    overflow-y: visible;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    min-height: 170vh;
 }
 
 .container {
@@ -7,24 +15,42 @@
     flex-direction: column;
     padding: 5px;
     gap: 10px;
-    margin-top: 100px;
-    overflow-x: hidden;
+    overflow-x: visible;
+    overflow-y: auto;
+    height: auto;
+    align-items: center;
+    min-height: 100vh;
 }
 
 @media (max-width: 768px) {
-    .under-column {
-        display: flex;
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow-y: auto;
+    }
+    .top-columns {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-left: 175px;
     }
-    .container {
-        padding-left: 10px;
+
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
     }
+
+    .under-column {
+        align-items: flex-start;
+    }
+
+    .under-column li {
+        max-width: 400px;
+        width : 200px;
+        text-align: center;
+    }
+
     .under-column h3 {
-        padding-left: 10px;
-        width: 120%;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -37,6 +63,8 @@
 .top-columns {
     display: flex;
     gap: 10px;
+    justify-content: center;
+    width: 100%;
 }
 
 .right-column {
@@ -46,6 +74,7 @@
     flex-direction: column;
     position: relative;
     width: 100%;
+    gap: 0;
 }
 
 .btn-notes {
@@ -56,11 +85,15 @@
 
 .under-column {
     width: 100%;
+    clear:both;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin-top: 10px;
+    height: auto;
+    max-height: 800px;
+    min-height: 600px;
+    overflow-y: auto;
 }
 
 .under-column div {
@@ -86,24 +119,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button-next {
-    border: none;
-    background-color: #8e0000;
-    margin-left: 3px;
-    &:hover {
-        background-color: #a30000 !important;
-    }
-}
-
-.button-prev {
-    border: none;
-    background-color: #8e0000;
-    margin-right: 3px;
-    &:hover {
-        background-color: #a30000 !important;
-    }
-}
-
 .form-group {
     display: flex;
     flex-direction: column;
@@ -118,22 +133,14 @@
 
 .floatingTextarea .form-control {
     width: 100%;
-    min-width: 150px;
-    max-height: 150px;
+    min-width: 100px;
+    max-height: 100px;
 }
 
 .floatingTextarea {
     width: calc(100% - 20px);
     min-width: 140px;
     max-height: 150px;
-}
-
-@media (max-width: 400px) {
-    .floatingTextarea .form-control,
-    .floatingTextarea {
-        width: calc(100%);
-        max-height: 150px;
-    }
 }
 
 .MuiPickersDay-root.Mui-selected {
@@ -151,5 +158,5 @@
 }
 
 .form-label {
-    padding-left: 15px;
+    padding-left: 45px;
 }

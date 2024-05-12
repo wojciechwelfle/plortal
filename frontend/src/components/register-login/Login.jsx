@@ -42,7 +42,7 @@ const Login = () => {
                     );
                     loginUser(email);
                     setTimeout(() => {
-                        window.location.href = "/home";
+                        window.location.href = "/news";
                     }, 3000);
                 } else if (response.status === 409) {
                     showAlertNotification(
@@ -113,8 +113,10 @@ const Login = () => {
                         </Button>
                     </div>
                 </Form>
+                <div className="alert-container">
+                    <AlertNotification ref={AlertNotificationRef}/>
+                </div>
             </div>
-            <AlertNotification ref={AlertNotificationRef} />
         </>
     );
 };
