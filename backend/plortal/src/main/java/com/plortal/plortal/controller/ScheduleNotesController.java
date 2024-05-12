@@ -17,8 +17,8 @@ public class ScheduleNotesController {
     private final ScheduleNotesService scheduleNotesService;
 
     @Autowired
-    public ScheduleNotesController(ScheduleNotesService service) {
-        this.scheduleNotesService = service;
+    public ScheduleNotesController(ScheduleNotesService scheduleNotesService) {
+        this.scheduleNotesService = scheduleNotesService;
     }
 
     @PostMapping("/api/v1/schedule-notes")
