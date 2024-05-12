@@ -133,15 +133,6 @@ const Schedule = () => {
             <div className="container">
                 <div className="top-columns">
                     <div className="left-column">
-                        <Button
-                            className="button-prev"
-                            onClick={goToPreviousMonth}
-                        >
-                            &lt;
-                        </Button>
-                        <Button className="button-next" onClick={goToNextMonth}>
-                            &gt;
-                        </Button>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <StaticDatePicker
                                 displayStaticWrapperAs="desktop"
