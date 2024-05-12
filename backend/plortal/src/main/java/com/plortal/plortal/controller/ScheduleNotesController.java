@@ -14,46 +14,46 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
 public class ScheduleNotesController {
-    private final ScheduleNotesService service;
+    private final ScheduleNotesService scheduleNotesService;
 
     @Autowired
-    public ScheduleNotesController(ScheduleNotesService service) {
-        this.service = service;
+    public ScheduleNotesController(ScheduleNotesService scheduleNotesService) {
+        this.scheduleNotesService = scheduleNotesService;
     }
 
-    @PostMapping("/api/v1/schedulenotes")
+    @PostMapping("/api/v1/schedule-notes")
     public ResponseEntity<ScheduleNotes> createScheduleNote(@RequestBody ScheduleNotes scheduleNote) {
-        if(!service.isNoteValid(scheduleNote.getDescription())){
+        if (!scheduleNotesService.isNoteValid(scheduleNote.getDescription())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         try {
-            ScheduleNotes savedNote = service.saveOrUpdate(scheduleNote);
+            ScheduleNotes savedNote = scheduleNotesService.saveOrUpdate(scheduleNote);
             return new ResponseEntity<>(savedNote, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/api/v1/schedulenotes")
+    @GetMapping("/api/v1/schedule-notes")
     public ResponseEntity<List<ScheduleNotes>> getAllScheduleNotes() {
-        List<ScheduleNotes> notes = service.findAll();
+        List<ScheduleNotes> notes = scheduleNotesService.findAll();
         if (notes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
-    @GetMapping("/api/v1/schedulenotes/date")
-    public ResponseEntity<List<ScheduleNotes>> getNotesByDate(@RequestParam String date) {
+    @GetMapping("/api/v1/schedule-notes/date")
+    public ResponseEntity<List<ScheduleNotes>> getNotesByDate(@RequestParam String date, String email) {
         LocalDate parsedDate = LocalDate.parse(date);
         String dateString = parsedDate.toString();
         try {
-            List<ScheduleNotes> notes = service.findByDate(dateString);
+            List<ScheduleNotes> notes = scheduleNotesService.findByDateAndEmail(dateString, email);
             if (notes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-                return new ResponseEntity<>(notes, HttpStatus.OK);
-        } catch(DateTimeParseException e) {
+            return new ResponseEntity<>(notes, HttpStatus.OK);
+        } catch (DateTimeParseException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }

@@ -2,6 +2,7 @@ package com.plortal.plortal.service.impl;
 
 import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
+import com.plortal.plortal.model.UserRole;
 import com.plortal.plortal.repository.UserRepository;
 import com.plortal.plortal.service.UserService;
 import com.plortal.plortal.validation.EmailValidator;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addNewUser(User user) {
+    public void registerStudent(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         if (userOptional.isPresent()) {
             throw new EmailTakenException();
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
         if (!isPasswordValid(user.getPassword())) {
             throw new PasswordInvalidException();
         }
+        user.setRole(UserRole.STUDENT);
         userRepository.save(user);
     }
 

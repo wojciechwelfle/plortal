@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface NewsService {
     void addNews(NewsDTO newsDto);
+
     List<NewsDTO> getAllNews();
 }
