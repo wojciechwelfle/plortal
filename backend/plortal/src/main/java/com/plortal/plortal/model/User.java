@@ -24,6 +24,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @NonNull
+    @Column(name = "role")
+    private UserRole role;
+
     public User(int id, String email, String password) {
         this.id = id;
         this.email = email;
