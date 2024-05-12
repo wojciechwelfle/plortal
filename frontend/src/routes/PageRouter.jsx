@@ -7,8 +7,10 @@ import RegisterPage from "../pages/RegisterPage";
 import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
+import MapPage from "../pages/MapPage";
 
 import "../App.css";
+
 
 const PageRouter = () => {
     return (
@@ -33,6 +35,13 @@ const PageRouter = () => {
                         element={
                             <ProtectedRoute path="/news" element={NewsPage} />
                         }
+                    />
+                    <Route
+                        exact
+                        path="/map"
+                        element={
+                            <ProtectedRoute path="/map" element={MapPage} />
+                        } 
                     />
                     <Route
                         exact
