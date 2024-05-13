@@ -74,7 +74,7 @@ body{
     width: 50px;
     height: 50px;
     border: none;
-    background-color: var(--white);
+    background-color: var(--button-gray);
     color: var(--black);
     font-size: 20px;
     border-radius: 5px;
@@ -86,14 +86,14 @@ body{
 }
 
 .button:hover {
-    background-color: var(--white);
+    background-color: var(--example-background);
 }
 
 .input-text-size, .input-theme {
     width: 40vw;
     height: 80px;
     background-color: var(--white);
-    border: 1px solid var(--facility-example-background);
+    border: 1px solid var(--example-background);
     color: black;
     font-size: 16px;
     border-radius: 8px;
@@ -106,7 +106,7 @@ body{
 
 .input-text-size:focus {
     outline: none;
-    border-color: var(--facility-example-background);
+    border-color: var(--example-background);
 }
 
 .bottom-div {
