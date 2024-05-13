@@ -9,7 +9,6 @@ import PasswordStrength from "./PasswordStrength";
 import { registerUser } from "../../services/userService";
 
 const Register = () => {
-    const API_URL = "http://localhost:8080/api/v1/users/register";
     const [passwordStrength, setPasswordStrength] = useState("");
     const AlertNotificationRef = useRef();
 
