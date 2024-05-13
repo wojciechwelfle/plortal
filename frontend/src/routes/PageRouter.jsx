@@ -36,13 +36,13 @@ const PageRouter = () => {
                             <ProtectedRoute path="/news" element={NewsPage} />
                         }
                     />
-                    <Route
+                    {/* <Route
                         exact
                         path="/map"
                         element={
                             <ProtectedRoute path="/map" element={MapPage} />
                         } 
-                    />
+                    /> */}
                     <Route
                         exact
                         path="/facility"
