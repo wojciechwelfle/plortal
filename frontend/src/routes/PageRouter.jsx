@@ -7,7 +7,8 @@ import RegisterPage from "../pages/RegisterPage";
 import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
-import MapPage from "../pages/MapPage";
+//import MapPage from "../pages/MapPage";
+import Navbar1 from "../components/navbar/Navbar";
 
 import "../App.css";
 
@@ -43,13 +44,19 @@ const PageRouter = () => {
                             <ProtectedRoute path="/map" element={MapPage} />
                         } 
                     /> */}
-                    <Route
+                     <Route
                         exact
                         path="/facility"
                         element={
                             <ProtectedRoute path="/facility" element={Facility} />
                         }
+                    /> 
+                    <Route
+                        exact
+                        path="/offcanvas"
+                        element={<Navbar1 />} 
                     />
+                    
                 </Routes>
             </BrowserRouter>
         </>
