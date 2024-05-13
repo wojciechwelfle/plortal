@@ -4,6 +4,7 @@ import { getAllNews } from "../components/news/getAllNews";
 
 import "../components/news/News.css";
 import NewsHeader from "../components/news/NewsHeader";
+import NavigationBar from "../components/navbar/Navbar";
 
 const NewsPage = () => {
     const [newsData, setNewsData] = useState([]);
@@ -20,7 +21,8 @@ const NewsPage = () => {
 
     return (
         <>
-            <NewsHeader />
+            <NavigationBar />
+
             <News newsData={newsData} />
         </>
     );
