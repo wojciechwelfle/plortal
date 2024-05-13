@@ -127,9 +127,7 @@ const Schedule = () => {
 
     return (
         <>
-            <Card body>
-                Nazwa <LogoutButton />{" "}
-            </Card>
+        
             <div className="container">
                 <div className="top-columns">
                     <div className="left-column">
