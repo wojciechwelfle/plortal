@@ -1,3 +1,4 @@
+@import "../../GlobalColors.css";
 body{
     overflow: hidden;
 }
@@ -27,7 +28,7 @@ body{
 }
 
 .btn {
-    background-color: #8e0000;
+    background-color: var(--main-color);
     margin-top: 10px;
     width: 100%;
 }
@@ -40,7 +41,7 @@ body{
 
 .text-link {
     margin-left: 5px;
-    color: #007bff;
+    color: var(--link-color);
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
