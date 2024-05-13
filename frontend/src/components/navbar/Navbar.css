@@ -1,28 +1,12 @@
-#navibar{
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* zwiększamy z-index, aby navbar był na wierzchu */
-  }
-  .offcanvas-backdrop {
+ .offcanvas-backdrop {
     background-color: rgba(0, 0, 0, 0) !important;
   }
-  #lorem{
-    
-    text-align: center;
-    position: absolute;
-    width: 8em;
-    right: 5em;
-
-  }
-  .Btn{
+ .Btn{
     color:white;
-  }
-  #iconss{
-    color: azure;
-  }
+ }
+
   .Btn:hover{
     background-color: rgb(150, 150, 150);
-
   }
   .nav.nav-pills{
     justify-content: space-evenly;
