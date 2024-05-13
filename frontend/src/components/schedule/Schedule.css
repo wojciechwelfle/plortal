@@ -125,7 +125,7 @@ html, body {
 
 .under-column li {
     background-color: var(--schedule-notes-background);
-    color: var(--black);
+    color: var(--text-color);
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
@@ -171,7 +171,7 @@ html, body {
 }
 
 .MuiPickersDay-today {
-    border: 1px solid black !important;
+    border: 2px solid black !important;
     color: var(--black);
 }
 
@@ -194,7 +194,7 @@ html, body {
 }
 
 .MuiPickersDay-today {
-    border: 1px solid var(--main-color) !important;
+    border: 2px solid var(--main-color) !important;
     color: var(--text-color) !important;
 }
 
@@ -219,7 +219,7 @@ html, body {
 }
 
 .MuiPickersDay-root.Mui-selected {
-    border: 2px solid var(--main-color) !important;
+    border: 3px solid var(--main-color) !important;
     background-color: var(--background-color) !important;
     color: var(--main-color) !important;
 }
@@ -228,7 +228,10 @@ html, body {
     color: var(--text-color) !important;
 }
 
-/* Card Component Styling */
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiPickersCalendarHeader-switchViewIcon.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon {
+    color: var(--text-color);
+}
+
 .card {
     background-color: var(--background-color);
     color: var(--text-color);

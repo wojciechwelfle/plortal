@@ -24,7 +24,7 @@ const Schedule = () => {
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
     const savedTheme = localStorage.getItem('theme') || 'light';
     const [fontSize, setFontSize] = useState(savedFontSize);
-    const [isDarkTheme, setIsDarkTheme] = useState(savedTheme === 'dark');
+    const [theme, setTheme] = useState(savedTheme);
 
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userMail);
@@ -32,14 +32,9 @@ const Schedule = () => {
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        if (isDarkTheme) {
-            document.documentElement.classList.add('dark-theme');
-            document.documentElement.classList.remove('light-theme');
-        } else {
-            document.documentElement.classList.add('light-theme');
-            document.documentElement.classList.remove('dark-theme');
-        }
-    }, [fontSize, isDarkTheme]);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
 
     const handleNoteChange = (event) => {
         setNoteInput(event.target.value);
@@ -176,7 +171,7 @@ const Schedule = () => {
                                 size="lg"
                                 className="btn-notes"
                                 onClick={addNote}
-                                style={{ fontSize: `${fontSize}px` }} // Ensure the button font size is adjustable
+                                style={{ fontSize: `${fontSize}px` }}
                             >
                                 Dodaj notatkę
                             </Button>{" "}
