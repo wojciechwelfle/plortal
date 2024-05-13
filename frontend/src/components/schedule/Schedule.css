@@ -1,3 +1,4 @@
+@import "../../GlobalColors.css";
 body{
     overflow-y: visible;
 }
@@ -79,8 +80,8 @@ html, body {
 
 .btn-notes {
     width: 300px;
-    background-color: #8e0000;
-    border-color: #8e0000;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
 }
 
 .under-column {
@@ -108,8 +109,8 @@ html, body {
 }
 
 .under-column li {
-    background-color: #eae4e4;
-    color: black;
+    background-color: var(--schedule-notes-background);
+    color: var(--black);
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
@@ -144,17 +145,17 @@ html, body {
 }
 
 .MuiPickersDay-root.Mui-selected {
-    background-color: #8e0000 !important;
-    color: white !important;
+    background-color: var(--main-color) !important;
+    color: var(--white) !important;
 
     &:hover {
-        background-color: #a30000 !important;
+        background-color: var(--second-main-color) !important;
     }
 }
 
 .MuiPickersDay-today {
     border: 1px solid black !important;
-    color: #000000;
+    color: var(--black);
 }
 
 .form-label {

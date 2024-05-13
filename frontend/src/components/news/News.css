@@ -1,3 +1,4 @@
+@import "../../GlobalColors.css";
 .news {
     min-width: 50%;
     max-width: 70%;
@@ -35,12 +36,12 @@
 
 @keyframes backgroundChange {
     0% {
-        background-color: #8e0000;
+        background-color: var(--main-color);
     }
     50% {
-        background-color: #a40303;
+        background-color: var(--second-main-color);
     }
     100% {
-        background-color: #8e0000;
+        background-color: var(--main-color);
     }
 }
