@@ -6,9 +6,10 @@ import "./Register.css";
 import "./AlertNotification.css";
 import AlertNotification from "./AlertNotification";
 import PasswordStrength from "./PasswordStrength";
+import { registerUser } from "../../services/userService";
 
 const Register = () => {
-    const API_URL = "http://localhost:8080/api/v1/users";
+    const API_URL = "http://localhost:8080/api/v1/users/register";
     const [passwordStrength, setPasswordStrength] = useState("");
     const AlertNotificationRef = useRef();
 
@@ -55,48 +56,40 @@ const Register = () => {
     };
 
     const addUserToDatabase = (email, password) => {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        };
-        console.log(
-            JSON.stringify({
-                email: email,
-                password: password,
-            })
-        );
-        console.log(requestOptions);
-
-        fetch(API_URL, requestOptions)
+        const user = { email: email, password: password };
+        registerUser(user)
             .then((response) => {
                 console.log(response.status);
-
-                if (response.status === 200) {
+                showAlertNotification(
+                    "success",
+                    "User has been registered!",
+                    "Moving to the login page in 3 sec..."
+                );
+                setTimeout(() => {
+                    window.location.href = "/login";
+                }, 3000);
+            })
+            .catch((error) => {
+                console.log("Error: " + error);
+                if (!error.response) {
                     showAlertNotification(
-                        "success",
-                        "User has been registered!",
-                        "Moving to the login page in 3 sec..."
+                        "danger",
+                        "Error",
+                        "Run backend server!"
                     );
-                    setTimeout(() => {
-                        window.location.href = "/login";
-                    }, 3000);
-                } else if (response.status === 422) {
+                } else if (error.response.status === 422) {
                     showAlertNotification(
                         "danger",
                         "Wrong email format!",
                         "Example of correct email: example@domain.com"
                     );
-                } else if (response.status === 400) {
+                } else if (error.response.status === 400) {
                     showAlertNotification(
                         "danger",
                         "Wrong password format!",
                         "Password must contains min 8 letters, 1 lowercase letter and 1 uppercase letter and a number"
                     );
-                } else if (response.status === 409) {
+                } else if (error.response.status === 409) {
                     showAlertNotification(
                         "danger",
                         "Email is already taken!",
@@ -109,10 +102,6 @@ const Register = () => {
                         "Contact administrator"
                     );
                 }
-            })
-            .catch((error) => {
-                console.log(error.stringify);
-                showAlertNotification("danger", "Error", "Run backend server!");
             });
     };
 
@@ -169,7 +158,6 @@ const Register = () => {
                     <AlertNotification ref={AlertNotificationRef} />
                 </div>
             </div>
-
         </>
     );
 };
