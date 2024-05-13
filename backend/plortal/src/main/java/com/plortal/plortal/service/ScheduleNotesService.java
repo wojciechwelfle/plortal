@@ -9,7 +9,7 @@ public interface ScheduleNotesService {
 
     List<ScheduleNotes> findAll();
 
-    List<ScheduleNotes> findByDateAndEmail(String dateString, String userEmail);
+    List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail);
 
     boolean isNoteValid(String description);
 }

@@ -2,14 +2,14 @@ import React, { useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import { loginUser } from "../../routes/userAuthorization";
+import { setLoginUser } from "../../routes/userAuthorization";
 
 import "./Login.css";
 import "./AlertNotification.css";
 import AlertNotification from "./AlertNotification";
+import { loginUser } from "../../services/userService";
 
 const Login = () => {
-    const API_URL = "http://localhost:8080/api/v1/users/login";
     const AlertNotificationRef = useRef();
 
     const handleLogin = (event) => {
@@ -22,35 +22,35 @@ const Login = () => {
     };
 
     const authorizeWithBackend = (email, password) => {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        };
-
-        fetch(API_URL, requestOptions)
+        const user = { email: email, password: password };
+        loginUser(user)
             .then((response) => {
                 console.log(response.status);
-                if (response.status === 200) {
+                showAlertNotification(
+                    "success",
+                    "Login success!",
+                    "Moving to main page in 3 sec..."
+                );
+                setLoginUser(email);
+                setTimeout(() => {
+                    window.location.href = "/news";
+                }, 3000);
+            })
+            .catch((error) => {
+                console.log("Error: " + error);
+                if (!error.response) {
                     showAlertNotification(
-                        "success",
-                        "Login success!",
-                        "Moving to main page in 3 sec..."
+                        "danger",
+                        "Error",
+                        "Run backend server!"
                     );
-                    loginUser(email);
-                    setTimeout(() => {
-                        window.location.href = "/news";
-                    }, 3000);
-                } else if (response.status === 409) {
+                } else if (error.response.status === 409) {
                     showAlertNotification(
                         "danger",
                         "User is not in the base!",
                         "Enter new email or click to register"
                     );
-                } else if (response.status === 401) {
+                } else if (error.response.status === 401) {
                     showAlertNotification(
                         "danger",
                         "Wrong email or password!",
@@ -63,10 +63,6 @@ const Login = () => {
                         "Contact administrator"
                     );
                 }
-            })
-            .catch((error) => {
-                console.log(error.stringify);
-                showAlertNotification("danger", "Error", "Run backend server!");
             });
     };
 
@@ -114,7 +110,7 @@ const Login = () => {
                     </div>
                 </Form>
                 <div className="alert-container">
-                    <AlertNotification ref={AlertNotificationRef}/>
+                    <AlertNotification ref={AlertNotificationRef} />
                 </div>
             </div>
         </>
