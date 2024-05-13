@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
@@ -37,21 +36,13 @@ public class ScheduleNotesController {
     @GetMapping("/api/v1/schedule-notes")
     public ResponseEntity<List<ScheduleNotes>> getAllScheduleNotes() {
         List<ScheduleNotes> notes = scheduleNotesService.findAll();
-        if (notes.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
     @GetMapping("/api/v1/schedule-notes/date")
-    public ResponseEntity<List<ScheduleNotes>> getNotesByDate(@RequestParam String date, String email) {
-        LocalDate parsedDate = LocalDate.parse(date);
-        String dateString = parsedDate.toString();
+    public ResponseEntity<List<ScheduleNotes>> getNotesByDateAndEmail(@RequestParam String date, @RequestParam String email) {
         try {
-            List<ScheduleNotes> notes = scheduleNotesService.findByDateAndEmail(dateString, email);
-            if (notes.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
+            List<ScheduleNotes> notes = scheduleNotesService.findByDateAndUserEmail(date, email);
             return new ResponseEntity<>(notes, HttpStatus.OK);
         } catch (DateTimeParseException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

@@ -1,4 +1,4 @@
-export const loginUser = (userEmail) => {
+export const setLoginUser = (userEmail) => {
     localStorage.setItem("isAuth", true);
     localStorage.setItem("email", userEmail);
 }
