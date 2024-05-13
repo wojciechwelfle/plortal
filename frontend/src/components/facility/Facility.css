@@ -161,5 +161,29 @@ body {
 }
 
 .MuiSwitch-track {
-    background-color: var(--example-background) !important;
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiSelect-select {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: var(--border-color) !important;
+}
+
+.MuiSelect-icon {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.theme-select{
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiSlider-root{
+    color: var(--text-color) !important;
 }
