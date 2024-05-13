@@ -1,0 +1,11 @@
+:root{
+    --button-color: #8e0000;
+    --link-color: #007bff;
+    --schedule-selected-date: #a30000;
+    --black: black;
+    --white: white;
+
+    --password-weak : #ef0505;
+    --password-medium : #e6960f;
+    --password-strong: #0e950e;
+}
