@@ -2,7 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import LogoutButton from '../LogoutButton';
 import './Navbar.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const NavigationBar = () => {
   return (
@@ -12,6 +14,7 @@ const NavigationBar = () => {
           <Container fluid>
             <Navbar.Brand href="#">PŁortal</Navbar.Brand>
             <Navbar.Toggle id="btn" aria-controls={`offcanvasNavbar-expand-false`} />
+            <LogoutButton id="logout-btn"></LogoutButton>
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-false`}
               aria-labelledby={`offcanvasNavbarLabel-expand-false`}
@@ -19,14 +22,14 @@ const NavigationBar = () => {
             >
               <Offcanvas.Header closeButton >
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
-                  Offcanvas
+                  PŁortal
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body scroll>
-              <div className='container-fluid' >
+              
       <div className='row'>
-          <ul class="nav nav-pills flex-column">
-          <li class="nav-item text-white fs-4 my-2">
+          <ul class="nav nav-pills flex-column ">
+          <li class="nav-item my-2">
               <i className='bi bi-grid'></i>
               <span className='Info ms-2  d-sm-inline'>Menu</span>
             </li>
@@ -88,7 +91,7 @@ const NavigationBar = () => {
 
           </ul>
           </div>
-        </div>
+        
         
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -100,32 +103,3 @@ const NavigationBar = () => {
 }
 
 export default NavigationBar;
-/*
-<Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-false`}
-                  >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
- 
-*/

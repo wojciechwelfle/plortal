@@ -8,9 +8,9 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
 //import MapPage from "../pages/MapPage";
-import Navbar1 from "../components/navbar/Navbar";
 
 import "../App.css";
+import NavigationBar from "../components/navbar/Navbar";
 
 
 const PageRouter = () => {
@@ -54,7 +54,7 @@ const PageRouter = () => {
                     <Route
                         exact
                         path="/offcanvas"
-                        element={<Navbar1 />} 
+                        element={<NavigationBar />} 
                     />
                     
                 </Routes>

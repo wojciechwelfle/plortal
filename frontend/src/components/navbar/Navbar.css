@@ -20,3 +20,24 @@
   #iconss{
     color: azure;
   }
+  .Btn:hover{
+    background-color: rgb(150, 150, 150);
+
+  }
+  .nav.nav-pills{
+    justify-content: space-evenly;
+  } 
+  .nav-item.my-2{
+    color: rgb(150, 25, 25);
+    font-weight: 700;
+    font-size:1.5em;
+  }
+  #btn{
+    position: absolute;
+    left:5em;
+    background-color: rgb(146, 16, 16);
+  }
+  #logout-btn{
+    padding: 1em;
+    margin: 0.5em;    
+  }
