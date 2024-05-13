@@ -39,7 +39,7 @@
         background-color: var(--main-color);
     }
     50% {
-        background-color: var(--schedule-second-main);
+        background-color: var(--second-main-color);
     }
     100% {
         background-color: var(--main-color);
