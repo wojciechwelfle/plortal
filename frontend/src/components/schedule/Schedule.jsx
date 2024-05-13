@@ -15,16 +15,31 @@ import NotesNotification from "./NotesNotification";
 const Schedule = () => {
     const API_URL = "http://localhost:8080/api/v1/schedule-notes";
     const [firstDate, setFirstDate] = useState(dayjs());
-    // const [currentDate, setCurrentDate] = useState(dayjs());
     const [selectedDate, setSelectedDate] = useState(dayjs());
     const [notes, setNotes] = useState([]);
     const [noteInput, setNoteInput] = useState("");
     const userMail = localStorage.getItem("email");
     const NotesNotificationRef = useRef();
 
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [isDarkTheme, setIsDarkTheme] = useState(savedTheme === 'dark');
+
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userMail);
     }, [selectedDate, userMail]);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        if (isDarkTheme) {
+            document.documentElement.classList.add('dark-theme');
+            document.documentElement.classList.remove('light-theme');
+        } else {
+            document.documentElement.classList.add('light-theme');
+            document.documentElement.classList.remove('dark-theme');
+        }
+    }, [fontSize, isDarkTheme]);
 
     const handleNoteChange = (event) => {
         setNoteInput(event.target.value);
@@ -128,7 +143,7 @@ const Schedule = () => {
     return (
         <>
             <Card body>
-                Nazwa <LogoutButton />{" "}
+                Terminarz <LogoutButton />{" "}
             </Card>
             <div className="container">
                 <div className="top-columns">
@@ -172,6 +187,7 @@ const Schedule = () => {
                                         style={{
                                             height: "100px",
                                             width: "300px",
+                                            fontSize: `${fontSize}px`
                                         }}
                                         maxLength="60"
                                     />
@@ -182,6 +198,7 @@ const Schedule = () => {
                                 size="lg"
                                 className="btn-notes"
                                 onClick={addNote}
+                                style={{ fontSize: `${fontSize}px` }} // Ensure the button font size is adjustable
                             >
                                 Dodaj notatkę
                             </Button>{" "}
