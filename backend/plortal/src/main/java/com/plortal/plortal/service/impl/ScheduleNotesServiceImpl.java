@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,12 +28,12 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         return scheduleNotesRepository.findAll();
     }
 
-    public List<ScheduleNotes> findByDateAndEmail(String dateString, String userEmail) {
+    public List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail) {
         try {
             LocalDate date = LocalDate.parse(dateString);
-            return scheduleNotesRepository.findByDateAndEmail(date, userEmail);
+            return scheduleNotesRepository.findByDateAndUserEmail(date, userEmail);
         } catch (DateTimeParseException e) {
-            throw new RuntimeException("Failed to parse date: " + dateString, e);
+            return Collections.emptyList();
         }
     }
 

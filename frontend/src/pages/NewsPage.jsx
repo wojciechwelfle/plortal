@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import News from "../components/news/News";
-import { getAllNews } from "../components/news/getAllNews";
+
 
 import "../components/news/News.css";
 import NewsHeader from "../components/news/NewsHeader";
+import { getAllNews } from "../services/newsService";
 
 const NewsPage = () => {
     const [newsData, setNewsData] = useState([]);
 
     useEffect(() => {
         getAllNews()
-            .then((data) => {
-                setNewsData(data);
+            .then((response) => {
+                setNewsData(response.data);
             })
             .catch((error) => {
                 console.error("Error fetching news data:", error);
+                window.location.href = "/login";
             });
     }, []);
 
