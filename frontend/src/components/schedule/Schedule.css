@@ -109,7 +109,7 @@ html, body {
 }
 
 .under-column li {
-    background-color: var(--white);
+    background-color: var(--schedule-notes-background);
     color: var(--black);
     margin: 5px 0;
     padding: 10px;
@@ -149,7 +149,7 @@ html, body {
     color: var(--white) !important;
 
     &:hover {
-        background-color: var(--schedule-second-main) !important;
+        background-color: var(--second-main-color) !important;
     }
 }
 
