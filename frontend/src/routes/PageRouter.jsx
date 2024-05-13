@@ -51,11 +51,6 @@ const PageRouter = () => {
                             <ProtectedRoute path="/facility" element={Facility} />
                         }
                     /> 
-                    <Route
-                        exact
-                        path="/offcanvas"
-                        element={<NavigationBar />} 
-                    />
                     
                 </Routes>
             </BrowserRouter>

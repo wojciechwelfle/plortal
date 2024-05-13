@@ -27,7 +27,7 @@
   .nav.nav-pills{
     justify-content: space-evenly;
   } 
-  .nav-item.my-2{
+  .nav-item{
     color: rgb(150, 25, 25);
     font-weight: 700;
     font-size:1.5em;
