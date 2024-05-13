@@ -1,13 +1,46 @@
-:root{
+:root {
     --main-color: #8e0000;
     --link-color: #007bff;
     --second-main-color: #a30000;
     --black: black;
     --white: white;
+    --blue-color : #004553;
     --example-background: #a0a0a0;
-    --button-gray : #b8b3b3;
-    --schedule-notes-background : #d8bfbf;
-    --password-weak : #ef0505;
-    --password-medium : #e6960f;
+    --button-gray: #b8b3b3;
+    --schedule-notes-background: #9f0303;
+    --password-weak: #ef0505;
+    --password-medium: #e6960f;
     --password-strong: #0e950e;
+
+    --dark-background: var(--black);
+    --dark-text: #ffffff;
+    --light-background: #ffffff;
+    --light-text: #000000;
+
+    --font-size: 20px;
+    --background-color: var(--light-background);
+    --text-color: var(--light-text);
+    --border-color: var(--light-text);
+
+
+    --blue-background: var(--blue-color);
+    --blue-text: var(--white);
+}
+
+.dark-theme {
+    --background-color: var(--dark-background);
+    --text-color: var(--dark-text);
+    --border-color: var(--dark-text);
+}
+
+.light-theme {
+    --background-color: var(--light-background);
+    --text-color: var(--light-text);
+    --border-color: var(--light-text);
+}
+
+.blue-theme {
+    --background-color: var(--blue-background);
+    --text-color: var(--blue-text);
+    --border-color: var(--blue-text);
 }

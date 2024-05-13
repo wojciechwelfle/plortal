@@ -1,5 +1,6 @@
 @import "../../GlobalColors.css";
-body{
+
+body {
     overflow-y: visible;
 }
 
@@ -21,6 +22,8 @@ html, body {
     height: auto;
     align-items: center;
     min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 @media (max-width: 768px) {
@@ -29,6 +32,7 @@ html, body {
         margin: 0;
         overflow-y: auto;
     }
+
     .top-columns {
         flex-direction: column;
     }
@@ -36,6 +40,8 @@ html, body {
     .left-column, .right-column {
         width: 100%;
         padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
     }
 
     .under-column {
@@ -44,7 +50,7 @@ html, body {
 
     .under-column li {
         max-width: 400px;
-        width : 200px;
+        width: 200px;
         text-align: center;
     }
 
@@ -75,18 +81,27 @@ html, body {
     flex-direction: column;
     position: relative;
     width: 100%;
-    gap: 0;
+    gap: 20px;
+}
+
+.form-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
 }
 
 .btn-notes {
     width: 300px;
     background-color: var(--main-color);
     border-color: var(--main-color);
+    align-self: center;
 }
 
 .under-column {
     width: 100%;
-    clear:both;
+    clear: both;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,7 +125,7 @@ html, body {
 
 .under-column li {
     background-color: var(--schedule-notes-background);
-    color: var(--black);
+    color: var(--text-color);
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
@@ -128,20 +143,22 @@ html, body {
 }
 
 .floatingTextarea {
-    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 20px);
+    min-width: 140px;
     max-height: 150px;
+    margin: 0 auto;
 }
 
 .floatingTextarea .form-control {
     width: 100%;
     min-width: 100px;
     max-height: 100px;
-}
-
-.floatingTextarea {
-    width: calc(100% - 20px);
-    min-width: 140px;
-    max-height: 150px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .MuiPickersDay-root.Mui-selected {
@@ -154,10 +171,76 @@ html, body {
 }
 
 .MuiPickersDay-today {
-    border: 1px solid black !important;
+    border: 2px solid black !important;
     color: var(--black);
 }
 
 .form-label {
-    padding-left: 45px;
+    padding-left: 20px;
+}
+
+.MuiPickersDay-root {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiPickersDay-root.Mui-selected {
+    background-color: var(--main-color) !important;
+    color: var(--white) !important;
+
+    &:hover {
+        background-color: var(--second-main-color) !important;
+    }
+}
+
+.MuiPickersDay-today {
+    border: 2px solid var(--main-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiPickersCalendarHeader-labelContainer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.MuiPickersLayout-contentWrapper {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.css-i5q14k-MuiDayCalendar-header {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.MuiDayCalendar-weekDayLabel {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiPickersDay-root.Mui-selected {
+    border: 3px solid var(--main-color) !important;
+    background-color: var(--background-color) !important;
+    color: var(--main-color) !important;
+}
+
+.MuiPickersArrowSwitcher-button {
+    color: var(--text-color) !important;
+}
+
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiPickersCalendarHeader-switchViewIcon.css-1tkx1wf-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon {
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }

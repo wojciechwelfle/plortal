@@ -35,6 +35,7 @@ const NotesNotification = forwardRef(({ variantNote, messageNote }, ref) => {
                     variant={variant}
                     onClose={handleDismiss}
                     dismissible
+                    style={{ fontSize: "var(--font-size)" }}
                 >
                     {message}
                 </Alert>

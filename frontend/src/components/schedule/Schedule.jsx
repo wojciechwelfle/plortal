@@ -21,9 +21,20 @@ const Schedule = () => {
     const userMail = localStorage.getItem("email");
     const NotesNotificationRef = useRef();
 
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [theme, setTheme] = useState(savedTheme);
+
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userMail);
     }, [selectedDate, userMail]);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
 
     const handleNoteChange = (event) => {
         setNoteInput(event.target.value);
@@ -105,7 +116,7 @@ const Schedule = () => {
     return (
         <>
             <Card body>
-                Nazwa <LogoutButton />{" "}
+                Terminarz <LogoutButton />{" "}
             </Card>
             <div className="container">
                 <div className="top-columns">
@@ -149,6 +160,7 @@ const Schedule = () => {
                                         style={{
                                             height: "100px",
                                             width: "300px",
+                                            fontSize: `${fontSize}px`
                                         }}
                                         maxLength="60"
                                     />
@@ -159,6 +171,7 @@ const Schedule = () => {
                                 size="lg"
                                 className="btn-notes"
                                 onClick={addNote}
+                                style={{ fontSize: `${fontSize}px` }}
                             >
                                 Dodaj notatkę
                             </Button>{" "}
