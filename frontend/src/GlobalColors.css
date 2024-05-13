@@ -1,11 +1,12 @@
 :root{
     --main-color: #8e0000;
     --link-color: #007bff;
-    --schedule-second-main: #a30000;
+    --second-main-color: #a30000;
     --black: black;
     --white: white;
-    --facility-example-background: #a0a0a0;
-
+    --example-background: #a0a0a0;
+    --button-gray : #b8b3b3;
+    --schedule-notes-background : #d8bfbf;
     --password-weak : #ef0505;
     --password-medium : #e6960f;
     --password-strong: #0e950e;
