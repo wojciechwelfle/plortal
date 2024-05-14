@@ -1,9 +1,14 @@
+@import "../../GlobalColors.css";
 .news {
     min-width: 50%;
     max-width: 70%;
     margin: auto;
     margin-top: 20px;
     border-radius: 5px;
+}
+
+body{
+    min-height: 350vh;
 }
 
 .news-img {
@@ -35,12 +40,25 @@
 
 @keyframes backgroundChange {
     0% {
-        background-color: #8e0000;
+        background-color: var(--main-color);
     }
     50% {
-        background-color: #a40303;
+        background-color: var(--second-main-color);
     }
     100% {
-        background-color: #8e0000;
+        background-color: var(--main-color);
+    }
+}
+
+@media(max-width: 768px){
+    .news-img {
+        height: 200px;
+    }
+    .news {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    body{
+        min-height: 1000vh;
     }
 }

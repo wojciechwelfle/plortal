@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok(objectMapper.writeValueAsString(users));
     }
 
-    @PostMapping("api/v1/users")
+    @PostMapping("api/v1/users/register")
     public ResponseEntity<?> registerStudent(@RequestBody User user) {
         try {
             userService.registerStudent(user);

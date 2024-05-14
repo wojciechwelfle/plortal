@@ -1,3 +1,19 @@
+@import "../../GlobalColors.css";
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow: hidden;
+    font-size: var(--font-size);
+}
+
+.container, .top-column, .left-column, .right-column, .bottom-div, .input-text-size, .input-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--font-size);
+}
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -12,15 +28,11 @@
     height: 1000px;
 }
 
-body{
-    overflow: hidden;
-}
-
 .top-column {
     width: 100%;
     text-align: left;
     margin-bottom: 20px;
-    color: #8e0000;
+    color: var(--main-color);
     font-size: 40px;
 }
 
@@ -29,7 +41,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    flex : 1;
+    flex: 1;
 }
 
 .column-wrapper {
@@ -54,7 +66,6 @@ body{
     gap: 10px;
 }
 
-
 .label-button-group {
     display: flex;
     align-items: center;
@@ -66,35 +77,34 @@ body{
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
+    margin-left: 14px;
+    padding-bottom: 5px;
 }
 
 .button {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: none;
-    background-color: #c6bfbf;
-    color: black;
+    background-color: var(--button-gray);
+    color: var(--black);
     font-size: 20px;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .button:hover {
-    background-color: #e0e0e0;
+    background-color: var(--example-background);
 }
 
 .input-text-size, .input-theme {
     width: 40vw;
     height: 80px;
-    background-color: #f4f4f4;
-    border: 1px solid #c6bfbf;
-    color: black;
-    font-size: 16px;
+    border: 1px solid var(--border-color);
+    font-size: var(--font-size);
     border-radius: 8px;
     padding: 0 10px;
     box-sizing: border-box;
@@ -102,10 +112,9 @@ body{
     text-align: center;
 }
 
-
 .input-text-size:focus {
     outline: none;
-    border-color: #a0a0a0;
+    border-color: var(--example-background);
 }
 
 .bottom-div {
@@ -119,8 +128,62 @@ body{
 .button-submit {
     width: 18vw;
     height: 7vh;
-    background-color: #8e0000;
-    color: white;
+    background-color: var(--main-color);
+    color: var(--white);
     border: none;
     border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .column-wrapper {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .input-text-size, .input-theme {
+        width: 80vw;
+    }
+
+    .button-submit {
+        width: 80vw;
+    }
+}
+
+.MuiSwitch-track {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiSelect-select {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: var(--border-color) !important;
+}
+
+.MuiSelect-icon {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.theme-select{
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.MuiSlider-root{
+    color: var(--text-color) !important;
 }

@@ -11,20 +11,30 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./NotesNotification.css";
 import NotesNotification from "./NotesNotification";
+import { createScheduleNote, getNotesByDateAndEmail } from "../../services/scheduleNotesService";
 
 const Schedule = () => {
-    const API_URL = "http://localhost:8080/api/v1/schedule-notes";
     const [firstDate, setFirstDate] = useState(dayjs());
-    // const [currentDate, setCurrentDate] = useState(dayjs());
     const [selectedDate, setSelectedDate] = useState(dayjs());
     const [notes, setNotes] = useState([]);
     const [noteInput, setNoteInput] = useState("");
     const userMail = localStorage.getItem("email");
     const NotesNotificationRef = useRef();
 
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [theme, setTheme] = useState(savedTheme);
+
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userMail);
     }, [selectedDate, userMail]);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
 
     const handleNoteChange = (event) => {
         setNoteInput(event.target.value);
@@ -44,38 +54,29 @@ const Schedule = () => {
     };
 
     const addNoteToData = (noteInput, dateString, userMail) => {
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                date: dateString,
-                description: noteInput,
-                userEmail: userMail,
-            }),
+        const note = {
+            date: dateString,
+            description: noteInput,
+            userEmail: userMail,
         };
 
-        fetch(API_URL, requestOptions)
+        createScheduleNote(note)
             .then((response) => {
-                if (response.ok) {
-                    showNotesNotification(
-                        "success",
-                        "Adding note completed! Note is signed to your account"
-                    );
-                    console.log("Note added successfully");
-                    fetchNotesForDate(dateString, userMail);
-                    setNoteInput("");
-                } else {
-                    showNotesNotification(
-                        "danger",
-                        "Failed to add! Message is above 50 character!"
-                    );
-                    console.error("Failed to add", response.status);
-                    response.text().then((text) => console.error(text));
-                }
+                console.log(response.data);
+                showNotesNotification(
+                    "success",
+                    "Adding note completed! Note is signed to your account"
+                );
+                console.log("Note added successfully");
+                fetchNotesForDate(dateString, userMail);
+                setNoteInput("");
             })
             .catch((error) => {
-                console.error("Failed to add note", error);
-                console.error("Full error object:", error);
+                showNotesNotification(
+                    "danger",
+                    "Failed to add! Message is above 50 character!"
+                );
+                console.error("Failed to add", error.response.status);
             });
     };
 
@@ -91,26 +92,13 @@ const Schedule = () => {
         selectDate(newValue);
     };
 
-    const goToNextMonth = () => {
-        setFirstDate(firstDate.add(1, "month"));
-    };
-
-    const goToPreviousMonth = () => {
-        setFirstDate(firstDate.subtract(1, "month"));
-    };
-
     const fetchNotesForDate = (dateString, userMail) => {
-        fetch(`${API_URL}?date=${dateString}&userEmail=${userMail}`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(`Notes for ${dateString}:`, data);
+        getNotesByDateAndEmail(dateString, userMail)
+            .then((response) => {
+                console.log(`Notes for ${dateString}:`, response.data);
                 setNotes((prevNotes) => ({
                     ...prevNotes,
-                    [dateString]: data.filter(
-                        (note) =>
-                            note.date === dateString &&
-                            note.userEmail === userMail
-                    ),
+                    [dateString]: response.data,
                 }));
             })
             .catch((error) => console.error("Error fetching notes:", error));
@@ -170,6 +158,7 @@ const Schedule = () => {
                                         style={{
                                             height: "100px",
                                             width: "300px",
+                                            fontSize: `${fontSize}px`
                                         }}
                                         maxLength="60"
                                     />
@@ -180,6 +169,7 @@ const Schedule = () => {
                                 size="lg"
                                 className="btn-notes"
                                 onClick={addNote}
+                                style={{ fontSize: `${fontSize}px` }}
                             >
                                 Dodaj notatkę
                             </Button>{" "}
