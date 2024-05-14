@@ -48,7 +48,7 @@ const News = ({ newsData }) => {
                                     src={news.photoUrl}
                                 />
                                 <Card.Body>
-                                    <Card.Title style ={{fontSize : `${fontSize}px` }}>{news.title}</Card.Title>
+                                    <Card.Title style ={{fontSize : `${fontSize+5}px` }}>{news.title}</Card.Title>
                                     <Card.Text>{news.description}</Card.Text>
                                 </Card.Body>
                                 <CardFooter>{news.modificationDate}</CardFooter>

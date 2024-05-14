@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 import { setLoginUser } from "../../routes/userAuthorization";
 
-import "./Login.css";
+import "./Register.css";
 import "./AlertNotification.css";
 import AlertNotification from "./AlertNotification";
 import { loginUser } from "../../services/userService";
