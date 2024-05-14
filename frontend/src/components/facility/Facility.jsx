@@ -49,7 +49,7 @@ const Facility = () => {
         <>
             <div className="container">
                 <div className="top-column">
-                    <h2>Udogodnienia</h2>
+                    <h2 style = {{ fontSize : `${fontSize+10}px` }}>Udogodnienia</h2>
                 </div>
                 <div className="column-wrapper">
                     <div className="left-column">
