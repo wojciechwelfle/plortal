@@ -4,6 +4,16 @@ import "./News.css";
 
 const News = ({ newsData }) => {
     const [visibleCards, setVisibleCards] = useState([]);
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [theme, setTheme] = useState(savedTheme);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
 
     useEffect(() => {
         const revealCards = () => {
@@ -38,7 +48,7 @@ const News = ({ newsData }) => {
                                     src={news.photoUrl}
                                 />
                                 <Card.Body>
-                                    <Card.Title>{news.title}</Card.Title>
+                                    <Card.Title style ={{fontSize : `${fontSize}px` }}>{news.title}</Card.Title>
                                     <Card.Text>{news.description}</Card.Text>
                                 </Card.Body>
                                 <CardFooter>{news.modificationDate}</CardFooter>

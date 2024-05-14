@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "leaflet/dist/leaflet.css"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "../map/MapComponent.css"
@@ -17,6 +17,19 @@ const MapWrapper = ({ children }) => {
 };
 
 const MapComponent = () => {
+
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [theme, setTheme] = useState(savedTheme);
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
+
+
     return (
         <MapWrapper>
             <MapContainer center={position} zoom={16}>
