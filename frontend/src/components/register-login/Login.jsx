@@ -31,7 +31,8 @@ const Login = () => {
                     "Login success!",
                     "Moving to main page in 3 sec..."
                 );
-                setLoginUser(email);
+                const role = response.data.role;
+                setLoginUser(email, password, role);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);
