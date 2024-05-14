@@ -1,3 +1,4 @@
+import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,23 +7,43 @@ import LogoutButton from '../LogoutButton';
 import './Navbar.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+
 const NavigationBar = () => {
+  const [showOffcanvas, setShowOffcanvas] = useState(true); 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 11768) {
+        setShowOffcanvas(true); 
+      } else {
+        setShowOffcanvas(false); 
+      }
+    };
+
+    window.addEventListener('resize', handleResize); 
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize); 
+  }, []);
   return (
     <>
-        <Navbar key={false} expand={false} className="bg-body-tertiary mb-3" id="navibar">
-          <Container fluid>
-            <Navbar.Brand href="#">PŁortal</Navbar.Brand>
-            <Navbar.Toggle id="btn" variant="dark" aria-controls={`offcanvasNavbar-expand-false`} />
-            <LogoutButton id="logout-btn"></LogoutButton>
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-false`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-false`}
-            >
-              <Offcanvas.Header closeButton >
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
-                  PŁortal
-                </Offcanvas.Title>
-              </Offcanvas.Header>
+      <Navbar key={false} expand={false} class="nav" id="navibar">
+        <Container fluid >
+          <Navbar.Brand href="#">PŁortal</Navbar.Brand>
+          <Navbar.Toggle id="btn" variant="dark" aria-controls={`offcanvasNavbar-expand-false`} onClick={() => setShowOffcanvas(true)}/>
+          <LogoutButton id="logout-btn"></LogoutButton>
+          
+          <Offcanvas
+            show={showOffcanvas} 
+            onHide={() => setShowOffcanvas(false)} 
+            id={`offcanvasNavbar-expand-false`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-false`}
+          >
+            <Offcanvas.Header closeButton >
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
+                PŁortal
+              </Offcanvas.Title>
+            </Offcanvas.Header>
               <Offcanvas.Body scroll>
       <div className='row'>
           <ul class="nav nav-pills flex-column ">
@@ -82,13 +103,13 @@ const NavigationBar = () => {
             <li class="nav-item text-white fs-4 my-1 d-grid gap-2">
               <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page">
               <i className='bi bi-gear'></i>
-              <span className='ms-2 d-none d-sm-inline'>Ustawiena</span>
+              <span className='ms-2 d-none d-sm-inline'>Ustawienia</span>
               </Button>
             </li>
           </ul>
           </div>
               </Offcanvas.Body>
-            </Navbar.Offcanvas>
+            </Offcanvas>
           </Container>
         </Navbar>
       </>

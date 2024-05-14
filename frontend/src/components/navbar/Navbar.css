@@ -1,8 +1,11 @@
  .offcanvas-backdrop {
     background-color: rgba(0, 0, 0, 0) !important;
   }
+  .offcanvas {
+    max-width: 250px;
+  }
  .Btn{
-    color:white;
+    color:white !important;
  }
 
   .Btn:hover{
@@ -22,6 +25,15 @@
     background-color: rgb(146, 16, 16);
   }
   #logout-btn{
-    padding: 1em;
-    margin: 0.5em;    
+    position:relative;
+    right: 5em;
+    
+  }
+  #navibar{
+    padding: 0%;
+    margin: 0%;
+    background-color: rgb(107, 107, 107);
+  }
+  .logout-container {
+    width: 150px; /* Ustaw szerokość kontenera na stałą wartość */
   }
