@@ -6,36 +6,37 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import LogoutButton from '../LogoutButton';
 import './Navbar.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-
+//import { NavbarOffcanvas } from 'react-bootstrap';
 
 const NavigationBar = () => {
-  const [showOffcanvas, setShowOffcanvas] = useState(true); 
+  const [showOffcanvas, setShowOffcanvas] = useState(true); // Stan śledzący czy Offcanvas jest otwarty
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 11768) {
-        setShowOffcanvas(true); 
+      if (window.innerWidth >= 768) {
+        setShowOffcanvas(true); // Otwórz Offcanvas na większych ekranach
       } else {
-        setShowOffcanvas(false); 
+        setShowOffcanvas(false); // Zamknij Offcanvas na mniejszych ekranach
       }
     };
 
-    window.addEventListener('resize', handleResize); 
+    window.addEventListener('resize', handleResize); // Dodaj nasłuchiwanie zdarzenia zmiany rozmiaru ekranu
 
+    // Sprawdź szerokość ekranu przy załadowaniu strony
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize); 
+    return () => window.removeEventListener('resize', handleResize); // Usuń nasłuchiwanie zdarzenia zmiany rozmiaru ekranu po odmontowaniu komponentu
   }, []);
   return (
     <>
-      <Navbar key={false} expand={false} class="nav" id="navibar">
-        <Container fluid >
+      <Navbar key={false} expand={false} className="bg-body-tertiary mb-3" id="navibar">
+        <Container fluid>
           <Navbar.Brand href="#">PŁortal</Navbar.Brand>
           <Navbar.Toggle id="btn" variant="dark" aria-controls={`offcanvasNavbar-expand-false`} onClick={() => setShowOffcanvas(true)}/>
           <LogoutButton id="logout-btn"></LogoutButton>
           
           <Offcanvas
-            show={showOffcanvas} 
-            onHide={() => setShowOffcanvas(false)} 
+            show={showOffcanvas} // Ustawienie Offcanvas na domyślnie otwarty
+            onHide={() => setShowOffcanvas(false)} // Funkcja do zamknięcia Offcanvas
             id={`offcanvasNavbar-expand-false`}
             aria-labelledby={`offcanvasNavbarLabel-expand-false`}
           >
@@ -103,7 +104,7 @@ const NavigationBar = () => {
             <li class="nav-item text-white fs-4 my-1 d-grid gap-2">
               <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page">
               <i className='bi bi-gear'></i>
-              <span className='ms-2 d-none d-sm-inline'>Ustawienia</span>
+              <span className='ms-2 d-none d-sm-inline'>Ustawiena</span>
               </Button>
             </li>
           </ul>
