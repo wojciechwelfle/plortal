@@ -10,7 +10,11 @@
     font-weight: 600;
     border-color: white !important;
  }
-
+#menulabel{
+  display: inline !important;
+  font-weight: 600;
+  text-align: justify;
+}
 .navibutton:hover{
     background-color: rgb(185, 184, 184);
   }
@@ -18,9 +22,14 @@
     justify-content: space-evenly;
   } 
   .nav-item{
-    color: rgb(150, 25, 25);
+    color:rgb(146, 16, 16)!important;
     font-weight: 700;
     font-size:1.5em;
+  }
+ .navibutton.hovered{
+    background-color: rgb(185, 184, 184);
+    color:rgb(146, 16, 16)!important;
+    text-decoration: none;
   }
   #btn{
     position: absolute;

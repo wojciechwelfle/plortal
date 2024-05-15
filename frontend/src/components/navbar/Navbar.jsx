@@ -39,6 +39,7 @@ const NavigationBar = () => {
             onHide={() => setShowOffcanvas(false)} 
             id={`offcanvasNavbar-expand-false`}
             aria-labelledby={`offcanvasNavbarLabel-expand-false`}
+            backdrop={false}
           >
             <Offcanvas.Header closeButton >
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
@@ -47,62 +48,62 @@ const NavigationBar = () => {
             </Offcanvas.Header>
               <Offcanvas.Body scroll>
       <div className='row'>
-          <ul class="nav nav-pills flex-column ">
-          <li class="nav-item my-3">
+          <ul   className="nav nav-pills flex-column ">
+          <li   className="nav-item my-3">
               <i className='bi bi-grid'></i>
               <span className='Info ms-2 d-sm-inline'>Menu</span>
             </li>
-            <li class="nav-item fs-4 my-2 d-grid gap-2">
-              <Button className='navibutton' href="/news" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/news' ? 'hovered' : null}`} href="/news" variant='null' aria-current="page">
               <i className='bi bi-house'></i>
               <span className='ms-2 d-sm-inline'>Strona Główna</span>
               </Button>
             </li>
             
-            <li class="nav-item fs-4 my-2 d-grid gap-2">
-              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/lecturers' ? 'hovered' : null}`} href="#" variant='null' aria-current="page">
               <i className='bi bi-person'></i>
               <span className='ms-2 d-sm-inline'>Wykładowcy</span>
               </Button>
             </li>
 
-            <li class="nav-item fs-4 my-2 d-grid gap-2">
-              <Button className='navibutton' href="/map" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/map' ? 'hovered' : null}`} href="/map" variant='null'  aria-current="page">
               <i className='bi bi-pin-map'></i>
               <span className='ms-2 d-sm-inline'>Mapa PŁ</span>
               </Button>
             </li>
 
-            <li class="nav-item fs-4 my-2 d-grid gap-2">
-              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/school-schedule' ? 'hovered' : null}`} href="#" variant='null' aria-current="page">
               <i className='bi bi-file-spreadsheet'></i>
               <span className='ms-2 d-sm-inline'>Plan zajęć</span>
               </Button>
             </li>
 
-            <li class="nav-item fs-4 my-2 d-grid gap-2">
-              <Button className='navibutton'  href="#" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/subjects' ? 'hovered' : null}`}  href="#" variant='null'  aria-current="page">
               <i className='bi bi-book-half'></i>
               <span className='ms-2 d-sm-inline'>Przedmioty</span>
               </Button>
             </li>
 
-            <li class="nav-item fs-4 my-1 d-grid gap-2">
-              <Button className='navibutton' href="/schedule" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-1 d-grid gap-2">
+            <Button className={`navibutton ${window.location.pathname === '/schedule' ? 'hovered' : null}`} href="/schedule" variant='null' aria-current="page">
               <i className='bi bi-calendar'></i>
               <span className='ms-2 d-sm-inline'>Terminarz</span>
               </Button>
             </li>
 
-            <li class="nav-item fs-4 my-1 d-grid gap-2">
-              <Button className='navibutton' href="/facility" class="Btn active" aria-current="page">
+            <li   className="nav-item fs-4 my-1 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/facility' ? 'hovered' : null}`} href="/facility" variant='null'  aria-current="page">
               <i className='bi bi-person-wheelchair'></i>
               <span className='ms-2 d-sm-inline'>Udogodnienia</span>
               </Button>
             </li>
 
-            <li class="nav-item  fs-4 my-1 d-grid gap-2">
-              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
+            <li   className="nav-item  fs-4 my-1 d-grid gap-2">
+              <Button className={`navibutton ${window.location.pathname === '/settings' ? 'hovered' : null}`} href="#" variant='null' aria-current="page">
               <i className='bi bi-gear'></i>
               <span className='ms-2 d-sm-inline'>Ustawienia</span>
               </Button>
