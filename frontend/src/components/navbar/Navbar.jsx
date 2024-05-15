@@ -6,25 +6,25 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import LogoutButton from '../LogoutButton';
 import './Navbar.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-//import { NavbarOffcanvas } from 'react-bootstrap';
+
 
 const NavigationBar = () => {
-  const [showOffcanvas, setShowOffcanvas] = useState(true); // Stan śledzący czy Offcanvas jest otwarty
+  const [showOffcanvas, setShowOffcanvas] = useState(true); 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setShowOffcanvas(true); // Otwórz Offcanvas na większych ekranach
+        setShowOffcanvas(true); 
       } else {
-        setShowOffcanvas(false); // Zamknij Offcanvas na mniejszych ekranach
+        setShowOffcanvas(false); 
       }
     };
 
-    window.addEventListener('resize', handleResize); // Dodaj nasłuchiwanie zdarzenia zmiany rozmiaru ekranu
+    window.addEventListener('resize', handleResize); 
 
-    // Sprawdź szerokość ekranu przy załadowaniu strony
+    
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize); // Usuń nasłuchiwanie zdarzenia zmiany rozmiaru ekranu po odmontowaniu komponentu
+    return () => window.removeEventListener('resize', handleResize); 
   }, []);
   return (
     <>
@@ -35,8 +35,8 @@ const NavigationBar = () => {
           <LogoutButton id="logout-btn"></LogoutButton>
           
           <Offcanvas
-            show={showOffcanvas} // Ustawienie Offcanvas na domyślnie otwarty
-            onHide={() => setShowOffcanvas(false)} // Funkcja do zamknięcia Offcanvas
+            show={showOffcanvas} 
+            onHide={() => setShowOffcanvas(false)} 
             id={`offcanvasNavbar-expand-false`}
             aria-labelledby={`offcanvasNavbarLabel-expand-false`}
           >
@@ -52,59 +52,59 @@ const NavigationBar = () => {
               <i className='bi bi-grid'></i>
               <span className='Info ms-2 d-sm-inline'>Menu</span>
             </li>
-            <li class="nav-item text-white fs-4 my-2 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="/news" class="nav-link text-white active" aria-current="page">
-              <i id="iconss" className='bi bi-house'></i>
-              <span className='ms-2 d-none d-sm-inline'>Strona Główna</span>
+            <li class="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className='navibutton' href="/news" class="Btn active" aria-current="page">
+              <i className='bi bi-house'></i>
+              <span className='ms-2 d-sm-inline'>Strona Główna</span>
               </Button>
             </li>
             
-            <li class="nav-item text-white fs-4 my-2 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page" deco>
+            <li class="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
               <i className='bi bi-person'></i>
-              <span className='ms-2 d-none d-sm-inline'>Wykładowcy</span>
+              <span className='ms-2 d-sm-inline'>Wykładowcy</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-2 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="/map" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className='navibutton' href="/map" class="Btn active" aria-current="page">
               <i className='bi bi-pin-map'></i>
-              <span className='ms-2 d-none d-sm-inline'>Mapa PŁ</span>
+              <span className='ms-2 d-sm-inline'>Mapa PŁ</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-2 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
               <i className='bi bi-file-spreadsheet'></i>
-              <span className='ms-2 d-none d-sm-inline'>Plan zajęć</span>
+              <span className='ms-2 d-sm-inline'>Plan zajęć</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-2 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item fs-4 my-2 d-grid gap-2">
+              <Button className='navibutton'  href="#" class="Btn active" aria-current="page">
               <i className='bi bi-book-half'></i>
-              <span className='ms-2 d-none d-sm-inline'>Przedmioty</span>
+              <span className='ms-2 d-sm-inline'>Przedmioty</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-1 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="/schedule" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item fs-4 my-1 d-grid gap-2">
+              <Button className='navibutton' href="/schedule" class="Btn active" aria-current="page">
               <i className='bi bi-calendar'></i>
-              <span className='ms-2 d-none d-sm-inline'>Terminarz</span>
+              <span className='ms-2 d-sm-inline'>Terminarz</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-1 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="/facility" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item fs-4 my-1 d-grid gap-2">
+              <Button className='navibutton' href="/facility" class="Btn active" aria-current="page">
               <i className='bi bi-person-wheelchair'></i>
-              <span className='ms-2 d-none d-sm-inline'>Udogodnienia</span>
+              <span className='ms-2 d-sm-inline'>Udogodnienia</span>
               </Button>
             </li>
 
-            <li class="nav-item text-white fs-4 my-1 d-grid gap-2">
-              <Button className='Btn' variant='dark' href="#" class="nav-link text-white active" aria-current="page">
+            <li class="nav-item  fs-4 my-1 d-grid gap-2">
+              <Button className='navibutton' href="#" class="Btn active" aria-current="page">
               <i className='bi bi-gear'></i>
-              <span className='ms-2 d-none d-sm-inline'>Ustawiena</span>
+              <span className='ms-2 d-sm-inline'>Ustawienia</span>
               </Button>
             </li>
           </ul>

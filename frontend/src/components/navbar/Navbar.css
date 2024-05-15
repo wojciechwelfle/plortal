@@ -4,12 +4,15 @@
   .offcanvas {
     max-width: 200px;
   }
- .Btn{
-    color:white !important;
+.navibutton{
+    color:rgb(146, 16, 16)!important;
+    background-color: white;
+    font-weight: 600;
+    border-color: white !important;
  }
 
-  .Btn:hover{
-    background-color: rgb(150, 150, 150);
+.navibutton:hover{
+    background-color: rgb(185, 184, 184);
   }
   .nav.nav-pills{
     justify-content: space-evenly;
