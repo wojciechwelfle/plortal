@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 import { setLoginUser } from "../../routes/userAuthorization";
 
-import "./Login.css";
+import "./Register.css";
 import "./AlertNotification.css";
 import AlertNotification from "./AlertNotification";
 import { loginUser } from "../../services/userService";
@@ -31,7 +31,8 @@ const Login = () => {
                     "Login success!",
                     "Moving to main page in 3 sec..."
                 );
-                setLoginUser(email);
+                const role = response.data.role;
+                setLoginUser(email, password, role);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);

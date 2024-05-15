@@ -83,13 +83,13 @@ const Facility = () => {
                             name="input-text-size"
                             style={{ fontSize: `${tempFontSize}px` }}
                             className="input-text-size"
-                            defaultValue="Przykładowy tekst"
+                            defaultValue="Rozmiar tekstu"
                         />
                         <input
                             name="input-theme"
                             style={tempThemeStyles}
                             className="input-theme"
-                            defaultValue="Obecny motyw"
+                            defaultValue="Przykładowy motyw"
                         />
                     </div>
                 </div>

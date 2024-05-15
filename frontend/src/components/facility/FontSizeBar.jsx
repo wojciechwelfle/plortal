@@ -11,7 +11,7 @@ const FontSizeBar = ({ onChange, value }) => {
     return (
         <Box sx={{ width: 298 }}>
             <Slider
-                aria-label="Temperature"
+                aria-label="Size"
                 defaultValue={30}
                 getAriaValueText={valuetext}
                 valueLabelDisplay="auto"
