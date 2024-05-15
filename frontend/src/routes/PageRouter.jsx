@@ -10,8 +10,8 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 
 import "../App.css";
+import Card from "react";
 
-import NavigationBar from "../components/navbar/Navbar";
 import LogoutButton from "../components/LogoutButton";
 
 

@@ -1,3 +1,4 @@
+@import "../../GlobalColors.css";
  .offcanvas-backdrop {
     background-color: rgba(0, 0, 0, 0) !important;
   }
@@ -5,40 +6,39 @@
     max-width: 200px;
   }
 .navibutton{
-    color:rgb(146, 16, 16)!important;
-    background-color: white;
+    color: var(--main-color)!important;
+    background-color: var(--white);
     font-weight: 600;
-    border-color: white !important;
+    border-color: var(--white) !important;
  }
 #menulabel{
   display: inline !important;
   font-weight: 600;
   text-align: center;
-  
 }
 .navibutton:hover{
-    background-color: rgb(185, 184, 184);
+    background-color: var(--button-gray);
   }
   .nav.nav-pills{
     justify-content: space-evenly;
   } 
   .nav-item{
-    color:rgb(146, 16, 16)!important;
+    color: var(--main-color)!important;
     font-weight: 700;
-    font-size:1.5em;
+    font-size:var(--font-size);
   }
  .navibutton.hovered{
-    background-color: rgb(185, 184, 184);
-    color:rgb(146, 16, 16)!important;
+    background-color: var(--button-gray);
+    color:var(--main-color)!important;
     text-decoration: none;
   }
   #btn{
     position: absolute;
     left:5em;
-    background-color: rgb(146, 16, 16);
+    background-color: var(--main-color);
   }
   #navibar{
     padding: 0%;
     margin: 0%;
-    background-color: rgb(107, 107, 107);
+    background-color: var(--example-background);
   }
