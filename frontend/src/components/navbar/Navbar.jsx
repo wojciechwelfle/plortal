@@ -49,7 +49,7 @@ const NavigationBar = () => {
               <Offcanvas.Body scroll>
       <div className='row'>
           <ul   className="nav nav-pills flex-column ">
-          <li   className="nav-item my-3">
+          <li id="menulabel"  className="nav-item fs-4 d-grid my-2 gap-2">
               <i className='bi bi-grid'></i>
               <span className='Info ms-2 d-sm-inline'>Menu</span>
             </li>

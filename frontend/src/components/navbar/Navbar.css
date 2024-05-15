@@ -13,7 +13,8 @@
 #menulabel{
   display: inline !important;
   font-weight: 600;
-  text-align: justify;
+  text-align: center;
+  
 }
 .navibutton:hover{
     background-color: rgb(185, 184, 184);
