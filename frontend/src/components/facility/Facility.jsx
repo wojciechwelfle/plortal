@@ -30,13 +30,13 @@ const Facility = () => {
         localStorage.setItem('fontSize', tempFontSize);
         localStorage.setItem('theme', tempTheme);
         document.documentElement.style.setProperty('--font-size', `${tempFontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${tempTheme}-theme`);
     };
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
 
@@ -73,6 +73,7 @@ const Facility = () => {
                                         <MenuItem value="light">Jasny</MenuItem>
                                         <MenuItem value="dark">Ciemny</MenuItem>
                                         <MenuItem value="blue">Niebieski</MenuItem>
+                                        <MenuItem value="purple">Fioletowy</MenuItem>
                                     </Select>
                                 </FormControl>
                             </div>

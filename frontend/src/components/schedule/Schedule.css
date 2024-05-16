@@ -221,7 +221,7 @@ html, body {
 .MuiPickersDay-root.Mui-selected {
     border: 3px solid var(--main-color) !important;
     background-color: var(--background-color) !important;
-    color: var(--white) !important;
+    color: var(--text-color) !important;
 }
 
 .MuiPickersArrowSwitcher-button {
