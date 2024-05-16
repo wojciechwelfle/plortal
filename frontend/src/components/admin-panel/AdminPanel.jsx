@@ -4,30 +4,32 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import "./AdminPanel.css";
-import { Card } from "react-bootstrap";
+import MapPanel from "./map-panel/MapPanel";
+import NewsPanel from "./news-panel/NewsPanel";
+import UserPanel from "./user-panel/UserPanel";
 
 const navItems = [
     {
         eventKey: "first",
         text: "Dodaj/Usuń Budynek",
-        component: <Card>test</Card>,
+        component: <MapPanel/>,
     },
     {
         eventKey: "second",
-        text: "Edytuj obiekty na mapie",
-        component: <Card>test2</Card>,
+        text: "Edytuj aktualności",
+        component: <NewsPanel/>,
     },
     {
         eventKey: "third",
         text: "Dodaj/Usuń użytkownika",
-        component: <Card>test3</Card>,
+        component: <UserPanel/>,
     },
 ];
 
 const AdminPanel = () => {
     return (
         <div className="panel-container">
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="left-tabs-example" defaultActiveKey={navItems[0].eventKey}>
                 <Row>
                     <Col sm={3}>
                         <Nav
@@ -43,7 +45,7 @@ const AdminPanel = () => {
                                     >
                                         <Nav.Link
                                             eventKey={item.eventKey}
-                                            style={{ fontSize: "17px" }}
+                                            className="nav-link"
                                         >
                                             {console.log(`${i} ${item.text}`)}
                                             {item.text}

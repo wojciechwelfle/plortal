@@ -24,3 +24,7 @@
     background-color: var(--main-color);
     color: #ffffff;
 }
+
+.nav-link {
+    font-size: var(--font-size);
+}
