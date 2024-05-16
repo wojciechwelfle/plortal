@@ -25,6 +25,9 @@
 
     --blue-background: var(--blue-color);
     --blue-text: var(--white);
+
+    --purple-background: #be91f3;
+    --purple-text: #001157;
 }
 
 .dark-theme {
@@ -43,4 +46,10 @@
     --background-color: var(--blue-background);
     --text-color: var(--blue-text);
     --border-color: var(--blue-text);
+}
+
+.purple-theme {
+    --background-color: var( --purple-background);
+    --text-color: var(--purple-text);
+    --border-color: var(--purple-text);
 }

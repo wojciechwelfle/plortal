@@ -153,7 +153,7 @@ const Register = () => {
                         </Button>
                     </div>
                 </Form>
-                <div className="alertContainer">
+                <div className="alert-container">
                     <AlertNotification ref={AlertNotificationRef} />
                 </div>
             </div>
