@@ -10,8 +10,7 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 
 import "../App.css";
-import { Card } from "react-bootstrap";
-import LogoutButton from "../components/LogoutButton";
+import AdminPanelPage from "../pages/AdminPanelPage";
 
 const PageRouter = () => {
     return (
@@ -71,13 +70,7 @@ const PageRouter = () => {
                             <ProtectedRoute
                                 path="/admin"
                                 requiredRoles={["ADMIN"]}
-                                element={() => (
-                                    <>
-                                        <Card>
-                                            <Card.Body>ADMIN <LogoutButton/></Card.Body>
-                                        </Card>
-                                    </>
-                                )}
+                                element={AdminPanelPage}
                             />
                         }
                     />
