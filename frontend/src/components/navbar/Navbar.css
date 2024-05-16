@@ -42,3 +42,4 @@
     margin: 0%;
     background-color: var(--example-background);
   }
+  body.modal-open { overflow:inherit; padding-right:inherit !important; }
