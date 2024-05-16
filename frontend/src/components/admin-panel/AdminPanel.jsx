@@ -30,25 +30,31 @@ const AdminPanel = () => {
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                 <Row>
                     <Col sm={3}>
-                        <Nav variant="pills" className="flex-column" style={{padding:"10px"}}>
+                        <Nav
+                            variant="pills"
+                            className="flex-column"
+                            style={{ padding: "10px" }}
+                        >
                             {navItems.map((item, i) => {
                                 return (
-                                    <>
-                                        <Nav.Item >
-                                            <Nav.Link eventKey={item.eventKey}>
-                                                {console.log(
-                                                    `${i} ${item.text}`
-                                                )}
-                                                {item.text}
-                                            </Nav.Link>
-                                        </Nav.Item>
-                                    </>
+                                    <Nav.Item
+                                        className="custom-nav-item"
+                                        key={i}
+                                    >
+                                        <Nav.Link
+                                            eventKey={item.eventKey}
+                                            style={{ fontSize: "17px" }}
+                                        >
+                                            {console.log(`${i} ${item.text}`)}
+                                            {item.text}
+                                        </Nav.Link>
+                                    </Nav.Item>
                                 );
                             })}
                         </Nav>
                     </Col>
                     <Col sm={9}>
-                        <Tab.Content style={{padding:"10px"}}>
+                        <Tab.Content style={{ padding: "10px" }}>
                             {navItems.map((item, i) => {
                                 return (
                                     <Tab.Pane eventKey={item.eventKey}>
