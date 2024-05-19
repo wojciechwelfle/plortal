@@ -3,7 +3,7 @@
     background-color: rgba(0, 0, 0, 0) !important;
   }
   .offcanvas {
-    max-width: 180px;
+    max-width: 250px;
   }
 .navibutton{
     color: var(--main-color)!important;
