@@ -54,7 +54,7 @@ const NavigationBar = () => {
                 PŁortal
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body scroll>
+            <Offcanvas.Body>
               <div className="row">
                 <ul className="nav nav-pills flex-column ">
                   <li
