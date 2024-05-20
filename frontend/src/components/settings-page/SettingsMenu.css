@@ -4,7 +4,10 @@
     display: flex;
     flex-direction: column;
     height: 50vh;
-    width: 100%;
+    width: 60%; /* Zmieniona szerokość na taką samą jak navbar */
+    padding-left: 250px; /* Dodane ustawienie padding-left */
+    margin: 0 auto; /* Wyśrodkowanie */
+    padding-top: 20px; /* Dodane ustawienie padding-top, aby menu znajdowało się pod navbarem */
 }
 
 .menu button:hover {
@@ -19,6 +22,8 @@
     border-radius: 10px;
     margin-bottom: 20px;
     padding: 10px;
+    width: 60%; /* Zmniejszona szerokość */
+    margin: 0 auto; /* Wyśrodkowanie */
 }
 
 .navbar-menu {
@@ -44,13 +49,15 @@
     background-color: var(--gray);
 }
 
-
 @media (max-width: 768px) {
     .menu {
         flex-direction: column;
         align-items: center;
         min-height: 150px;
         height: auto;
+        width: 80%; /* Zmieniona szerokość dla responsywności */
+        padding-left: 0; /* Usunięcie padding-left dla lepszej responsywności */
+        padding-top: 10px; /* Zmniejszenie padding-top dla lepszej responsywności */
     }
 
     .menu button {
@@ -61,6 +68,7 @@
     .custom-navbar {
         flex-direction: column;
         align-items: center;
+        width: 80%; /* Zmieniona szerokość dla responsywności */
     }
 
     .navbar-menu {
@@ -84,7 +92,8 @@
     }
 }
 
-h2{
+h2 {
     color: var(--main-color);
     padding: 20px;
+    margin-left: 20%;
 }

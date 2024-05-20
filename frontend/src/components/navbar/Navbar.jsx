@@ -179,7 +179,7 @@ const NavigationBar = () => {
                           ? "hovered"
                           : null
                       }`}
-                      href="#"
+                      href="/settings"
                       variant="null"
                       aria-current="page"
                     >
