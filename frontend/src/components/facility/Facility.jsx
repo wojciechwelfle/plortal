@@ -30,13 +30,13 @@ const Facility = () => {
         localStorage.setItem('fontSize', tempFontSize);
         localStorage.setItem('theme', tempTheme);
         document.documentElement.style.setProperty('--font-size', `${tempFontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${tempTheme}-theme`);
     };
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
 
@@ -49,7 +49,7 @@ const Facility = () => {
         <>
             <div className="container">
                 <div className="top-column">
-                    <h2>Udogodnienia</h2>
+                    <h2 style = {{ fontSize : `${fontSize+10}px` }}>Udogodnienia</h2>
                 </div>
                 <div className="column-wrapper">
                     <div className="left-column">
@@ -73,6 +73,7 @@ const Facility = () => {
                                         <MenuItem value="light">Jasny</MenuItem>
                                         <MenuItem value="dark">Ciemny</MenuItem>
                                         <MenuItem value="blue">Niebieski</MenuItem>
+                                        <MenuItem value="purple">Fioletowy</MenuItem>
                                     </Select>
                                 </FormControl>
                             </div>
@@ -83,13 +84,13 @@ const Facility = () => {
                             name="input-text-size"
                             style={{ fontSize: `${tempFontSize}px` }}
                             className="input-text-size"
-                            defaultValue="Przykładowy tekst"
+                            defaultValue="Rozmiar tekstu"
                         />
                         <input
                             name="input-theme"
                             style={tempThemeStyles}
                             className="input-theme"
-                            defaultValue="Obecny motyw"
+                            defaultValue="Przykładowy motyw"
                         />
                     </div>
                 </div>

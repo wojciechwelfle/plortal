@@ -10,7 +10,8 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 
 import "../App.css";
-
+import { Card } from "react-bootstrap";
+import LogoutButton from "../components/LogoutButton";
 
 const PageRouter = () => {
     return (
@@ -25,6 +26,7 @@ const PageRouter = () => {
                         element={
                             <ProtectedRoute
                                 path="/schedule"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
                                 element={SchedulePage}
                             />
                         }
@@ -33,21 +35,50 @@ const PageRouter = () => {
                         exact
                         path="/news"
                         element={
-                            <ProtectedRoute path="/news" element={NewsPage} />
+                            <ProtectedRoute
+                                path="/news"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={NewsPage}
+                            />
                         }
                     />
                     <Route
                         exact
                         path="/map"
                         element={
-                            <ProtectedRoute path="/map" element={MapPage} />
-                        } 
+                            <ProtectedRoute
+                                path="/map"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={MapPage}
+                            />
+                        }
                     />
                     <Route
                         exact
                         path="/facility"
                         element={
-                            <ProtectedRoute path="/facility" element={Facility} />
+                            <ProtectedRoute
+                                path="/facility"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={Facility}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/admin"
+                        element={
+                            <ProtectedRoute
+                                path="/admin"
+                                requiredRoles={["ADMIN"]}
+                                element={() => (
+                                    <>
+                                        <Card>
+                                            <Card.Body>ADMIN <LogoutButton/></Card.Body>
+                                        </Card>
+                                    </>
+                                )}
+                            />
                         }
                     />
                 </Routes>

@@ -49,6 +49,6 @@ public class UserController {
         } catch (IncorrectPasswordException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.findUserByEmail(user.getEmail()));
     }
 }
