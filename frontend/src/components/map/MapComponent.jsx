@@ -16,7 +16,7 @@ const MapWrapper = ({ children, className }) => {
     return <div className={className}>{children}</div>;
 };
 
-const MapComponent = ({ movedToTheLeft }) => {
+const MapComponent = () => {
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
     const savedTheme = localStorage.getItem('theme') || 'light';
     const [fontSize, setFontSize] = useState(savedFontSize);
@@ -28,10 +28,9 @@ const MapComponent = ({ movedToTheLeft }) => {
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
 
-    const mapWrapperClass = `map-wrapper ${movedToTheLeft ? 'moved-left' : ''}`; 
 
     return (
-        <MapWrapper className={mapWrapperClass}>
+        <MapWrapper >
             <MapContainer center={position} zoom={16}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
