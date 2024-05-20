@@ -24,7 +24,6 @@ const NewsPage = () => {
     return (
         <>
             <NavigationBar />
-
             <News newsData={newsData} />
         </>
     );

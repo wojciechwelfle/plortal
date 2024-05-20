@@ -2,18 +2,13 @@ import React, { useState } from "react";
 import MapComponent from "../components/map/MapComponent";
 import NavigationBar from "../components/navbar/Navbar";
 
-
 const MapPage = () => {
-    const [showOffcanvas, setShowOffcanvas] = useState(false);
-
+    const [showOffcanvas, setShowOffcanvas] = useState(true);
     return (
         <>
             <NavigationBar showOffcanvas={showOffcanvas} setShowOffcanvas={setShowOffcanvas} />
-            
-            {/*<MapComponent style={{ marginLeft: showOffcanvas ? '5em' : '0' }}/> */}
-            <MapComponent movedToTheLeft="setShowOffcanvas(showOffcanvas)"/>
+            <MapComponent movedToTheLeft={showOffcanvas}/>
         </>
     );
 };
-
 export default MapPage;

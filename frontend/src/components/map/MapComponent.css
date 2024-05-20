@@ -7,9 +7,9 @@
     height: 80vh;
     padding-top: 10px;
 }
+
 .moved-left {
 padding-left: 10%;
-
 }
 
 .leaflet-container {
@@ -17,7 +17,6 @@ padding-left: 10%;
     height: 100%;
     border-radius: 20px;
 }
-
 
 .leaflet-control-geosearch .results {
     color: var(--black);

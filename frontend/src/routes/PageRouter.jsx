@@ -14,7 +14,6 @@ import Card from "react";
 
 import LogoutButton from "../components/LogoutButton";
 
-
 const PageRouter = () => {
     return (
         <>

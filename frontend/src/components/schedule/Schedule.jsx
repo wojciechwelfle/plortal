@@ -115,7 +115,6 @@ const Schedule = () => {
 
     return (
         <>
-        
             <div className="container">
                 <div className="top-columns">
                     <div className="left-column">
