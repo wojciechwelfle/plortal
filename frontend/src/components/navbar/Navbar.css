@@ -1,9 +1,15 @@
 @import "../../GlobalColors.css";
 
+#maindiv {
+  max-width: 250px;
+}
 .offcanvas-backdrop {
   background-color: rgba(0, 0, 0, 0) !important;
+  max-width: 250px;
 }
-
+#offcanvasNavbar-expand-false {
+  max-width: 250px;
+}
 .offcanvas {
   max-width: 250px;
 }

@@ -36,7 +36,6 @@ const NavigationBar = () => {
           <Navbar.Brand href="#">PŁortal</Navbar.Brand>
           <Navbar.Toggle
             id="btn"
-            variant="dark"
             aria-controls={`offcanvasNavbar-expand-false`}
             onClick={() => setShowOffcanvas(true)}
           />
@@ -47,7 +46,8 @@ const NavigationBar = () => {
             onHide={() => setShowOffcanvas(false)}
             id={`offcanvasNavbar-expand-false`}
             aria-labelledby={`offcanvasNavbarLabel-expand-false`}
-            backdrop={false}
+            backdrop={true}
+            scroll={true}
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
