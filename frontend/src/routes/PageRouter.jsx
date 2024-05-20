@@ -8,10 +8,10 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
-
 import "../App.css";
 import { Card } from "react-bootstrap";
 import LogoutButton from "../components/LogoutButton";
+import SettingsPage from "../pages/SettingsPage";
 
 const PageRouter = () => {
     return (
@@ -78,6 +78,16 @@ const PageRouter = () => {
                                         </Card>
                                     </>
                                 )}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/settings"
+                        element={
+                            <ProtectedRoute
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={SettingsPage}
                             />
                         }
                     />
