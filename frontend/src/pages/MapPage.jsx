@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import Card from "react-bootstrap/Card";
+import LogoutButton from "../components/LogoutButton";
 import MapComponent from "../components/map/MapComponent";
-import NavigationBar from "../components/navbar/Navbar";
+
 
 const MapPage = () => {
-  return (
-    <>
-      <NavigationBar />
-      <MapComponent />
-    </>
-  );
+    return (
+        <>
+            <Card body>
+                Mapa
+            </Card>
+            <MapComponent />
+        </>
+    );
 };
+
 export default MapPage;

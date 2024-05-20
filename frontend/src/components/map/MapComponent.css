@@ -1,5 +1,5 @@
 .map-wrapper {
-    position:absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -13,6 +13,7 @@
     height: 100%;
     border-radius: 20px;
 }
+
 
 .leaflet-control-geosearch .results {
     color: var(--black);
