@@ -8,9 +8,11 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
+import AdminPanelPage from "../pages/AdminPanelPage";
+import SettingsPage from "../pages/SettingsPage";
 
 import "../App.css";
-import AdminPanelPage from "../pages/AdminPanelPage";
+
 
 const PageRouter = () => {
     return (
@@ -71,6 +73,16 @@ const PageRouter = () => {
                                 path="/admin"
                                 requiredRoles={["ADMIN"]}
                                 element={AdminPanelPage}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/settings"
+                        element={
+                            <ProtectedRoute
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={SettingsPage}
                             />
                         }
                     />
