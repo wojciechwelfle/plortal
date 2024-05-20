@@ -1,16 +1,10 @@
-import { Card } from "react-bootstrap";
-import LogoutButton from "../components/LogoutButton";
 import AdminPanel from "../components/admin-panel/AdminPanel";
+import NavigationBar from "../components/navbar/Navbar";
 
 const AdminPanelPage = () => {
     return (
         <>
-            <Card>
-                <Card.Body>
-                    ADMIN <LogoutButton />
-                </Card.Body>
-            </Card>
-
+            <NavigationBar/>
             <AdminPanel />
         </>
     );
