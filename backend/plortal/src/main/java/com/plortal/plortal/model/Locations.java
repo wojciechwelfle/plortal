@@ -1,14 +1,14 @@
 package com.plortal.plortal.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "Locations")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Locations {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,24 +31,6 @@ public class Locations {
     @Enumerated(EnumType.STRING)
     @Column(name = "locationType")
     private LocationType locationType;
-
-    public Locations(int id, String name, double latitude, double longitude, LocationType locationType) {
-        this.id = id;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.locationType = locationType;
-    }
-
-    public Locations(String name, double latitude, double longitude, LocationType locationType) {
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.locationType = locationType;
-    }
-
-    public Locations() {
-    }
 
     @Override
     public String toString() {
