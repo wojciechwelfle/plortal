@@ -10,8 +10,10 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 import AdminPanelPage from "../pages/AdminPanelPage";
 import SettingsPage from "../pages/SettingsPage";
+import  Calendar  from "../components/plan/components/Calendar/Calendar";
 
 import "../App.css";
+
 
 
 const PageRouter = () => {
@@ -86,7 +88,19 @@ const PageRouter = () => {
                             />
                         }
                     />
+                    <Route
+                        exact
+                        path="/plan"
+                        element={
+                            <ProtectedRoute
+                                path="/plan"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={Calendar}
+                            />
+                        }
+                    />
                 </Routes>
+                
             </BrowserRouter>
         </>
     );

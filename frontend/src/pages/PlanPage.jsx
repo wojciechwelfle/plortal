@@ -1,11 +1,13 @@
-import Plan from "../components/plan/Plan";
+import NavigationBar from "../components/navbar/Navbar";
+import Calendar from "../components/plan/components/Calendar/Calendar";
 
 const PlanPage = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return (
+    <>
+      <NavigationBar />
+      <Calendar />
+    </>
+  );
 };
 
 export default PlanPage;

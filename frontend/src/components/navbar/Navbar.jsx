@@ -32,7 +32,7 @@ const NavigationBar = () => {
         className="bg-body-tertiary mb-3"
         id="navibar"
       >
-        <Container fluid>
+        <Container fluid id="bug">
           <Navbar.Brand href="#">PŁortal</Navbar.Brand>
           <Navbar.Toggle
             id="btn"
@@ -111,11 +111,11 @@ const NavigationBar = () => {
                   <li className="nav-item fs-4 my-2 d-grid gap-2">
                     <Button
                       className={`navibutton ${
-                        window.location.pathname === "/school-schedule"
+                        window.location.pathname === "/plan"
                           ? "hovered"
                           : null
                       }`}
-                      href="#"
+                      href="/plan"
                       variant="null"
                       aria-current="page"
                     >
