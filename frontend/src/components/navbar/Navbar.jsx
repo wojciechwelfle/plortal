@@ -9,6 +9,19 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const NavigationBar = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(true);
+
+  const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const [fontSize, setFontSize] = useState(savedFontSize);
+  const [theme, setTheme] = useState(savedTheme);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+    document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
+    document.documentElement.classList.add(`${theme}-theme`);
+  }, [fontSize, theme]);
+
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
