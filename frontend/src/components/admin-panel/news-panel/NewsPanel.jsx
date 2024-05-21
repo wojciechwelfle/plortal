@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import AdminNav from "../AdminNav";
 import PanelHeader from "../PanelHeader";
-import { getLoginRequest, logoutUser } from "../../../routes/userAuthorization";
-import { Button, Table } from "react-bootstrap";
-import { getAllNews, deleteNews } from "../../../services/newsService";
+import AddNewsForm from "./AddNewsForm";
+import ModificationNewsPanel from "./ModificationNewsPanel";
+import { logoutUser } from "../../../routes/userAuthorization";
+import { getAllNews } from "../../../services/newsService";
 
 const NewsPanel = () => {
-    const fields = ["NewsId", "Date", "Title", "Actions"];
-
     const [news, setNews] = useState([]);
 
     const getNews = () => {
@@ -20,63 +20,24 @@ const NewsPanel = () => {
             });
     };
 
-    const deleteNewsById = (id) => {
-        const loginRequest = getLoginRequest();
-        console.log(loginRequest);
-
-        deleteNews(id, loginRequest)
-            .then((res) => {
-                console.log(res);
-                setNews(news.filter((newsItem) => newsItem.id !== id));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    useEffect(() => {
-        getNews();
-    }, []);
-
-    const tableContainerStyle = {
-        overflowX: "auto",
-        whiteSpace: "nowrap",
-    };
+    const navItems = [
+        {
+            eventKey: "first",
+            text: "Dodaj Newsa",
+            component: <AddNewsForm getNews={getNews}/>,
+        },
+        {
+            eventKey: "second",
+            text: "Edytuj Newsa",
+            component: <ModificationNewsPanel news={news} setNews={setNews} getNews={getNews}/>,
+        },
+    ];
 
     return (
         <>
             <PanelHeader>Panel zarządzania aktualnościami</PanelHeader>
-            <div style={tableContainerStyle}>
-                <Table striped responsive>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            {fields.map((field, index) => (
-                                <th key={index}>{field}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {news.map((newsItem, index) => (
-                            <tr key={index}>
-                                <td>{index}</td>
-                                <td>{newsItem.id}</td>
-                                <td>{newsItem.modificationDate}</td>
-                                <td>{newsItem.title}</td>
-                                <td>
-                                    <Button
-                                        onClick={() =>
-                                            deleteNewsById(newsItem.id)
-                                        }
-                                        variant="danger"
-                                    >
-                                        Delete
-                                    </Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
+            <div style={{padding: "20px"}}>
+                <AdminNav navItems={navItems} />
             </div>
         </>
     );
