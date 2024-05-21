@@ -29,7 +29,6 @@ body{
 }
 
 .btn {
-    background-color: var(--main-color);
     margin-top: 10px;
     width: 100%;
 }

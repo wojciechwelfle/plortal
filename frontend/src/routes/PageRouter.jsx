@@ -8,10 +8,11 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
+import AdminPanelPage from "../pages/AdminPanelPage";
+import SettingsPage from "../pages/SettingsPage";
 
 import "../App.css";
-import { Card } from "react-bootstrap";
-import LogoutButton from "../components/LogoutButton";
+
 
 const PageRouter = () => {
     return (
@@ -71,13 +72,17 @@ const PageRouter = () => {
                             <ProtectedRoute
                                 path="/admin"
                                 requiredRoles={["ADMIN"]}
-                                element={() => (
-                                    <>
-                                        <Card>
-                                            <Card.Body>ADMIN <LogoutButton/></Card.Body>
-                                        </Card>
-                                    </>
-                                )}
+                                element={AdminPanelPage}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/settings"
+                        element={
+                            <ProtectedRoute
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={SettingsPage}
                             />
                         }
                     />

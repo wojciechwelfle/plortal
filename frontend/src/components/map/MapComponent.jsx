@@ -5,7 +5,7 @@ import "../map/MapComponent.css"
 import { Icon } from "leaflet";
 import LocationSearcher from "./LocationSearcher";
 
-const position = [51.748310, 19.450480];
+const position = [51.74831, 19.45048];
 
 const pinIcon = new Icon({
     iconUrl: "https://cdn-icons-png.freepik.com/256/399/399396.png?semt=ais_hybrid",
@@ -23,12 +23,16 @@ const MapComponent = () => {
     const [fontSize, setFontSize] = useState(savedFontSize);
     const [theme, setTheme] = useState(savedTheme);
 
-    useEffect(() => {
-        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
-
+  useEffect(() => {
+    document.documentElement.style.setProperty("--font-size", `${fontSize}px`);
+    document.documentElement.classList.remove(
+      "light-theme",
+      "dark-theme",
+      "blue-theme",
+      "purple-theme"
+    );
+    document.documentElement.classList.add(`${theme}-theme`);
+  }, [fontSize, theme]);
 
     return (
         <MapWrapper>

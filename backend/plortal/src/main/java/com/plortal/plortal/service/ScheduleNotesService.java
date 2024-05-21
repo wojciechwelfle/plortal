@@ -11,5 +11,9 @@ public interface ScheduleNotesService {
 
     List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail);
 
+    List<ScheduleNotes> findByUserEmailAll(String userEmail);
+
+    void deleteNoteById(Long id);
+
     boolean isNoteValid(String description);
 }

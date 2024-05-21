@@ -1,5 +1,7 @@
 package com.plortal.plortal.dto;
 
+import java.util.Objects;
+
 public record NewsDTO(
         int id,
         String title,
@@ -7,4 +9,10 @@ public record NewsDTO(
         String description,
         String modificationDate
 ) {
+    public NewsDTO {
+        title = Objects.requireNonNullElse(title, "");
+        photoUrl = Objects.requireNonNullElse(photoUrl, "");
+        description = Objects.requireNonNullElse(description, "");
+        modificationDate = Objects.requireNonNullElse(modificationDate, "");
+    }
 }
