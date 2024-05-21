@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import Card from "react-bootstrap/Card";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import LogoutButton from "../LogoutButton";
 import TextField from "@mui/material/TextField";
 import Button from "react-bootstrap/Button";
 import "./Schedule.css";
@@ -115,9 +113,6 @@ const Schedule = () => {
 
     return (
         <>
-            <Card body>
-                Terminarz <LogoutButton />{" "}
-            </Card>
             <div className="container">
                 <div className="top-columns">
                     <div className="left-column">
