@@ -37,6 +37,19 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         }
     }
 
+    @Override
+    public List<ScheduleNotes> findByUserEmailAll(String userEmail) {
+        System.out.println("Finding notes for email: " + userEmail);
+        List<ScheduleNotes> notes = scheduleNotesRepository.findByUserEmail(userEmail);
+        System.out.println("Found notes: " + notes);
+        return notes;
+    }
+
+    @Override
+    public void deleteNoteById(Long id) {
+        scheduleNotesRepository.deleteById(id);
+    }
+
     public boolean isNoteValid(String description) {
         return description != null && description.length() <= 50;
     }

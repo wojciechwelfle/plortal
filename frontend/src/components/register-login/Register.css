@@ -9,9 +9,10 @@ body{
     align-items: center;
     justify-content: center;
     margin: 22vh auto;
+    min-width: 300px;
     max-width: 500px;
-    overflow: hidden;
-    max-height: 800px;
+    max-height: 1200px;
+    height: 100%;
 }
 
 .register-header {
@@ -20,11 +21,11 @@ body{
 
 .group {
     margin-top: 20px;
-    width: 500px;
+    width: 350px;
 }
 
 .group input, .group label {
-    width: 500px;
+    width: 350px;
 }
 
 .btn {
@@ -55,6 +56,8 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-top: 20px;
 }
 
 @media (max-width: 480px) {

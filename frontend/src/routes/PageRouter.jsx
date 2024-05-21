@@ -8,6 +8,8 @@ import SchedulePage from "../pages/SchedulePage";
 import NewsPage from "../pages/NewsPage";
 import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
+import AdminPanelPage from "../pages/AdminPanelPage";
+import SettingsPage from "../pages/SettingsPage";
 
 import "../App.css";
 
@@ -25,6 +27,7 @@ const PageRouter = () => {
                         element={
                             <ProtectedRoute
                                 path="/schedule"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
                                 element={SchedulePage}
                             />
                         }
@@ -33,21 +36,54 @@ const PageRouter = () => {
                         exact
                         path="/news"
                         element={
-                            <ProtectedRoute path="/news" element={NewsPage} />
+                            <ProtectedRoute
+                                path="/news"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={NewsPage}
+                            />
                         }
                     />
                     <Route
                         exact
                         path="/map"
                         element={
-                            <ProtectedRoute path="/map" element={MapPage} />
-                        } 
+                            <ProtectedRoute
+                                path="/map"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={MapPage}
+                            />
+                        }
                     />
                     <Route
                         exact
                         path="/facility"
                         element={
-                            <ProtectedRoute path="/facility" element={Facility} />
+                            <ProtectedRoute
+                                path="/facility"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={Facility}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/admin"
+                        element={
+                            <ProtectedRoute
+                                path="/admin"
+                                requiredRoles={["ADMIN"]}
+                                element={AdminPanelPage}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/settings"
+                        element={
+                            <ProtectedRoute
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={SettingsPage}
+                            />
                         }
                     />
                 </Routes>

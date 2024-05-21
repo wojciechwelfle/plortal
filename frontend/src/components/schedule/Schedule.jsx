@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import Card from "react-bootstrap/Card";
 import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import LogoutButton from "../LogoutButton";
 import TextField from "@mui/material/TextField";
 import Button from "react-bootstrap/Button";
 import "./Schedule.css";
@@ -32,7 +30,7 @@ const Schedule = () => {
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
 
@@ -115,9 +113,6 @@ const Schedule = () => {
 
     return (
         <>
-            <Card body>
-                Terminarz <LogoutButton />{" "}
-            </Card>
             <div className="container">
                 <div className="top-columns">
                     <div className="left-column">

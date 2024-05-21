@@ -129,8 +129,7 @@ html, body {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
-    min-width: 250px;
-    width: 50vh;
+    min-width: 320px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -221,7 +220,7 @@ html, body {
 .MuiPickersDay-root.Mui-selected {
     border: 3px solid var(--main-color) !important;
     background-color: var(--background-color) !important;
-    color: var(--white) !important;
+    color: var(--text-color) !important;
 }
 
 .MuiPickersArrowSwitcher-button {
@@ -241,6 +240,5 @@ html, body {
 }
 
 .card-body {
-    background-color: var(--background-color);
     color: var(--text-color);
 }

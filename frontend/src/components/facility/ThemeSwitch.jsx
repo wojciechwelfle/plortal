@@ -59,7 +59,7 @@ function ThemeSwitch({ theme, onChange }) {
                     <MaterialUISwitch
                         sx={{ m: 1 }}
                         checked={theme !== 'light'}
-                        onChange={() => onChange(theme === 'light' ? 'dark' : theme === 'dark' ? 'blue' : 'light')}
+                        onChange={() => onChange(theme === 'light' ? 'dark' : theme === 'dark' ? 'blue' : theme === 'blue' ? 'purple' : 'light')}
                     />
                 }
                 label=""

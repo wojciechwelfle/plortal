@@ -1,0 +1,30 @@
+@import "../../GlobalColors.css";
+
+.panel-container {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.custom-nav-item {
+    background-color: #f8f9fa;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.custom-nav-item .nav-link {
+    color: black;
+}
+
+.custom-nav-item .nav-link:hover {
+    background-color: var(--second-main-color);
+    color: #ffffff;
+}
+
+.custom-nav-item .nav-link.active {
+    background-color: var(--main-color);
+    color: #ffffff;
+}
+
+.nav-link {
+    font-size: var(--font-size);
+}
