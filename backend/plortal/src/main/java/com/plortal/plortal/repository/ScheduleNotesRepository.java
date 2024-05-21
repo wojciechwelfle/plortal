@@ -12,4 +12,7 @@ import java.time.LocalDate;
 public interface ScheduleNotesRepository extends JpaRepository<ScheduleNotes, Long> {
 
     List<ScheduleNotes> findByDateAndUserEmail(LocalDate date, String userEmail);
+
+    List<ScheduleNotes> findByUserEmail(String userEmail);
+
 }
