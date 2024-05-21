@@ -12,5 +12,7 @@ public interface UserService {
 
     void authenticateUser(String email, String password);
 
+    void authenticateAdmin(String email, String password);
+
     Optional<User> findUserByEmail(String email);
 }

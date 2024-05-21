@@ -1,0 +1,29 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn {
+    width: 100%;
+    max-width: 350px;
+}
+
+form {
+    width: 100%;
+    max-width: 350px;
+}
