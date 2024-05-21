@@ -34,6 +34,20 @@ const DeleteNote = () => {
     const [notes, setNotes] = useState([]);
     const userMail = localStorage.getItem('email');
 
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const [fontSize, setFontSize] = useState(savedFontSize);
+    const [theme, setTheme] = useState(savedTheme);
+
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
+        document.documentElement.classList.add(`${theme}-theme`);
+    }, [fontSize, theme]);
+
+
+
     useEffect(() => {
         if (userMail) {
             fetchAllNotes(userMail);
@@ -61,7 +75,7 @@ const DeleteNote = () => {
 
     return (
         <div className="delete-note-container">
-            <h3>Usuń notatkę</h3>
+            <h3 style={{ fontSize: `${fontSize+5}px` }}>Usuń notatkę</h3>
             <div className="notes-list">
                 {notes.length > 0 ? (
                     <ul>

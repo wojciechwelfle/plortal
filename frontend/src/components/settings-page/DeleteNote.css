@@ -5,16 +5,16 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--text-color);
     border-radius: 10px;
-    background-color: var(--white);
+    background-color: var(--background-color);
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .delete-note-container h3, .delete-note-container h4 {
-    color: var(--main-color);
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -44,7 +44,7 @@
 
 .delete-note-container form button {
     background-color: var(--main-color);
-    color: white;
+    color: var(--background-color);
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -62,9 +62,10 @@
 }
 
 .notes-list li {
-    background-color: white;
-    border: 1px solid var(--main-color);
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
+    color: var(--text-color);
 }
