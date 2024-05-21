@@ -12,6 +12,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "bootstrap-icons": "^1.11.3",
     "dayjs": "^1.11.10",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
