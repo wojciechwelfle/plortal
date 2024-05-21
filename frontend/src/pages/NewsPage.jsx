@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import News from "../components/news/News";
 
 import "../components/news/News.css";
-import NewsHeader from "../components/news/NewsHeader";
 import { getAllNews } from "../services/newsService";
 import NavigationBar from "../components/navbar/Navbar";
 

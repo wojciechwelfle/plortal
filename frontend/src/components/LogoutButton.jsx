@@ -13,6 +13,7 @@ const LogoutButton = () => {
                         className="Btn"
                         type="submit"
                         onClick={logoutUser}
+                        style={{backgroundColor: "var(--main-color)"}}
                     >
                         Logout
                     </Button>

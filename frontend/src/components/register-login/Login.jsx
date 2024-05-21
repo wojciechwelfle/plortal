@@ -105,7 +105,7 @@ const Login = () => {
                     </div>
 
                     <div className="d-grid gap-2">
-                        <Button variant="dark" className="btn" type="submit">
+                        <Button variant="dark" className="btn" type="submit" style={{backgroundColor: "var(--main-color)"}}>
                             Login
                         </Button>
                     </div>
