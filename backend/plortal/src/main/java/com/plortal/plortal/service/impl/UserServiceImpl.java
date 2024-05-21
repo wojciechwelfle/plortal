@@ -54,6 +54,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void authenticateAdmin(String email, String password) {
+        authenticateUser(email, password);
+        Optional<User> user = userRepository.findUserByEmail(email);
+        if(user.isEmpty() || user.get().getRole() != UserRole.ADMIN) {
+            throw new UserIsNotAdminException();
+        }
+    }
+
+    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }

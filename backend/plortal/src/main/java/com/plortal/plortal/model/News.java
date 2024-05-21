@@ -22,7 +22,7 @@ public class News {
     private String title;
 
     @NonNull
-    @Column(name = "photoUrl", length = 400)
+    @Column(name = "photoUrl", length = 1000)
     private String photoUrl;
 
     @NonNull

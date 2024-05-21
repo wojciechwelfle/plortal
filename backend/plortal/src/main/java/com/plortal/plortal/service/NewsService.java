@@ -8,4 +8,6 @@ public interface NewsService {
     void addNews(NewsDTO newsDto);
 
     List<NewsDTO> getAllNews();
+
+    void deleteNews(Long id);
 }
