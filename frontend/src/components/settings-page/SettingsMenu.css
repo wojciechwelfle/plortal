@@ -130,13 +130,8 @@ h2 {
 }
 
 form {
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-}
-
-form div {
-    margin-bottom: 10px;
 }
 
 .notes-list {
