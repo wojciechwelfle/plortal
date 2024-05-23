@@ -4,7 +4,7 @@
   max-width: 250px;
 }
 .offcanvas-backdrop {
-  background-color: rgba(0, 0, 0, 0) !important;
+  background-color: var(--background-color);
   max-width: 250px;
 }
 #offcanvasNavbar-expand-false {
@@ -12,13 +12,15 @@
 }
 .offcanvas {
   max-width: 250px;
+  background-color: var(--background-color);
+  color : var(--text-color);
 }
 
 .navibutton {
-  color: var(--main-color) !important;
-  background-color: var(--white);
+  color: var(--text-color);
+  background-color: var(--background-color);
   font-weight: 600;
-  border-color: var(--white) !important;
+  border-color: var(--text-color);
 }
 
 #menulabel {
@@ -29,6 +31,11 @@
 
 .navibutton:hover {
   background-color: var(--button-gray);
+  color : var(--black);
+}
+
+.container-fluid{
+  background-color: var(--background-color);
 }
 
 .nav.nav-pills {
@@ -36,20 +43,45 @@
 }
 
 .nav-item {
-  color: var(--main-color) !important;
+  color: var(--text-color);
   font-weight: 700;
   font-size: var(--font-size);
 }
 
 .navibutton.hovered {
-  background-color: var(--button-gray);
-  color: var(--main-color) !important;
+  background-color: var(--main-color);
+  color: var(--white);
+  border-color: var(--text-color);
   text-decoration: none;
+}
+
+body {
+  padding-right: 0 !important;
 }
 
 #btn {
   position: absolute;
   left: 5em;
+  border-color : var(--background-color);
+  color : var(--text-color);
+}
+
+.btn-close {
+  color: var(--main-color);
+  background-color: transparent;
+  border: none;
+}
+
+.btn-close:hover {
+  color: var(--main-color);
+}
+
+.navbar-brand {
+  color: var(--main-color);
+}
+
+.navbar-brand:hover {
+  color: var(--text-color);
 }
 
 #bug{
@@ -60,9 +92,9 @@
 }
 
 #navibar {
-  padding: 0%;
-  margin: 0%;
-  background-color: var(--example-background);
+  padding: 0;
+  margin: 0;
+  background-color: var(--text-color);
 }
 
 body.modal-open {

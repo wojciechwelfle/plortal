@@ -1,0 +1,71 @@
+@import "../../GlobalColors.css";
+
+.delete-note-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    background-color: var(--background-color);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.delete-note-container h3, .delete-note-container h4 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.delete-note-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.delete-note-container form div {
+    margin-bottom: 15px;
+}
+
+.delete-note-container form label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.delete-note-container form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--main-color);
+    box-sizing: border-box;
+}
+
+.delete-note-container form button {
+    background-color: var(--main-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-note-container form button:hover {
+    background-color: var(--gray);
+}
+
+.notes-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notes-list li {
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}

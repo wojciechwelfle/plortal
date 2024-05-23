@@ -48,4 +48,24 @@ public class ScheduleNotesController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
+
+    @GetMapping("/api/v1/schedule-notes/notes")
+    public ResponseEntity<?> findByUserEmail(@RequestParam(required = false) String email) {
+        if (email == null || email.isEmpty()) {
+            return ResponseEntity.badRequest().body("Email parameter is required");
+        }
+        List<ScheduleNotes> notes = scheduleNotesService.findByUserEmailAll(email);
+        return new ResponseEntity<>(notes, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/v1/schedule-notes/{id}")
+    public ResponseEntity<Void> deleteScheduleNote(@PathVariable Long id) {
+        try {
+            scheduleNotesService.deleteNoteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

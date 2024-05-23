@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     height: 50vh;
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
 .menu button:hover {
@@ -17,8 +19,9 @@
     background-color: var(--main-color);
     height: 70px;
     border-radius: 10px;
-    margin-bottom: 20px;
     padding: 10px;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .navbar-menu {
@@ -29,7 +32,7 @@
 
 .navbar-button {
     background-color: var(--main-color);
-    color: white;
+    color: var(--text-color);
     border: none;
     width: 48%;
     cursor: pointer;
@@ -44,23 +47,33 @@
     background-color: var(--gray);
 }
 
-
 @media (max-width: 768px) {
     .menu {
         flex-direction: column;
         align-items: center;
         min-height: 150px;
         height: auto;
+        width: 80%;
+        padding-left: 0;
+        padding-top: 10px;
     }
 
     .menu button {
-        width: 80%;
+        width: 10%;
         margin: 10px 0;
+    }
+
+
+    h2 {
+        width: 100%;
+        margin-left: 10px;
     }
 
     .custom-navbar {
         flex-direction: column;
         align-items: center;
+        width: 80%;
+        height: 120px;
     }
 
     .navbar-menu {
@@ -69,7 +82,7 @@
     }
 
     .navbar-button {
-        width: 80%;
+        width: 90%;
         margin: 10px 0;
     }
 
@@ -79,12 +92,97 @@
     }
 
     .menu button {
-        width: 80%;
-        margin: 5px 0;
+        width: 25px;
+        margin: 5px;
+    }
+
+    .delete-button {
+        right: 10px;
+        top: 10px;
+        width: 50px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .notes-list {
+        width: 100%;
     }
 }
 
-h2{
-    color: var(--main-color);
-    padding: 20px;
+h2 {
+    color: var(--text-color);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.navbar-button:focus,
+.navbar-button:active,
+.navbar-button:visited {
+    color: var(--white);
+    outline: none;
+}
+
+.delete-note-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+.notes-list {
+    text-align: center;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-left: 8px;
+}
+
+.notes-list h4 {
+    text-align: center;
+}
+
+.notes-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notes-list li {
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.delete-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: var(--main-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 40%;
+    width: 32px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background: var(--second-main-color);
 }

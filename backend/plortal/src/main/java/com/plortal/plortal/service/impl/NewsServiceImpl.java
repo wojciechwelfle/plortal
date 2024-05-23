@@ -36,5 +36,10 @@ public class NewsServiceImpl implements NewsService {
                 .map(newsDtoMapper)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteNews(Long id) {
+        newsRepository.deleteById(id);
+    }
 }
 
