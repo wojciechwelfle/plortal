@@ -6,9 +6,13 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import LogoutButton from "../LogoutButton";
 import "./Navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { userRole } from "../../routes/userAuthorization";
 
 const NavigationBar = () => {
     const [showOffcanvas, setShowOffcanvas] = useState(true);
+
+    const isUserAdmin = userRole() === "ADMIN";
+
     const offcanvasItems = [
         {
             pathname: "/news",
@@ -138,6 +142,29 @@ const NavigationBar = () => {
                                             </li>
                                         );
                                     })}
+
+                                    {isUserAdmin && (
+                                        <li className="nav-item fs-4 my-2 d-grid gap-2">
+                                            <Button
+                                                className={`navibutton ${
+                                                    window.location.pathname ===
+                                                    "admin"
+                                                        ? "hovered"
+                                                        : null
+                                                }`}
+                                                href="admin"
+                                                variant="null"
+                                                aria-current="page"
+                                            >
+                                                <i
+                                                    className="bi bi-person-fill-lock"
+                                                ></i>
+                                                <span className="ms-2 d-sm-inline">
+                                                    Admin
+                                                </span>
+                                            </Button>
+                                        </li>
+                                    )}
                                 </ul>
                             </div>
                         </Offcanvas.Body>
