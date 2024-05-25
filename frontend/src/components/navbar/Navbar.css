@@ -61,8 +61,8 @@ body {
 
 #btn {
   position: absolute;
-  left: 5em;
-  border-color : var(--background-color);
+  left: 6em;
+  border-color : var(--text-color);
   color : var(--text-color);
 }
 
@@ -93,4 +93,17 @@ body {
 body.modal-open {
   overflow: inherit;
   padding-right: inherit !important;
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logoImg,.logoImg2 {
+  height: 90px;
+  width: 90px;
+  margin: 2px;
 }
