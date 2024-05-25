@@ -1,0 +1,12 @@
+.event {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #7DD3FC;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1.5px;
+    flex-wrap: nowrap;
+  }
