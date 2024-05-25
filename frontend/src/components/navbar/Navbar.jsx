@@ -7,7 +7,6 @@ import LogoutButton from "../LogoutButton";
 import "./Navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { userRole } from "../../routes/userAuthorization";
-import logo from "../../logo2.png";
 
 const NavigationBar = () => {
     const [showOffcanvas, setShowOffcanvas] = useState(true);
@@ -82,9 +81,7 @@ const NavigationBar = () => {
                 id="navibar"
             >
                 <Container fluid>
-                    <Navbar.Brand href="/news">
-                        <img src={logo} alt="Logo" className="logoImg"/>
-                    </Navbar.Brand>
+                    <Navbar.Brand href="#">PŁortal</Navbar.Brand>
                     <Navbar.Toggle
                         id="btn"
                         aria-controls={`offcanvasNavbar-expand-false`}
@@ -100,11 +97,11 @@ const NavigationBar = () => {
                         backdrop={true}
                         scroll={true}
                     >
-                        <Offcanvas.Header closeButton className="offcanvas-header">
+                        <Offcanvas.Header closeButton>
                             <Offcanvas.Title
                                 id={`offcanvasNavbarLabel-expand-false`}
                             >
-                                <img src={logo} alt="Logo" className="logoImg2"/>
+                                PŁortal
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
