@@ -1,69 +1,105 @@
+import { Checkbox, Button } from 'antd';
 import React, { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
+import "./FilterButton.css";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const locations = [
     {
-        nazwa: 'Location 1',
-        position: [52.2296756, 21.0122287] // Example coordinates for Warsaw, Poland
+        name: 'Budynek A1',
+        position: [51.751065, 19.454060]
     },
     {
-        nazwa: 'Location 2',
-        position: [48.856614, 2.3522219] // Example coordinates for Paris, France
+        name: 'Budynek A4',
+        position: [51.750617, 19.455540]
     },
     {
-        nazwa: 'Location 3',
-        position: [40.712776, -74.005974] // Example coordinates for New York, USA
+        name: 'Budynek C6',
+        position: [51.749694, 19.453488]
     },
     {
-        nazwa: 'Location 4',
-        position: [35.689487, 139.691711] // Example coordinates for Tokyo, Japan
+        name: 'Budynek C11',
+        position: [51.750360, 19.454620]
     },
     {
-        nazwa: 'Location 5',
-        position: [-33.868820, 151.209290] // Example coordinates for Sydney, Australia
+        name: 'Budynek D6',
+        position: [51.749100, 19.454180]
     }
 ];
 
-function FilterButton() {
-    const [checkedState, setCheckedState] = useState(
-        new Array(locations.length).fill(false)
-    );
+const FilterButton = ({ selectedLocations, setSelectedLocations }) => {
+    const [checkedState, setCheckedState] = useState(new Array(locations.length).fill(false));
 
-    const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) => 
-            index === position ? !item : item
-        );
-        setCheckedState(updatedCheckedState);
+    const handleOnChange = (index) => {
+        setCheckedState(prevState => {
+            const updatedCheckedState = [...prevState];
+            updatedCheckedState[index] = !updatedCheckedState[index];
+
+            const selected = updatedCheckedState
+                .map((checked, i) => checked ? locations[i] : null)
+                .filter(location => location !== null);
+
+            setSelectedLocations(selected);
+            return updatedCheckedState;
+        });
+    };
+
+    const handleReset = () => {
+        setCheckedState(new Array(locations.length).fill(false));
+        setSelectedLocations([]);
+    };
+
+    const handleSelectAll = () => {
+        setCheckedState(new Array(locations.length).fill(true));
+        setSelectedLocations(locations);
     };
 
     return (
-        <DropdownButton id="dropdown-basic-button" title="Dropdown button" autoClose="outside">
-            <NavDropdown title="Parks" id="nav-dropdown-parks" autoClose="outside">
-                <NavDropdown.Item >Nested Action 1</NavDropdown.Item>
-                <NavDropdown.Item >Nested Action 2</NavDropdown.Item>
-            </NavDropdown>
+        <div className="filter-button">
+            <div className="d-grid gap-2">
+                <Dropdown autoClose="outside" variant="dark">
+                    <Dropdown.Toggle
+                        className="Btn"
+                        variant="dark"
+                        style={{ backgroundColor: "var(--main-color)" }}
+                    >
+                        Filter
+                    </Dropdown.Toggle>
 
-            <NavDropdown title="Restaurants" id="nav-dropdown-restaurants" autoClose="outside">
-                {locations.map((location, index) => (
-                    <NavDropdown.Item key={index}>
-                        <Form.Check 
-                            type="checkbox"
-                            label={`Position: [${location.position[0]}, ${location.position[1]}]`} 
-                            checked={checkedState[index]}
-                            onChange={() => handleOnChange(index)}
-                        />
-                    </NavDropdown.Item>
-                ))}
-            </NavDropdown>
+                    <Dropdown.Menu>
+                        <NavDropdown title="Parks" id="nav-dropdown-parks" autoClose="outside">
+                            <Dropdown.ItemText>Park 1</Dropdown.ItemText>
+                            <Dropdown.ItemText>Park 2</Dropdown.ItemText>
+                        </NavDropdown>
 
-            <NavDropdown title="PŁ Buildings" id="nav-dropdown-buildings" autoClose="outside">
-                <NavDropdown.Item >Nested Action 1</NavDropdown.Item>
-                <NavDropdown.Item >Nested Action 2</NavDropdown.Item>
-            </NavDropdown>
-        </DropdownButton>
+                        <NavDropdown title="Restaurants" id="nav-dropdown-restaurants" autoClose="outside">
+                            <Dropdown.ItemText>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Button onClick={handleReset} variant="dark" size="sm" className="custom-button">Reset all</Button>
+                                    <Button onClick={handleSelectAll} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                </div>
+                            </Dropdown.ItemText>
+                            {locations.map((location, index) => (
+                                <Dropdown.ItemText key={index}>
+                                    <Checkbox checked={checkedState[index]} onChange={() => handleOnChange(index)}>
+                                        {location.name}
+                                    </Checkbox>
+                                </Dropdown.ItemText>
+                            ))}
+                        </NavDropdown>
+
+                        <NavDropdown
+                            title="PŁ Buildings"
+                            id="nav-dropdown-buildings"
+                            autoClose="outside"
+                        >
+                            <Dropdown.ItemText>Budynek 1</Dropdown.ItemText>
+                            <Dropdown.ItemText>Budynek 2</Dropdown.ItemText>
+                        </NavDropdown>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        </div>
     );
 }
 

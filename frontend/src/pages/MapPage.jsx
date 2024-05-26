@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import MapComponent from "../components/map/MapComponent";
-import FilterButton from "../components/map/FilterButton"
 import NavigationBar from "../components/navbar/Navbar";
 
-
 const MapPage = () => {
+  const [selectedLocations, setSelectedLocations] = useState([]);
+
   return (
     <>
-      <NavigationBar />
-      <MapComponent />
-      <FilterButton />
+      <NavigationBar selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />
+      <MapComponent selectedLocations={selectedLocations} />
     </>
   );
 };

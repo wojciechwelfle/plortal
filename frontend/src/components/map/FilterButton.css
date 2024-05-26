@@ -1,0 +1,16 @@
+.filter-button {
+    max-width: 100px;
+    vertical-align: middle;
+    padding-bottom: 0.5em;
+    margin-right: 3em;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.custom-button:hover {
+    border-color: var(--main-color) !important;
+    color: var(--main-color) !important;
+}

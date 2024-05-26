@@ -6,8 +6,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import LogoutButton from "../LogoutButton";
 import "./Navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import FilterButton from "../map/FilterButton";
 
-const NavigationBar = () => {
+const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
     const [showOffcanvas, setShowOffcanvas] = useState(true);
     const offcanvasItems = [
         {
@@ -83,8 +84,10 @@ const NavigationBar = () => {
                         aria-controls={`offcanvasNavbar-expand-false`}
                         onClick={() => setShowOffcanvas(true)}
                     />
-                    <LogoutButton id="logout-btn"></LogoutButton>
-
+                    <div className="nav-buttons-container">
+                        {window.location.pathname === "/map" && <FilterButton id="filter-button" selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />}
+                        <LogoutButton id="logout-btn" />
+                    </div>
                     <Offcanvas
                         show={showOffcanvas}
                         onHide={() => setShowOffcanvas(false)}
@@ -120,10 +123,10 @@ const NavigationBar = () => {
                                                     className={`navibutton ${
                                                         window.location
                                                             .pathname ===
-                                                        item.pathname
+                                                            item.pathname
                                                             ? "hovered"
                                                             : null
-                                                    }`}
+                                                        }`}
                                                     href={item.pathname}
                                                     variant="null"
                                                     aria-current="page"
