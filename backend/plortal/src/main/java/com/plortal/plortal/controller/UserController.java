@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
 import com.plortal.plortal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequestMapping
 @AllArgsConstructor
 @CrossOrigin("http://localhost:3000/")
+@Tag(name = "User")
 public class UserController {
     private final UserService userService;
     ObjectMapper objectMapper;
