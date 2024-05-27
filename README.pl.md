@@ -44,7 +44,8 @@ Kod dla aplikacji PLORTAL jest rozdzielony na foldery: [back-end](https://github
 Do uruchomienia aplikacji wymagana jest instalacja następujących narzędzi:
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [VSC](https://code.visualstudio.com/) 
 - [Java 17 LTS](https://openjdk.org/projects/jdk/17/)
-- [MySql Workbench](https://www.mysql.com/products/workbench/) 
+- [MySql Workbench](https://www.mysql.com/products/workbench/)
+- [MySql Server](https://dev.mysql.com/downloads/mysql/) 
 
 
 ## Jak uruchomić program
@@ -75,6 +76,9 @@ spring.datasource.password={password   } #domyślnie Wojtek12345#
 [NODE JS](https://nodejs.org/en/download)
 
 ### 4. Zainstaluj i uruchom the nmp używająć IntelliJ IDEA lub VSC
+```
+cd frontend
+```
 ```
 npm install --force
 ```
