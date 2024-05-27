@@ -5,8 +5,10 @@ import "./styles.css";
 
 const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
   const [notes, setNotes] = useState([]);
-  const [noteInput, setNoteInput] = useState('');
+  const [noteInput, setNoteInput] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
   const userMail = localStorage.getItem("email");
 
   useEffect(() => {
@@ -15,8 +17,20 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
     }
   }, [selectedDate, userMail]);
 
+  const handleNoteChange = (event) => {
+    setNoteInput(event.target.value);
+  };
+
+  const handleSelectDayChange = (event) => {
+    setSelectedDay(event.target.value);
+  };
+
+  const handleSelectTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+
   const addNote = () => {
-    if (selectedDate && noteInput) {
+    if (selectedDay && selectedTime && noteInput) {
       const dateString = selectedDate.format("YYYY-MM-DD");
       addNoteToData(noteInput, dateString, userMail);
     } else {
@@ -35,7 +49,8 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
       userEmail: userMail,
     };
 
-    axios.post('/api/notes', note)
+    axios
+      .post("/api/notes", note)
       .then((response) => {
         showNotesNotification(
           "success",
@@ -54,7 +69,8 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
   };
 
   const fetchNotesForDate = (dateString, userMail) => {
-    axios.get(`/api/notes?date=${dateString}&userEmail=${userMail}`)
+    axios
+      .get(`/api/notes?date=${dateString}&userEmail=${userMail}`)
       .then((response) => {
         setNotes(response.data);
       })
@@ -70,16 +86,17 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
     const startTime = event.target.eventTime.value;
 
     const [hours, minutes] = startTime.split(":").map(Number);
-    const endTime = `${hours + 1}:${minutes < 10 ? '0' : ''}${minutes}`;
+    const endTime = `${hours + 1}:${minutes < 10 ? "0" : ""}${minutes}`;
 
     const eventDetails = {
       name,
       day,
       startTime,
-      endTime
+      endTime,
     };
 
-    axios.post('/api/events', eventDetails)
+    axios
+      .post("/api/events", eventDetails)
       .then((response) => {
         console.log("Event added successfully");
       })
@@ -99,12 +116,25 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
         <h5>Add event</h5>
         <Form.Group controlId="eventName">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter event name" required />
+          <Form.Control
+            as="textarea"
+            placeholder="Enter event name"
+            value={noteInput}
+            onChange={handleNoteChange}
+            required
+            maxLength="40"
+          />
         </Form.Group>
 
         <Form.Group controlId="eventDay">
           <Form.Label>Day</Form.Label>
-          <Form.Control as="select" required>
+          <Form.Control
+            as="select"
+            value={selectedDay}
+            onChange={handleSelectDayChange}
+            required
+          >
+            <option value="" disabled>Select a day</option>
             {daysOfWeek.map((day) => (
               <option key={day}>{day}</option>
             ))}
@@ -113,7 +143,13 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
 
         <Form.Group controlId="eventTime">
           <Form.Label>Time</Form.Label>
-          <Form.Control as="select" required>
+          <Form.Control
+            as="select"
+            value={selectedTime}
+            onChange={handleSelectTimeChange}
+            required
+          >
+            <option value="" disabled>Select a time</option>
             {hoursOfDay.map((hour) => (
               <option key={hour}>{hour}</option>
             ))}
