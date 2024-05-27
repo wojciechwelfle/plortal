@@ -43,7 +43,8 @@ The code for the PLORTAL app is separated for [back-end](https://github.com/wojc
 The following tools are required to start the application:
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/) / [VSC](https://code.visualstudio.com/) 
 - [Java 17 LTS](https://openjdk.org/projects/jdk/17/)
-- [MySql Workbench](https://www.mysql.com/products/workbench/) 
+- [MySql Workbench](https://www.mysql.com/products/workbench/)
+- [MySql Server](https://dev.mysql.com/downloads/mysql/)
 
 
 ## How to run
@@ -54,12 +55,20 @@ Please clone the repository by https or ssh (below we use the https method).
 git clone https://github.com/wojciechwelfle/plortal.git
 ```
 
-### 2. Run the database
+### 2. Run the database and setup db
 You need a working mysql server to run this application.
 You can use your local server installation from this project.
 
 **Remember:** if you are using your local server instance, change parameters for the database connection.
 Wait until the database server starts completely, it may take a while.
+
+go to backend/plortal/src/main/resources/
+and modify application.properties
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/{name db}
+spring.datasource.username={username}    #default root
+spring.datasource.password={password   } #default Wojtek12345#
+```
 
 ### 3. Install and configure Node js
 
