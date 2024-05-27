@@ -62,6 +62,14 @@ Możesz użyć lokalnej instalacji serwera z tego projektu.
 **Pamiętaj:** jeśli używasz instancji serwera lokalnego, zmień parametry połączenia z bazą danych.
 Poczekaj, aż serwer bazy danych uruchomi się całkowicie, może to chwilę potrwać.
 
+Przejdź do katalogu backend/plortal/src/main/resources/
+i zmodyfikuj application.properties
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/{name db}
+spring.datasource.username={username}    #domyślnie root
+spring.datasource.password={password   } #domyślnie Wojtek12345#
+```
+
 ### 3. Zainstaluj i skonfiguruj NODE JS
 
 [NODE JS](https://nodejs.org/en/download)
