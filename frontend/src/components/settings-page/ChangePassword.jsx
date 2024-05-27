@@ -5,7 +5,7 @@ const ChangePassword = () => {
     return (
         <div className="change-password-container">
             <h3>Zmień hasło</h3>
-            <form>
+            <form style={{marginBottom: "20px"}}>
                 <div>
                     <label>Aktualne hasło:</label>
                     <input type="password" name="current-password" />

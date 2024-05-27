@@ -7,6 +7,7 @@ import com.plortal.plortal.exception.UserIsNotAdminException;
 import com.plortal.plortal.exception.UserNotExistException;
 import com.plortal.plortal.service.NewsService;
 import com.plortal.plortal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping
 @CrossOrigin("http://localhost:3000/")
+@Tag(name = "News")
 public class NewsController {
     private final NewsService newsService;
 
@@ -41,8 +43,6 @@ public class NewsController {
 
     @DeleteMapping("/api/v1/news/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id, @RequestBody LoginRequest loginRequest) {
-        System.out.println("Delete");
-        System.out.println(loginRequest);
         try {
             userService.authenticateAdmin(loginRequest.email(), loginRequest.password());
         } catch (UserNotExistException | IncorrectPasswordException e) {

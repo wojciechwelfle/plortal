@@ -6,9 +6,15 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import LogoutButton from "../LogoutButton";
 import "./Navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import FilterButton from "../map/FilterButton";
+import { userRole } from "../../routes/userAuthorization";
+import logo from "../../logo2.png";
 
-const NavigationBar = () => {
+const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
     const [showOffcanvas, setShowOffcanvas] = useState(true);
+
+    const isUserAdmin = userRole() === "ADMIN";
+
     const offcanvasItems = [
         {
             pathname: "/news",
@@ -77,14 +83,18 @@ const NavigationBar = () => {
                 id="navibar"
             >
                 <Container fluid>
-                    <Navbar.Brand href="#">PŁortal</Navbar.Brand>
+                    <Navbar.Brand href="/news">
+                        <img src={logo} alt="Logo" className="logoImg"/>
+                    </Navbar.Brand>
                     <Navbar.Toggle
                         id="btn"
                         aria-controls={`offcanvasNavbar-expand-false`}
                         onClick={() => setShowOffcanvas(true)}
                     />
-                    <LogoutButton id="logout-btn"></LogoutButton>
-
+                    <div className="nav-buttons-container">
+                        {window.location.pathname === "/map" && <FilterButton id="filter-button" selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />}
+                        <LogoutButton id="logout-btn" />
+                    </div>
                     <Offcanvas
                         show={showOffcanvas}
                         onHide={() => setShowOffcanvas(false)}
@@ -93,11 +103,11 @@ const NavigationBar = () => {
                         backdrop={true}
                         scroll={true}
                     >
-                        <Offcanvas.Header closeButton>
+                        <Offcanvas.Header closeButton className="offcanvas-header">
                             <Offcanvas.Title
                                 id={`offcanvasNavbarLabel-expand-false`}
                             >
-                                PŁortal
+                                <img src={logo} alt="Logo" className="logoImg2"/>
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
@@ -120,10 +130,10 @@ const NavigationBar = () => {
                                                     className={`navibutton ${
                                                         window.location
                                                             .pathname ===
-                                                        item.pathname
+                                                            item.pathname
                                                             ? "hovered"
                                                             : null
-                                                    }`}
+                                                        }`}
                                                     href={item.pathname}
                                                     variant="null"
                                                     aria-current="page"
@@ -138,6 +148,29 @@ const NavigationBar = () => {
                                             </li>
                                         );
                                     })}
+
+                                    {isUserAdmin && (
+                                        <li className="nav-item fs-4 my-2 d-grid gap-2">
+                                            <Button
+                                                className={`navibutton ${
+                                                    window.location.pathname ===
+                                                    "admin"
+                                                        ? "hovered"
+                                                        : null
+                                                }`}
+                                                href="admin"
+                                                variant="null"
+                                                aria-current="page"
+                                            >
+                                                <i
+                                                    className="bi bi-person-fill-lock"
+                                                ></i>
+                                                <span className="ms-2 d-sm-inline">
+                                                    Admin
+                                                </span>
+                                            </Button>
+                                        </li>
+                                    )}
                                 </ul>
                             </div>
                         </Offcanvas.Body>

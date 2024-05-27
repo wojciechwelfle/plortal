@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { getLoginRequest, logoutUser } from "../../../routes/userAuthorization";
+import { getLoginRequest } from "../../../routes/userAuthorization";
 import { Button, Table } from "react-bootstrap";
-import { getAllNews, deleteNews } from "../../../services/newsService";
+import { deleteNews } from "../../../services/newsService";
 
 const ModificationNewsPanel = ({news, setNews, getNews}) => {
     const fields = ["NewsId", "Date", "Title", "Actions"];
@@ -20,9 +19,6 @@ const ModificationNewsPanel = ({news, setNews, getNews}) => {
             });
     };
 
-    useEffect(() => {
-        getNews();
-    }, []);
 
     const tableContainerStyle = {
         overflowX: "auto",
