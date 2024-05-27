@@ -43,8 +43,6 @@ public class NewsController {
 
     @DeleteMapping("/api/v1/news/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id, @RequestBody LoginRequest loginRequest) {
-        System.out.println("Delete");
-        System.out.println(loginRequest);
         try {
             userService.authenticateAdmin(loginRequest.email(), loginRequest.password());
         } catch (UserNotExistException | IncorrectPasswordException e) {

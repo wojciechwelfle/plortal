@@ -15,4 +15,6 @@ public interface UserService {
     void authenticateAdmin(String email, String password);
 
     Optional<User> findUserByEmail(String email);
+
+    void deleteUser(Long id);
 }

@@ -2,6 +2,7 @@ package com.plortal.plortal.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.plortal.plortal.dto.LoginRequest;
 import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
 import com.plortal.plortal.service.UserService;
@@ -28,6 +29,18 @@ public class UserController {
         return ResponseEntity.ok(objectMapper.writeValueAsString(users));
     }
 
+    @PostMapping("api/v1/users")
+    public ResponseEntity<?> getUsers(@RequestBody LoginRequest loginRequest) throws JsonProcessingException {
+        try {
+            userService.authenticateUser(loginRequest.email(), loginRequest.password());
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } catch (IncorrectPasswordException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(userService.getUsers());
+    }
+
     @PostMapping("api/v1/users/register")
     public ResponseEntity<?> registerStudent(@RequestBody User user) {
         try {
@@ -43,14 +56,33 @@ public class UserController {
     }
 
     @PostMapping("api/v1/users/login")
-    public ResponseEntity<?> loginUser(@RequestBody User user) {
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
         try {
-            userService.authenticateUser(user.getEmail(), user.getPassword());
+            userService.authenticateUser(loginRequest.email(), loginRequest.password());
         } catch (UserNotExistException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } catch (IncorrectPasswordException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok(userService.findUserByEmail(user.getEmail()));
+        return ResponseEntity.ok(userService.findUserByEmail(loginRequest.email()));
+    }
+
+    @DeleteMapping("api/v1/users/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id, @RequestBody LoginRequest loginRequest) {
+        System.out.println(loginRequest);
+        try {
+            userService.authenticateAdmin(loginRequest.email(), loginRequest.password());
+        } catch (UserNotExistException | IncorrectPasswordException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized access");
+        } catch (UserIsNotAdminException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User is not an admin");
+        }
+
+        try {
+            userService.deleteUser(id);
+            return ResponseEntity.ok("User id=" + id + " has been deleted!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
     }
 }
