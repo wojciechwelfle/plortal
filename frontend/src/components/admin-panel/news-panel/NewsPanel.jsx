@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminNav from "../AdminNav";
 import PanelHeader from "../PanelHeader";
 import AddNewsForm from "./AddNewsForm";
@@ -19,6 +19,10 @@ const NewsPanel = () => {
                 logoutUser();
             });
     };
+
+    useEffect(() => {
+        getNews();
+    }, []);
 
     const navItems = [
         {

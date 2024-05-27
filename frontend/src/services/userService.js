@@ -6,3 +6,6 @@ export const registerUser = (user) => axios.post(REST_API_URL + '/register', use
 
 export const loginUser = (user) => axios.post(REST_API_URL + '/login', user);
 
+export const getUsers = (loginRequest) => axios.post(REST_API_URL, loginRequest);
+
+export const deleteUserById = (id, loginRequest) => axios.delete(`${REST_API_URL}/${id}`, { data: loginRequest });

@@ -65,7 +65,7 @@ body {
 #btn {
   position: absolute;
   left: 5em;
-  border-color: var(--background-color);
+  border-color: var(--text-color);
   color: var(--text-color);
 }
 
@@ -101,4 +101,17 @@ body.modal-open {
 .nav-buttons-container {
   display: flex;
   align-items: center;
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logoImg,.logoImg2 {
+  height: 90px;
+  width: 90px;
+  margin: 3px;
 }
