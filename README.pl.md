@@ -68,7 +68,7 @@ i zmodyfikuj application.properties
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/{name db}
 spring.datasource.username={username}    #domyślnie root
-spring.datasource.password={password   } #domyślnie Wojtek12345#
+spring.datasource.password={password}    #domyślnie Wojtek12345#
 ```
 
 ### 3. Zainstaluj i skonfiguruj NODE JS
