@@ -76,6 +76,9 @@ spring.datasource.password={password}    #default Wojtek12345#
 
 ### 4. Install and run the nmp using IntelliJ IDEA OR VSC
 ```
+cd frontend
+```
+```
 npm install --force
 ```
 ```
