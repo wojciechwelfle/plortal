@@ -1,3 +1,4 @@
+@import "../../../../GlobalColors.css";
 .event {
     flex: 1;
     display: flex;

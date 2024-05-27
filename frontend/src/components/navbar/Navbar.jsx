@@ -31,7 +31,7 @@ const NavigationBar = () => {
             icon: "bi bi-file-spreadsheet",
         },
         {
-            pathname: "#",
+            pathname: "/plan",
             title: "Przedmioty",
             icon: "bi bi-book-half",
         },
