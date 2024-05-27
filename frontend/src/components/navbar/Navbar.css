@@ -3,17 +3,20 @@
 #maindiv {
   max-width: 250px;
 }
+
 .offcanvas-backdrop {
   background-color: var(--background-color);
   max-width: 250px;
 }
+
 #offcanvasNavbar-expand-false {
   max-width: 250px;
 }
+
 .offcanvas {
   max-width: 250px;
   background-color: var(--background-color);
-  color : var(--text-color);
+  color: var(--text-color);
 }
 
 .navibutton {
@@ -31,10 +34,10 @@
 
 .navibutton:hover {
   background-color: var(--button-gray);
-  color : var(--black);
+  color: var(--black);
 }
 
-.container-fluid{
+.container-fluid {
   background-color: var(--background-color);
 }
 
@@ -61,9 +64,9 @@ body {
 
 #btn {
   position: absolute;
-  left: 6em;
-  border-color : var(--text-color);
-  color : var(--text-color);
+  left: 5em;
+  border-color: var(--text-color);
+  color: var(--text-color);
 }
 
 .btn-close {
@@ -93,6 +96,11 @@ body {
 body.modal-open {
   overflow: inherit;
   padding-right: inherit !important;
+}
+
+.nav-buttons-container {
+  display: flex;
+  align-items: center;
 }
 
 .offcanvas-header {
