@@ -86,10 +86,20 @@ public class UserController {
         }
     }
 
-    @PostMapping("/api/v1/users/change-password")
-    public ResponseEntity<Void> changePassword(@RequestParam Long userId, @RequestParam String newPassword) {
-        userService.changePassword(userId, newPassword);
-        return ResponseEntity.ok().build();
+    @PostMapping("/api/v1/users/change-password/{userId}")
+    public ResponseEntity<?> changePassword(@PathVariable Long userId, @RequestParam String oldPassword, @RequestParam String newPassword) {
+        try {
+            userService.changePassword(userId, oldPassword, newPassword);
+            return ResponseEntity.ok("Password changed successfully");
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        } catch (IncorrectPasswordException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Old password is incorrect");
+        } catch (PasswordInvalidException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
     }
 
 }
