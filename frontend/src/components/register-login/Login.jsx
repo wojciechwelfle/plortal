@@ -17,12 +17,13 @@ const Login = () => {
         event.preventDefault();
         authorizeWithBackend(
             event.target.email.value,
-            event.target.password.value
+            event.target.password.value,
+            event.target.id.value
         );
     };
 
-    const authorizeWithBackend = (email, password) => {
-        const user = { email: email, password: password };
+    const authorizeWithBackend = (email, password,id) => {
+        const user = { email: email, password: password, id : id };
         loginUser(user)
             .then((response) => {
                 console.log(response.status);
@@ -32,7 +33,8 @@ const Login = () => {
                     "Moving to main page in 3 sec..."
                 );
                 const role = response.data.role;
-                setLoginUser(email, password, role);
+                const id = response.data.id;
+                setLoginUser(email, password, role,id);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);
