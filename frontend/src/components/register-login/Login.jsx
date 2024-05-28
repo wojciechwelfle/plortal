@@ -18,12 +18,11 @@ const Login = () => {
         authorizeWithBackend(
             event.target.email.value,
             event.target.password.value,
-            event.target.id.value
         );
     };
 
-    const authorizeWithBackend = (email, password,id) => {
-        const user = { email: email, password: password, id : id };
+    const authorizeWithBackend = (email, password) => {
+        const user = { email: email, password: password };
         loginUser(user)
             .then((response) => {
                 console.log(response.status);
