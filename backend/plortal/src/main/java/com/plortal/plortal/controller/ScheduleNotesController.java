@@ -53,7 +53,7 @@ public class ScheduleNotesController {
 
     @GetMapping("/api/v1/schedule-notes/notes")
     public ResponseEntity<?> findByUserId(@RequestParam(required = false) Long userId) {
-        if (userId == null || userId < 0) {
+        if (userId == null) {
             return ResponseEntity.badRequest().body("id parameter is required");
         }
         List<ScheduleNotes> notes = scheduleNotesService.findByUserIdAll(userId);
