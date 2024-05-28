@@ -24,6 +24,10 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+    @GetMapping("api/v1/locations")
+    public List<Location> getAllLocations() {
+        return locationService.getAllLocations();
+    }
     @GetMapping("api/v1/locations/parks")
     public List<Location> getParks() {
         return locationService.getLocationsByType(LocationType.PARK);
