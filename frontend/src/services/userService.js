@@ -9,3 +9,7 @@ export const loginUser = (user) => axios.post(REST_API_URL + '/login', user);
 export const getUsers = (loginRequest) => axios.post(REST_API_URL, loginRequest);
 
 export const deleteUserById = (id, loginRequest) => axios.delete(`${REST_API_URL}/${id}`, { data: loginRequest });
+
+export const changePasswordByUserId = (userId, newPassword) => {
+    return axios.post(`${REST_API_URL}/change-password?userId=${userId}&newPassword=${newPassword}`);
+};

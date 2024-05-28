@@ -81,7 +81,6 @@ const DeleteNote = () => {
                     <ul>
                         {notes.map(note => (
                             <li key={note.id}>
-                                <p><b>ID:</b> {note.id}</p>
                                 <p><b>Opis:</b> {note.description}</p>
                                 <p><b>Data:</b> {note.date}</p>
                                 <button

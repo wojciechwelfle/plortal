@@ -85,4 +85,11 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
     }
+
+    @PostMapping("/api/v1/users/change-password")
+    public ResponseEntity<Void> changePassword(@RequestParam Long userId, @RequestParam String newPassword) {
+        userService.changePassword(userId, newPassword);
+        return ResponseEntity.ok().build();
+    }
+
 }
