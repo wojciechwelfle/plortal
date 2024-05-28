@@ -25,6 +25,6 @@ public class ScheduleNotes {
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @Column(name = "userEmail", nullable = false)
-    private String userEmail;
+    @Column(name = "userId", nullable = false)
+    private Long userId;
 }
