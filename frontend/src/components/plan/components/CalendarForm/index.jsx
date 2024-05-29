@@ -3,7 +3,8 @@ import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import "./styles.css";
 
-const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
+const CalendarForm = ({ daysOfWeek, hoursOfDay,event }) => {
+
   const [notes, setNotes] = useState([]);
   const [noteInput, setNoteInput] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
@@ -42,19 +43,19 @@ const CalendarForm = ({ daysOfWeek, hoursOfDay }) => {
     }
   };
 
-  const addNoteToData = (noteInput, dateString, userMail) => {
-    const note = {
+  const addEventToData = (eventInput, dateString, userMail) => {
+    const card = {
       date: dateString,
-      description: noteInput,
+      description: eventInput,
       userEmail: userMail,
     };
 
     axios
-      .post("/api/notes", note)
+      .post("/api/card", card)
       .then((response) => {
         showNotesNotification(
           "success",
-          "Adding note completed! Note is signed to your account"
+          "Adding card completed! Card is signed to your account"
         );
         fetchNotesForDate(dateString, userMail);
         setNoteInput("");

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Event from "../Event";
 import "./styles.css";
 
-const Calendar = () => {
+const Calendar = ({ev}) => {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const hoursOfDay = [
     "8:15",
