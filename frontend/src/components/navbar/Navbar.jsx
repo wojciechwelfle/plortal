@@ -22,8 +22,8 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
             icon: "bi bi-house",
         },
         {
-            pathname: "#",
-            title: "Wykładowcy",
+            pathname: "/profile",
+            title: "Profil Użytkownika",
             icon: "bi bi-person",
         },
         {
