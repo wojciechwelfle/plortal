@@ -1,10 +1,15 @@
 @import "../../GlobalColors.css";
 
+
+
 .filter-button {
     max-width: 100px;
     vertical-align: middle;
     padding-bottom: 0.5em;
     margin-right: 3em;
+}
+.nav-link{
+    color: var(--black) !important;
 }
 
 .ant-checkbox-checked .ant-checkbox-inner {

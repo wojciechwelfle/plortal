@@ -19,10 +19,10 @@ const Schedule = () => {
     const userId = localStorage.getItem("id");
     const NotesNotificationRef = useRef();
 
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 25;
     const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize, setFontSize] = useState(savedFontSize);
-    const [theme, setTheme] = useState(savedTheme);
+    const [fontSize] = useState(savedFontSize);
+    const [theme] = useState(savedTheme);
 
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userId);
