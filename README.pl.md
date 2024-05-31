@@ -5,14 +5,16 @@
    |  __/| | (_) | |  | || (_| | |
    |_|   |_|\___/|_|   \__\__,_|_|
 
+
 ```
 
 [<ins>English</ins>](README.md) - [Polish](README.pl.md)
 
 * [O Projekcie](#o-projekcie)
-* [Początkowe założenia aplikacji](#pocztkowe-zaoenia-aplikacji)
-* [Wymagane aplikacje/narzędzia](#wymagane-aplikacje-narzedzia)
-* [Jak zacząć](#jak-zaczacz)
+* [Początkowe założenia aplikacji](#początkowe-założenia-aplikacji)
+* [Wymagane aplikacje/narzędzia](#wymagane-aplikacjenarzędzia)
+* [Jak uruchomić - backend](#jak-uruchomić---backend)
+* [Jak uruchomić - frontend](#jak-uruchomić---frontend)
     
 ![image](https://github.com/wojciechwelfle/plortal/assets/167070778/80beb792-75b9-4061-9342-ce26d4442a0b)
 
@@ -48,7 +50,7 @@ Do uruchomienia aplikacji wymagana jest instalacja następujących narzędzi:
 - [MySql Server](https://dev.mysql.com/downloads/mysql/) 
 
 
-## Jak uruchomić program
+## Jak uruchomić - backend
 
 ### 1. Klonowanie repozytorium
 Należy sklonować repozytorium backend i frontend przez https lub ssh
@@ -56,26 +58,52 @@ Należy sklonować repozytorium backend i frontend przez https lub ssh
 git clone https://github.com/wojciechwelfle/plortal.git
 ```
 
-### 2. Uruchomić serwer MySQL
-Do uruchomienia tej aplikacji potrzebny jest działający serwer mysql.
-Możesz użyć lokalnej instalacji serwera z tego projektu.
+### 2. Pobierz i skonfiguruj MySQL Server oraz MySQL Workbench
+- [MySql Workbench](https://www.mysql.com/products/workbench/)
+- [MySql Server](https://dev.mysql.com/downloads/mysql/)
 
-**Pamiętaj:** jeśli używasz instancji serwera lokalnego, zmień parametry połączenia z bazą danych.
-Poczekaj, aż serwer bazy danych uruchomi się całkowicie, może to chwilę potrwać.
+Dodaj serwer do MySQL Workbench:
 
-Przejdź do katalogu backend/plortal/src/main/resources/
-i zmodyfikuj application.properties
+1. Otwórz MySQL Workbench.
+2. Kliknij ikonę '+' aby dodać nowy serwer.
+3. Postępuj zgodnie z instrukcjami, aby skonfigurować połączenie z serwerem.
+
+![image](https://github.com/wojciechwelfle/plortal/assets/111795716/733a3e3a-9e85-4845-8835-5fd4390e7b00)
+
+Copy and execute the following query in MySQL Workbench:
 ```
-spring.datasource.url=jdbc:mysql://localhost:3306/{name db}
-spring.datasource.username={username}    #domyślnie root
-spring.datasource.password={password}    #domyślnie Wojtek12345#
+CREATE DATABASE IF NOT EXISTS newdb;
+USE newdb;
+```
+![image](https://github.com/wojciechwelfle/plortal/assets/111795716/8e55bb28-2be4-4a76-a1c9-670adcefddc9)
+
+### 3. Skonfiguruj bazę danych
+
+Otwórz folder plortal/backend/plortal w IntelliJ IDEA.
+
+Przejdź do backend/plortal/src/main/resources/ i zmodyfikuj plik application.properties:
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/{name db}    #default newdb
+spring.datasource.username={username}                          #default root
+spring.datasource.password={password}                          #default Wojtek12345#
 ```
 
-### 3. Zainstaluj i skonfiguruj NODE JS
+### 4. Uruchom projekt
+Teraz możesz uruchomić projekt w IntelliJ IDEA:
 
-[NODE JS](https://nodejs.org/en/download)
+1. Otwórz plik PlortalApplication.
+2. Uruchom PlortalApplication.
+   
+Twój serwer powinien teraz działać.
 
-### 4. Zainstaluj i uruchom the nmp używająć IntelliJ IDEA lub VSC
+---
+## Jak uruchomić - frontend
+
+### 1. Zainstaluj i skonfiguruj NODE JS
+
+[Node.js](https://nodejs.org/en/download)
+
+### 2. Uruchom projekt (frontend)
 ```
 cd frontend
 ```
@@ -85,12 +113,6 @@ npm install --force
 ```
 nmp start
 ```
-### 5. Uruchom projekt
-
-Następnie, uruchom aplikacje używająć IntelliJ IDEA:
-
-Run PlortalApplication
-
 Teraz możesz przejść do http://localhost:3000 w twojej przeglądarce.
 
 ### Development
