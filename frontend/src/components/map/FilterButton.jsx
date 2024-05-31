@@ -1,57 +1,124 @@
 import { Checkbox, Button } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import "./FilterButton.css";
 import Dropdown from 'react-bootstrap/Dropdown';
+import { getRestaurants, getBuildings, getParks } from '../../services/locationService';
+import "./FilterButton.css";
 
-const locations = [
-    {
-        name: 'Budynek A1',
-        position: [51.751065, 19.454060]
-    },
-    {
-        name: 'Budynek A4',
-        position: [51.750617, 19.455540]
-    },
-    {
-        name: 'Budynek C6',
-        position: [51.749694, 19.453488]
-    },
-    {
-        name: 'Budynek C11',
-        position: [51.750360, 19.454620]
-    },
-    {
-        name: 'Budynek D6',
-        position: [51.749100, 19.454180]
-    }
-];
+const FilterButton = ({ selectedLocations, setSelectedRestaurants, setSelectedParks, setSelectedBuildings }) => {
+    const [restaurants, setRestaurants] = useState([]);
+    const [parks, setParks] = useState([]);
+    const [buildings, setBuildings] = useState([]);
+    const [checkedStateRestaurants, setCheckedStateRestaurants] = useState([]);
+    const [checkedStateParks, setCheckedStateParks] = useState([]);
+    const [checkedStateBuildings, setCheckedStateBuildings] = useState([]);
 
-const FilterButton = ({ selectedLocations, setSelectedLocations }) => {
-    const [checkedState, setCheckedState] = useState(new Array(locations.length).fill(false));
+    useEffect(() => {
+        // Fetch locations from the backend
+        const fetchLocations = async () => {
+            try {
+                const responseRestaurants = await getRestaurants();
+                const responseParks = await getParks();
+                const responseBuildings = await getBuildings();
+                const dataRestaurants = responseRestaurants.data.map(location => ({
+                    ...location,
+                    position: [location.latitude, location.longitude]
+                }));
+                const dataParks = responseParks.data.map(location => ({
+                    ...location,
+                    position: [location.latitude, location.longitude]
+                }));
+                const dataBuildings = responseBuildings.data.map(location => ({
+                    ...location,
+                    position: [location.latitude, location.longitude]
+                }));
 
-    const handleOnChange = (index) => {
-        setCheckedState(prevState => {
+                setRestaurants(dataRestaurants);
+                setParks(dataParks);
+                setBuildings(dataBuildings);
+
+                setCheckedStateRestaurants(new Array(dataRestaurants.length).fill(false));
+                setCheckedStateParks(new Array(dataParks.length).fill(false));
+                setCheckedStateBuildings(new Array(dataBuildings.length).fill(false));
+
+            } catch (error) {
+                console.error('Error fetching locations:', error);
+            }
+        };
+
+        fetchLocations();
+    }, []);
+
+    const handleOnChangeRestaurants = (index) => {
+        setCheckedStateRestaurants(prevState => {
             const updatedCheckedState = [...prevState];
             updatedCheckedState[index] = !updatedCheckedState[index];
 
             const selected = updatedCheckedState
-                .map((checked, i) => checked ? locations[i] : null)
+                .map((checked, i) => checked ? restaurants[i] : null)
                 .filter(location => location !== null);
 
-            setSelectedLocations(selected);
+            setSelectedRestaurants(selected);
             return updatedCheckedState;
         });
     };
 
-    const handleReset = () => {
-        setCheckedState(new Array(locations.length).fill(false));
-        setSelectedLocations([]);
+    const handleOnChangeParks = (index) => {
+        setCheckedStateParks(prevState => {
+            const updatedCheckedState = [...prevState];
+            updatedCheckedState[index] = !updatedCheckedState[index];
+
+            const selected = updatedCheckedState
+                .map((checked, i) => checked ? parks[i] : null)
+                .filter(location => location !== null);
+
+            setSelectedParks(selected);
+            return updatedCheckedState;
+        });
     };
 
-    const handleSelectAll = () => {
-        setCheckedState(new Array(locations.length).fill(true));
-        setSelectedLocations(locations);
+    const handleOnChangeBuildings = (index) => {
+        setCheckedStateBuildings(prevState => {
+            const updatedCheckedState = [...prevState];
+            updatedCheckedState[index] = !updatedCheckedState[index];
+
+            const selected = updatedCheckedState
+                .map((checked, i) => checked ? buildings[i] : null)
+                .filter(location => location !== null);
+
+            setSelectedBuildings(selected);
+            return updatedCheckedState;
+        });
+    };
+
+    const handleResetRestaurants = () => {
+        setCheckedStateRestaurants(new Array(restaurants.length).fill(false));
+        setSelectedRestaurants([]);
+    };
+
+    const handleSelectAllRestaurants = () => {
+        setCheckedStateRestaurants(new Array(restaurants.length).fill(true));
+        setSelectedRestaurants(restaurants);
+    };
+
+    const handleResetParks = () => {
+        setCheckedStateParks(new Array(parks.length).fill(false));
+        setSelectedParks([]);
+    };
+
+    const handleSelectAllParks = () => {
+        setCheckedStateParks(new Array(parks.length).fill(true));
+        setSelectedParks(parks);
+    };
+
+    const handleResetBuildings = () => {
+        setCheckedStateBuildings(new Array(buildings.length).fill(false));
+        setSelectedBuildings([]);
+    };
+
+    const handleSelectAllBuildings = () => {
+        setCheckedStateBuildings(new Array(buildings.length).fill(true));
+        setSelectedBuildings(buildings);
     };
 
     return (
@@ -67,21 +134,40 @@ const FilterButton = ({ selectedLocations, setSelectedLocations }) => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <NavDropdown title="Parks" id="nav-dropdown-parks" autoClose="outside">
-                            <Dropdown.ItemText>Park 1</Dropdown.ItemText>
-                            <Dropdown.ItemText>Park 2</Dropdown.ItemText>
-                        </NavDropdown>
-
-                        <NavDropdown title="Restaurants" id="nav-dropdown-restaurants" autoClose="outside">
+                        <NavDropdown
+                            title="Parks"
+                            id="nav-dropdown-parks"
+                            autoClose="outside"
+                        >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleReset} variant="dark" size="sm" className="custom-button">Reset all</Button>
-                                    <Button onClick={handleSelectAll} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                    <Button onClick={handleResetParks} variant="dark" size="sm" className="custom-button">Reset all</Button>
+                                    <Button onClick={handleSelectAllParks} variant="dark" size="sm" className="custom-button">Select all</Button>
                                 </div>
                             </Dropdown.ItemText>
-                            {locations.map((location, index) => (
+                            {parks.map((location, index) => (
                                 <Dropdown.ItemText key={index}>
-                                    <Checkbox checked={checkedState[index]} onChange={() => handleOnChange(index)}>
+                                    <Checkbox checked={checkedStateParks[index]} onChange={() => handleOnChangeParks(index)}>
+                                        {location.name}
+                                    </Checkbox>
+                                </Dropdown.ItemText>
+                            ))}
+                        </NavDropdown>
+
+                        <NavDropdown
+                            title="Restaurants"
+                            id="nav-dropdown-restaurants"
+                            autoClose="outside"
+                        >
+                            <Dropdown.ItemText>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Button onClick={handleResetRestaurants} variant="dark" size="sm" className="custom-button">Reset all</Button>
+                                    <Button onClick={handleSelectAllRestaurants} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                </div>
+                            </Dropdown.ItemText>
+                            {restaurants.map((location, index) => (
+                                <Dropdown.ItemText key={index}>
+                                    <Checkbox checked={checkedStateRestaurants[index]} onChange={() => handleOnChangeRestaurants(index)}>
                                         {location.name}
                                     </Checkbox>
                                 </Dropdown.ItemText>
@@ -93,8 +179,19 @@ const FilterButton = ({ selectedLocations, setSelectedLocations }) => {
                             id="nav-dropdown-buildings"
                             autoClose="outside"
                         >
-                            <Dropdown.ItemText>Budynek 1</Dropdown.ItemText>
-                            <Dropdown.ItemText>Budynek 2</Dropdown.ItemText>
+                            <Dropdown.ItemText>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Button onClick={handleResetBuildings} variant="dark" size="sm" className="custom-button">Reset all</Button>
+                                    <Button onClick={handleSelectAllBuildings} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                </div>
+                            </Dropdown.ItemText>
+                            {buildings.map((location, index) => (
+                                <Dropdown.ItemText key={index}>
+                                    <Checkbox checked={checkedStateBuildings[index]} onChange={() => handleOnChangeBuildings(index)}>
+                                        {location.name}
+                                    </Checkbox>
+                                </Dropdown.ItemText>
+                            ))}
                         </NavDropdown>
                     </Dropdown.Menu>
                 </Dropdown>

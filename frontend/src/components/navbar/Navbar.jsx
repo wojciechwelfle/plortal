@@ -10,7 +10,7 @@ import FilterButton from "../map/FilterButton";
 import { userRole } from "../../routes/userAuthorization";
 import logo from "../../logo2.png";
 
-const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
+const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedParks, setSelectedParks, selectedBuildings, setSelectedBuildings }) => {
     const [showOffcanvas, setShowOffcanvas] = useState(true);
 
     const isUserAdmin = userRole() === "ADMIN";
@@ -84,7 +84,7 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
             >
                 <Container fluid>
                     <Navbar.Brand href="/news">
-                        <img src={logo} alt="Logo" className="logoImg"/>
+                        <img src={logo} alt="Logo" className="logoImg" />
                     </Navbar.Brand>
                     <Navbar.Toggle
                         id="btn"
@@ -92,7 +92,12 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
                         onClick={() => setShowOffcanvas(true)}
                     />
                     <div className="nav-buttons-container">
-                        {window.location.pathname === "/map" && <FilterButton id="filter-button" selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />}
+                        {window.location.pathname === "/map" &&
+                            <FilterButton id="filter-button"
+                                selectedRestaurants={selectedRestaurants} setSelectedRestaurants={setSelectedRestaurants}
+                                selectedParks={selectedParks} setSelectedParks={setSelectedParks}
+                                selectedBuildings={selectedBuildings} setSelectedBuildings={setSelectedBuildings}
+                            />}
                         <LogoutButton id="logout-btn" />
                     </div>
                     <Offcanvas
@@ -107,7 +112,7 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
                             <Offcanvas.Title
                                 id={`offcanvasNavbarLabel-expand-false`}
                             >
-                                <img src={logo} alt="Logo" className="logoImg2"/>
+                                <img src={logo} alt="Logo" className="logoImg2" />
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
@@ -127,12 +132,11 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
                                         return (
                                             <li className="nav-item fs-4 my-2 d-grid gap-2">
                                                 <Button
-                                                    className={`navibutton ${
-                                                        window.location
-                                                            .pathname ===
-                                                            item.pathname
-                                                            ? "hovered"
-                                                            : null
+                                                    className={`navibutton ${window.location
+                                                        .pathname ===
+                                                        item.pathname
+                                                        ? "hovered"
+                                                        : null
                                                         }`}
                                                     href={item.pathname}
                                                     variant="null"
@@ -152,12 +156,11 @@ const NavigationBar = ({ selectedLocations, setSelectedLocations }) => {
                                     {isUserAdmin && (
                                         <li className="nav-item fs-4 my-2 d-grid gap-2">
                                             <Button
-                                                className={`navibutton ${
-                                                    window.location.pathname ===
+                                                className={`navibutton ${window.location.pathname ===
                                                     "admin"
-                                                        ? "hovered"
-                                                        : null
-                                                }`}
+                                                    ? "hovered"
+                                                    : null
+                                                    }`}
                                                 href="admin"
                                                 variant="null"
                                                 aria-current="page"

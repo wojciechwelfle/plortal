@@ -93,4 +93,22 @@ public class UserServiceImpl implements UserService {
     private boolean isPasswordValid(String password) {
         return PasswordValidator.validatePassword(password);
     }
+
+    @Override
+    public void changePassword(Long userId, String oldPassword, String newPassword) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.getPassword().equals(oldPassword)) {
+                throw new IncorrectPasswordException();
+            }
+            if (!isPasswordValid(newPassword)) {
+                throw new PasswordInvalidException();
+            }
+            user.setPassword(newPassword);
+            userRepository.save(user);
+        } else {
+            throw new UserNotExistException();
+        }
+    }
 }

@@ -17,4 +17,6 @@ public interface UserService {
     Optional<User> findUserByEmail(String email);
 
     void deleteUser(Long id);
+
+    void changePassword(Long userId, String oldPassword, String newPassword);
 }

@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../map/MapComponent.css";
 import { Icon } from "leaflet";
 import LocationSearcher from "./LocationSearcher";
+import ResetViewButton from "./ResetViewButton";
 
 const position = [51.74831, 19.45048];
 
@@ -16,7 +17,7 @@ const MapWrapper = ({ children }) => {
     return <div className="map-wrapper">{children}</div>;
 };
 
-const MapComponent = ({ selectedLocations }) => {
+const MapComponent = ({ selectedRestaurants, selectedParks, selectedBuildings }) => {
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
     const savedTheme = localStorage.getItem('theme') || 'light';
     const [fontSize, setFontSize] = useState(savedFontSize);
@@ -40,6 +41,11 @@ const MapComponent = ({ selectedLocations }) => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+                <ResetViewButton
+                    position={position}
+                    icon="https://cdn-icons-png.flaticon.com/512/2618/2618245.png"
+                    title="Reset view"
+                />
                 <Marker
                     position={position}
                     icon={pinIcon}
@@ -48,7 +54,29 @@ const MapComponent = ({ selectedLocations }) => {
                         Aleja Politechniki
                     </Popup>
                 </Marker>
-                {selectedLocations.map((location, index) => (
+                {selectedRestaurants.map((location, index) => (
+                    <Marker
+                        key={index}
+                        position={location.position}
+                        icon={pinIcon}
+                    >
+                        <Popup >
+                            {location.name}
+                        </Popup>
+                    </Marker>
+                ))}
+                {selectedParks.map((location, index) => (
+                    <Marker
+                        key={index}
+                        position={location.position}
+                        icon={pinIcon}
+                    >
+                        <Popup >
+                            {location.name}
+                        </Popup>
+                    </Marker>
+                ))}
+                {selectedBuildings.map((location, index) => (
                     <Marker
                         key={index}
                         position={location.position}

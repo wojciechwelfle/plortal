@@ -17,7 +17,7 @@ const Login = () => {
         event.preventDefault();
         authorizeWithBackend(
             event.target.email.value,
-            event.target.password.value
+            event.target.password.value,
         );
     };
 
@@ -32,7 +32,8 @@ const Login = () => {
                     "Moving to main page in 3 sec..."
                 );
                 const role = response.data.role;
-                setLoginUser(email, password, role);
+                const id = response.data.id;
+                setLoginUser(email, password, role,id);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);

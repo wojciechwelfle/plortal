@@ -5,10 +5,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const REST_API_URL = 'http://localhost:8080/api/v1/schedule-notes';
 
-const fetchNotes = async (email) => {
+const fetchNotes = async (userId) => {
     try {
         const response = await axios.get(`${REST_API_URL}/notes`, {
-            params: { email }
+            params: { userId }
         });
         console.log("Fetched notes:", response.data);
         return response.data;
@@ -32,7 +32,7 @@ const deleteNoteById = async (noteId) => {
 
 const DeleteNote = () => {
     const [notes, setNotes] = useState([]);
-    const userMail = localStorage.getItem('email');
+    const userId = localStorage.getItem('id');
 
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -49,10 +49,10 @@ const DeleteNote = () => {
 
 
     useEffect(() => {
-        if (userMail) {
-            fetchAllNotes(userMail);
+        if (userId) {
+            fetchAllNotes(userId);
         }
-    }, [userMail]);
+    }, [userId]);
 
     const fetchAllNotes = async (email) => {
         try {
@@ -67,7 +67,7 @@ const DeleteNote = () => {
         try {
             await deleteNoteById(noteId);
             console.log(`Deleted note with ID: ${noteId}`);
-            fetchAllNotes(userMail);
+            fetchAllNotes(userId);
         } catch (error) {
             console.error('Error deleting note:', error);
         }
@@ -81,7 +81,6 @@ const DeleteNote = () => {
                     <ul>
                         {notes.map(note => (
                             <li key={note.id}>
-                                <p><b>ID:</b> {note.id}</p>
                                 <p><b>Opis:</b> {note.description}</p>
                                 <p><b>Data:</b> {note.date}</p>
                                 <button

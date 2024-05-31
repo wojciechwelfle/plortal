@@ -1,6 +1,7 @@
-export const setLoginUser = (userEmail, password, role) => {
+export const setLoginUser = (userEmail, password, role,id) => {
     localStorage.setItem("isAuth", true);
 
+    localStorage.setItem("id",id);
     localStorage.setItem("email", userEmail);
     localStorage.setItem("password", password);
     localStorage.setItem("role", role);
