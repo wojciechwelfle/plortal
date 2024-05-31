@@ -9,9 +9,9 @@ public interface ScheduleNotesService {
 
     List<ScheduleNotes> findAll();
 
-    List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail);
+    List<ScheduleNotes> findByDateAndUserId(String dateString, Long userId);
 
-    List<ScheduleNotes> findByUserEmailAll(String userEmail);
+    List<ScheduleNotes> findByUserIdAll(Long userId);
 
     void deleteNoteById(Long id);
 

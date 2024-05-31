@@ -42,9 +42,9 @@ public class ScheduleNotesController {
     }
 
     @GetMapping("/api/v1/schedule-notes/date")
-    public ResponseEntity<List<ScheduleNotes>> getNotesByDateAndEmail(@RequestParam String date, @RequestParam String email) {
+    public ResponseEntity<List<ScheduleNotes>> getNotesByDateAndUserId(@RequestParam String date, @RequestParam Long userId) {
         try {
-            List<ScheduleNotes> notes = scheduleNotesService.findByDateAndUserEmail(date, email);
+            List<ScheduleNotes> notes = scheduleNotesService.findByDateAndUserId(date, userId);
             return new ResponseEntity<>(notes, HttpStatus.OK);
         } catch (DateTimeParseException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -52,11 +52,11 @@ public class ScheduleNotesController {
     }
 
     @GetMapping("/api/v1/schedule-notes/notes")
-    public ResponseEntity<?> findByUserEmail(@RequestParam(required = false) String email) {
-        if (email == null || email.isEmpty()) {
-            return ResponseEntity.badRequest().body("Email parameter is required");
+    public ResponseEntity<?> findByUserId(@RequestParam(required = false) Long userId) {
+        if (userId == null) {
+            return ResponseEntity.badRequest().body("id parameter is required");
         }
-        List<ScheduleNotes> notes = scheduleNotesService.findByUserEmailAll(email);
+        List<ScheduleNotes> notes = scheduleNotesService.findByUserIdAll(userId);
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
