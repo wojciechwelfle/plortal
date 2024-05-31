@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../map/MapComponent.css";
 import { Icon } from "leaflet";
 import LocationSearcher from "./LocationSearcher";
+import ResetViewButton from "./ResetViewButton";
 
 const position = [51.74831, 19.45048];
 
@@ -39,6 +40,11 @@ const MapComponent = ({ selectedLocations }) => {
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <ResetViewButton
+                    position={position}
+                    icon="https://cdn-icons-png.flaticon.com/512/2618/2618245.png"
+                    title="Reset view"
                 />
                 <Marker
                     position={position}
