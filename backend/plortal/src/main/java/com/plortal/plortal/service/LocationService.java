@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface LocationService {
     List<Location> getAllLocations();
+
     List<Location> getLocationsByType(LocationType locationType);
+
     void addLocation(Location location);
+
     void deleteLocationById(Long id);
 }

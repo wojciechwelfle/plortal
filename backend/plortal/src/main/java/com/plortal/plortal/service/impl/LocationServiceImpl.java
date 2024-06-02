@@ -17,10 +17,12 @@ public class LocationServiceImpl implements LocationService {
     public LocationServiceImpl(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
+
     @Override
     public List<Location> getAllLocations() {
         return locationRepository.findAll();
     }
+
     @Override
     public List<Location> getLocationsByType(LocationType locationType) {
         return locationRepository.findByLocationType(locationType);
@@ -30,6 +32,7 @@ public class LocationServiceImpl implements LocationService {
     public void addLocation(Location location) {
         locationRepository.save(location);
     }
+
     @Override
     public void deleteLocationById(Long id) {
         locationRepository.deleteById(id);
