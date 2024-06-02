@@ -1,7 +1,7 @@
-package com.plortal.plortal.mapper;
+package com.plortal.plortal.model.mapper;
 
 import com.plortal.plortal.model.entity.News;
-import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.model.dto.NewsDTO;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

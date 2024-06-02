@@ -1,7 +1,7 @@
 package com.plortal.plortal.controller;
 
-import com.plortal.plortal.dto.LoginRequest;
-import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.model.dto.LoginRequest;
+import com.plortal.plortal.model.dto.NewsDTO;
 import com.plortal.plortal.exception.IncorrectPasswordException;
 import com.plortal.plortal.exception.UserIsNotAdminException;
 import com.plortal.plortal.exception.UserNotExistException;

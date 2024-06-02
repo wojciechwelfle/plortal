@@ -1,6 +1,6 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.model.dto.NewsDTO;
 
 import java.util.List;
 

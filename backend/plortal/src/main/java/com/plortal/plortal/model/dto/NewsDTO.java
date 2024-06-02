@@ -1,4 +1,4 @@
-package com.plortal.plortal.dto;
+package com.plortal.plortal.model.dto;
 
 import java.util.Objects;
 

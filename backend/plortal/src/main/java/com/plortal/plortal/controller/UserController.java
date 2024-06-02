@@ -2,7 +2,7 @@ package com.plortal.plortal.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.plortal.plortal.dto.LoginRequest;
+import com.plortal.plortal.model.dto.LoginRequest;
 import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.entity.User;
 import com.plortal.plortal.service.UserService;
