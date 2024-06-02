@@ -7,6 +7,7 @@ import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.entity.User;
 import com.plortal.plortal.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerStudent(@RequestBody User user) {
+    public ResponseEntity<?> registerStudent(@Valid @RequestBody User user) {
         try {
             userService.registerStudent(user);
         } catch (EmailTakenException e) {

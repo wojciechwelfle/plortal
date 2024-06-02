@@ -2,6 +2,7 @@ package com.plortal.plortal.model.entity;
 
 import com.plortal.plortal.model.enums.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -18,11 +19,13 @@ public class User {
     private int id;
 
     @NonNull
+    @Size(min = 7, max = 100)
     @Column(name = "email", length = 100)
     private String email;
 
     @NonNull
-    @Column(name = "password")
+    @Size(min = 8, max = 50)
+    @Column(name = "password", length = 100)
     private String password;
 
     @NonNull
