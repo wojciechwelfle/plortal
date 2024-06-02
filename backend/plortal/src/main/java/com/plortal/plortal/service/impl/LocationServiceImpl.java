@@ -1,7 +1,7 @@
 package com.plortal.plortal.service.impl;
 
 import com.plortal.plortal.model.Location;
-import com.plortal.plortal.model.LocationType;
+import com.plortal.plortal.model.enums.LocationType;
 import com.plortal.plortal.repository.LocationRepository;
 import com.plortal.plortal.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;

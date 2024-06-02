@@ -1,4 +1,4 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.enums;
 
 public enum UserRole {
     ADMIN,

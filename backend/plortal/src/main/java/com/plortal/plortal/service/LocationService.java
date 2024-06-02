@@ -1,7 +1,7 @@
 package com.plortal.plortal.service;
 
 import com.plortal.plortal.model.Location;
-import com.plortal.plortal.model.LocationType;
+import com.plortal.plortal.model.enums.LocationType;
 
 import java.util.List;
 

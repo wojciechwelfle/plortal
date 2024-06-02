@@ -1,5 +1,6 @@
 package com.plortal.plortal.model;
 
+import com.plortal.plortal.model.enums.LocationType;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -2,7 +2,7 @@ package com.plortal.plortal.service.impl;
 
 import com.plortal.plortal.exception.*;
 import com.plortal.plortal.model.User;
-import com.plortal.plortal.model.UserRole;
+import com.plortal.plortal.model.enums.UserRole;
 import com.plortal.plortal.repository.UserRepository;
 import com.plortal.plortal.service.UserService;
 import com.plortal.plortal.validation.EmailValidator;
