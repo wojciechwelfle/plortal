@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (!isEmailValid(user.getEmail())) {
             throw new EmailInvalidException();
         }
-        if (!isPasswordValid(user.getPassword())) {
+        if (isPasswordInvalid(user.getPassword())) {
             throw new PasswordInvalidException();
         }
         user.setRole(UserRole.STUDENT);
@@ -90,8 +90,8 @@ public class UserServiceImpl implements UserService {
         return EmailValidator.validateEmail(email);
     }
 
-    private boolean isPasswordValid(String password) {
-        return PasswordValidator.validatePassword(password);
+    private boolean isPasswordInvalid(String password) {
+        return !PasswordValidator.validatePassword(password);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
             if (!user.getPassword().equals(oldPassword)) {
                 throw new IncorrectPasswordException();
             }
-            if (!isPasswordValid(newPassword)) {
+            if (isPasswordInvalid(newPassword)) {
                 throw new PasswordInvalidException();
             }
             user.setPassword(newPassword);
