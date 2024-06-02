@@ -1,0 +1,56 @@
+.modal-overlay {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 95%;
+  max-width: 80%;
+  min-height: 60vh;
+  background-color: #333;
+  color: #ccc;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.2rem; 
+  border-radius: 0.25rem;
+  color: #999;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 1.5rem; 
+  height: 1.5rem; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn:hover {
+  background-color: #444;
+}

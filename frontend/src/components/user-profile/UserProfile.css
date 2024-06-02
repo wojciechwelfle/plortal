@@ -1,0 +1,109 @@
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 20px;
+    margin-top: 100px;
+    align-items: flex-start;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: auto;
+}
+
+.columns-container {
+    height: 100%;
+    width: 100%;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.picture-column, .textbox-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    border: 2px solid black;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text-color);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .picture-column {
+        float: left;
+        width: 40%;
+        padding: 10px;
+        height: auto;
+    }
+
+    .textbox-column {
+        float: left;
+        width: 60%;
+        padding: 10px;
+        height: auto;
+        max-height: calc(100vh - 180px); 
+        overflow-y: auto; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    .picture-column {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+
+    .textbox-column {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        max-height: 1000px; 
+        overflow-y: auto;
+    }
+}
+
+.input-boxes {
+    padding-top: 20px;
+}
+
+.label-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textbox-description {
+    padding-left: 10px !important;
+    width: 70%;
+}
+
+.button-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.save-button {
+    max-width: 100px;
+    vertical-align: middle;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    margin-right: 1em;
+}
