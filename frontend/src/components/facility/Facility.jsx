@@ -29,9 +29,6 @@ const Facility = () => {
         setTheme(tempTheme);
         localStorage.setItem('fontSize', tempFontSize);
         localStorage.setItem('theme', tempTheme);
-        document.documentElement.style.setProperty('--font-size', `${tempFontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${tempTheme}-theme`);
     };
 
     useEffect(() => {

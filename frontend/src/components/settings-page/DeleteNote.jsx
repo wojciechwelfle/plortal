@@ -54,9 +54,9 @@ const DeleteNote = () => {
         }
     }, [userId]);
 
-    const fetchAllNotes = async (email) => {
+    const fetchAllNotes = async (userId) => {
         try {
-            const data = await fetchNotes(email);
+            const data = await fetchNotes(userId);
             setNotes(data);
         } catch (error) {
             console.error('Error fetching notes:', error);
