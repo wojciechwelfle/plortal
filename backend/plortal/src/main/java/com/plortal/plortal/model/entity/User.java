@@ -3,9 +3,7 @@ package com.plortal.plortal.model.entity;
 import com.plortal.plortal.model.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 
 @Entity
@@ -31,12 +29,6 @@ public class User {
     @NonNull
     @Column(name = "role")
     private UserRole role;
-
-    public User(int id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-    }
 
     public User(String email, String password) {
         this.email = email;
