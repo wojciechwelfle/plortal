@@ -142,7 +142,7 @@ const ChangePassword = () => {
             <form style={{ marginBottom: "20px" }} onSubmit={handleChangePassword}>
                 <div>
                     <label>Aktualne hasło:</label>
-                    <Form.Group className="group" controlId="actualPassword" size="lg">
+                    <Form.Group className="group" size="lg">
                         <Form.Control
                             type="password"
                             name="actualPassword"
@@ -154,7 +154,7 @@ const ChangePassword = () => {
                 </div>
                 <div>
                     <label>Nowe hasło:</label>
-                    <Form.Group className="group" controlId="newPassword" size="lg">
+                    <Form.Group className="group"  size="lg">
                         <Form.Control
                             type="password"
                             name="newPassword"
@@ -167,7 +167,7 @@ const ChangePassword = () => {
                 </div>
                 <div>
                     <label>Potwierdź nowe hasło:</label>
-                    <Form.Group className="group" controlId="confirmPassword" size="lg">
+                    <Form.Group className="group"  size="lg">
                         <Form.Control
                             type="password"
                             name="confirmPassword"

@@ -183,11 +183,11 @@ const Schedule = () => {
                                     {todaysNotes.map((note) => (
                                         <li key={note.id}>
                                             <p>
-                                                <b>Description</b>
+                                                <b>Opis</b>
                                             </p>
                                             <p>{note.description}</p>
                                             <p>
-                                                <b>Date</b>
+                                                <b>Data</b>
                                             </p>
                                             <p>{note.date}</p>
                                         </li>
