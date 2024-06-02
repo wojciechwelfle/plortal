@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
+@RequestMapping("/api/v1/news")
 @Tag(name = "News")
 public class NewsController {
     private final NewsService newsService;
@@ -30,18 +30,18 @@ public class NewsController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/v1/news")
+    @GetMapping
     public List<NewsDTO> getAllNews() {
         return newsService.getAllNews();
     }
 
-    @PostMapping("/api/v1/news")
+    @PostMapping
     public ResponseEntity<?> addNews(@RequestBody NewsDTO newsDto) {
         newsService.addNews(newsDto);
         return ResponseEntity.ok("News added!");
     }
 
-    @DeleteMapping("/api/v1/news/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id, @RequestBody LoginRequest loginRequest) {
         try {
             userService.authenticateAdmin(loginRequest.email(), loginRequest.password());

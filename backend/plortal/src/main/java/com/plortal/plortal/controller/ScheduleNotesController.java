@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
+@RequestMapping("/api/v1/schedule-notes")
 @Tag(name = "Schedule Notes")
 public class ScheduleNotesController {
     private final ScheduleNotesService scheduleNotesService;
@@ -22,7 +23,7 @@ public class ScheduleNotesController {
         this.scheduleNotesService = scheduleNotesService;
     }
 
-    @PostMapping("/api/v1/schedule-notes")
+    @PostMapping
     public ResponseEntity<ScheduleNotes> createScheduleNote(@RequestBody ScheduleNotes scheduleNote) {
         if (!scheduleNotesService.isNoteValid(scheduleNote.getDescription())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -35,13 +36,13 @@ public class ScheduleNotesController {
         }
     }
 
-    @GetMapping("/api/v1/schedule-notes")
+    @GetMapping
     public ResponseEntity<List<ScheduleNotes>> getAllScheduleNotes() {
         List<ScheduleNotes> notes = scheduleNotesService.findAll();
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
-    @GetMapping("/api/v1/schedule-notes/date")
+    @GetMapping("/date")
     public ResponseEntity<List<ScheduleNotes>> getNotesByDateAndUserId(@RequestParam String date, @RequestParam Long userId) {
         try {
             List<ScheduleNotes> notes = scheduleNotesService.findByDateAndUserId(date, userId);
@@ -51,7 +52,7 @@ public class ScheduleNotesController {
         }
     }
 
-    @GetMapping("/api/v1/schedule-notes/notes")
+    @GetMapping("/notes")
     public ResponseEntity<?> findByUserId(@RequestParam(required = false) Long userId) {
         if (userId == null) {
             return ResponseEntity.badRequest().body("id parameter is required");
@@ -60,7 +61,7 @@ public class ScheduleNotesController {
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/v1/schedule-notes/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteScheduleNote(@PathVariable Long id) {
         try {
             scheduleNotesService.deleteNoteById(id);
