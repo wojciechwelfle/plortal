@@ -2,6 +2,7 @@ package com.plortal.plortal.model.entity;
 
 import com.plortal.plortal.model.enums.LocationType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Location {
     private int id;
 
     @NonNull
+    @Size(max = 100)
     @Column(name = "name", length = 100)
     private String name;
 

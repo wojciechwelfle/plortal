@@ -5,6 +5,7 @@ import com.plortal.plortal.model.entity.Location;
 import com.plortal.plortal.model.enums.LocationType;
 import com.plortal.plortal.service.LocationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +46,7 @@ public class LocationController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addLocation(@RequestBody Location location) {
+    public ResponseEntity<?> addLocation(@Valid @RequestBody Location location) {
         locationService.addLocation(location);
         return ResponseEntity.ok("Location added!");
     }
