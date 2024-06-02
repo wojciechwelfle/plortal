@@ -20,11 +20,9 @@ public class Location {
     @Column(name = "name", length = 100)
     private String name;
 
-    @NonNull
     @Column(name = "latitude")
     private double latitude;
 
-    @NonNull
     @Column(name = "longitude")
     private double longitude;
 
