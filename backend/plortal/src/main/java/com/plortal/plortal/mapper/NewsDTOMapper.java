@@ -1,6 +1,6 @@
 package com.plortal.plortal.mapper;
 
-import com.plortal.plortal.model.News;
+import com.plortal.plortal.model.entity.News;
 import com.plortal.plortal.dto.NewsDTO;
 import org.springframework.stereotype.Service;
 

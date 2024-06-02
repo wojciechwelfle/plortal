@@ -1,6 +1,6 @@
 package com.plortal.plortal.service.impl;
 
-import com.plortal.plortal.model.Location;
+import com.plortal.plortal.model.entity.Location;
 import com.plortal.plortal.model.enums.LocationType;
 import com.plortal.plortal.repository.LocationRepository;
 import com.plortal.plortal.service.LocationService;

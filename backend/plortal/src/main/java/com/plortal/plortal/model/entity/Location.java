@@ -1,4 +1,4 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.entity;
 
 import com.plortal.plortal.model.enums.LocationType;
 import jakarta.persistence.*;

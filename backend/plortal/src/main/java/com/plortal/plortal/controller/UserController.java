@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plortal.plortal.dto.LoginRequest;
 import com.plortal.plortal.exception.*;
-import com.plortal.plortal.model.User;
+import com.plortal.plortal.model.entity.User;
 import com.plortal.plortal.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

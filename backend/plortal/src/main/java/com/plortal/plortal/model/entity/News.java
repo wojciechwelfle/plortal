@@ -1,4 +1,4 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

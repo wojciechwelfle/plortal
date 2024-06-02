@@ -1,6 +1,6 @@
 package com.plortal.plortal.repository;
 
-import com.plortal.plortal.model.Location;
+import com.plortal.plortal.model.entity.Location;
 import com.plortal.plortal.model.enums.LocationType;
 import org.springframework.data.jpa.repository.JpaRepository;
 

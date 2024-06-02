@@ -1,6 +1,6 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.model.User;
+import com.plortal.plortal.model.entity.User;
 
 import java.util.List;
 import java.util.Optional;

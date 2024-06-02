@@ -1,6 +1,6 @@
 package com.plortal.plortal.service.impl;
 
-import com.plortal.plortal.model.News;
+import com.plortal.plortal.model.entity.News;
 import com.plortal.plortal.dto.NewsDTO;
 import com.plortal.plortal.mapper.NewsDTOMapper;
 import com.plortal.plortal.repository.NewsRepository;

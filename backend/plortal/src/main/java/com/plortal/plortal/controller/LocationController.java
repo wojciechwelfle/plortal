@@ -1,7 +1,7 @@
 package com.plortal.plortal.controller;
 
 import com.plortal.plortal.exception.LocationNotFoundException;
-import com.plortal.plortal.model.Location;
+import com.plortal.plortal.model.entity.Location;
 import com.plortal.plortal.model.enums.LocationType;
 import com.plortal.plortal.service.LocationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
