@@ -3,6 +3,7 @@ package com.plortal.plortal.controller;
 import com.plortal.plortal.model.entity.ScheduleNotes;
 import com.plortal.plortal.service.ScheduleNotesService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +25,7 @@ public class ScheduleNotesController {
     }
 
     @PostMapping
-    public ResponseEntity<ScheduleNotes> createScheduleNote(@RequestBody ScheduleNotes scheduleNote) {
-        if (!scheduleNotesService.isNoteValid(scheduleNote.getDescription())) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<ScheduleNotes> createScheduleNote(@Valid @RequestBody ScheduleNotes scheduleNote) {
         try {
             ScheduleNotes savedNote = scheduleNotesService.saveOrUpdate(scheduleNote);
             return new ResponseEntity<>(savedNote, HttpStatus.CREATED);

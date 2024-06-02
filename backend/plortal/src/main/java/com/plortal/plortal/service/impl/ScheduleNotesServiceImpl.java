@@ -50,7 +50,4 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         scheduleNotesRepository.deleteById(id);
     }
 
-    public boolean isNoteValid(String description) {
-        return description != null && description.length() <= 50;
-    }
 }

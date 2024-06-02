@@ -15,5 +15,4 @@ public interface ScheduleNotesService {
 
     void deleteNoteById(Long id);
 
-    boolean isNoteValid(String description);
 }
