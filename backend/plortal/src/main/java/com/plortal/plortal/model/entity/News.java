@@ -17,19 +17,16 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @NonNull
-    @Column(name = "title", length = 70)
+    @Column(name = "title", length = 70, nullable = false)
     private String title;
 
-    @NonNull
-    @Column(name = "photoUrl", length = 1000)
+    @Column(name = "photoUrl", length = 1000, nullable = false)
     private String photoUrl;
 
-    @NonNull
-    @Column(name = "description", length = 1000)
+    @Column(name = "description", length = 1000, nullable = false)
     private String description;
 
     @NonNull
-    @Column(name = "modificationDate")
+    @Column(name = "modificationDate", nullable = false)
     private LocalDateTime modificationDate;
 }
