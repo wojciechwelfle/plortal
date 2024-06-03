@@ -1,6 +1,6 @@
 package com.plortal.plortal.service.impl;
 
-import com.plortal.plortal.model.ScheduleNotes;
+import com.plortal.plortal.model.entity.ScheduleNotes;
 import com.plortal.plortal.repository.ScheduleNotesRepository;
 import com.plortal.plortal.service.ScheduleNotesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,4 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         scheduleNotesRepository.deleteById(id);
     }
 
-    public boolean isNoteValid(String description) {
-        return description != null && description.length() <= 50;
-    }
 }

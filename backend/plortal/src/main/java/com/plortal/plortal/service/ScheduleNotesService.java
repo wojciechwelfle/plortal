@@ -1,6 +1,6 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.model.ScheduleNotes;
+import com.plortal.plortal.model.entity.ScheduleNotes;
 
 import java.util.List;
 
@@ -15,5 +15,4 @@ public interface ScheduleNotesService {
 
     void deleteNoteById(Long id);
 
-    boolean isNoteValid(String description);
 }

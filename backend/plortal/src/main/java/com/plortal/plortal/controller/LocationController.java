@@ -1,10 +1,11 @@
 package com.plortal.plortal.controller;
 
 import com.plortal.plortal.exception.LocationNotFoundException;
-import com.plortal.plortal.model.Location;
-import com.plortal.plortal.model.LocationType;
+import com.plortal.plortal.model.entity.Location;
+import com.plortal.plortal.model.enums.LocationType;
 import com.plortal.plortal.service.LocationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
+@RequestMapping("api/v1/locations")
 @Tag(name = "Location")
 public class LocationController {
     private final LocationService locationService;
@@ -24,32 +25,33 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-    @GetMapping("api/v1/locations")
+    @GetMapping
     public List<Location> getAllLocations() {
         return locationService.getAllLocations();
     }
-    @GetMapping("api/v1/locations/parks")
+
+    @GetMapping("/parks")
     public List<Location> getParks() {
         return locationService.getLocationsByType(LocationType.PARK);
     }
 
-    @GetMapping("api/v1/locations/restaurants")
+    @GetMapping("/restaurants")
     public List<Location> getRestaurants() {
         return locationService.getLocationsByType(LocationType.RESTAURANT);
     }
 
-    @GetMapping("api/v1/locations/buildings")
+    @GetMapping("/buildings")
     public List<Location> getBuildings() {
         return locationService.getLocationsByType(LocationType.UNIVERSITY_BUILDING);
     }
 
-    @PostMapping("api/v1/locations")
-    public ResponseEntity<?> addLocation(@RequestBody Location location) {
+    @PostMapping
+    public ResponseEntity<?> addLocation(@Valid @RequestBody Location location) {
         locationService.addLocation(location);
         return ResponseEntity.ok("Location added!");
     }
 
-    @DeleteMapping("api/v1/locations/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteLocation(@PathVariable Long id) {
         try {
             locationService.deleteLocationById(id);

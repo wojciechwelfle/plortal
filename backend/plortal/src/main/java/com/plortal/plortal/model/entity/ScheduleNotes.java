@@ -1,6 +1,7 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ public class ScheduleNotes {
     private int id;
 
     @NonNull
+    @Size(max = 50)
     @Column(name = "description", length = 50, nullable = false)
     private String description;
 

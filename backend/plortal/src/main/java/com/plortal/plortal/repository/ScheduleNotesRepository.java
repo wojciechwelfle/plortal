@@ -1,6 +1,6 @@
 package com.plortal.plortal.repository;
 
-import com.plortal.plortal.model.ScheduleNotes;
+import com.plortal.plortal.model.entity.ScheduleNotes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
