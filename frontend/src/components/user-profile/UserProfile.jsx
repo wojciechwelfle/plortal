@@ -19,7 +19,7 @@ const UserProfile = () => {
 
     return (
         <div className='profile-wrapper'>
-            <h2 style={{ fontSize: `${fontSize + 5}px` }}>Profil Użytkownika</h2>
+            <h3 className='profile-header' style={{ fontSize: `${fontSize + 5}px` }}>Profil Użytkownika</h3>
             <div className="columns-container">
                 <div className="picture-column">
                     <ProfileCard />
@@ -28,7 +28,7 @@ const UserProfile = () => {
                     <Form className='input-boxes'>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <div className="label-button-container">
-                                <Form.Label className='textbox-description' style={{ fontSize: `${fontSize}px` }}>Podstawowe informacje</Form.Label>
+                                <Form.Label className='textbox-description' style={{ fontSize: `${fontSize - 1}px` }}>Podstawowe informacje</Form.Label>
                                 <div className='button-column'>
                                     <div className="save-button">
                                         <Button
@@ -45,7 +45,7 @@ const UserProfile = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <div className="label-button-container">
-                                <Form.Label className='textbox-description' style={{ fontSize: `${fontSize}px` }}>Dodatkowe informacje</Form.Label>
+                                <Form.Label className='textbox-description' style={{ fontSize: `${fontSize - 1}px` }}>Dodatkowe informacje</Form.Label>
                                 <div className='button-column'>
                                     <div className="save-button">
                                         <Button

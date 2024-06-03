@@ -16,12 +16,10 @@
 .modal-container {
   position: fixed;
   inset: 0;
-  z-index: 20;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  text-align: center;
 }
 
 .modal-content {
@@ -44,8 +42,6 @@
   border-radius: 0.25rem;
   color: var(--gray);
   background-color: transparent;
-  border: none;
-  cursor: pointer;
   width: 1.5rem; 
   height: 1.5rem; 
   display: flex;

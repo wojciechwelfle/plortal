@@ -29,12 +29,7 @@
   background-color: var(--change-photo-button-background);
   border: 1px solid var(--change-photo-button-background-hover);
   color: var(--white);
-  font-size: 0.75rem;
   width: 2rem;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .change-photo-btn:hover {
@@ -44,15 +39,10 @@
 .user-name {
   text-align: center;
   color: var(--text-color);
-  padding-bottom: 20px;
   padding-top: 20px;
-  width: 100%;
 }
 
 .user-role {
   text-align: center;
   color: var(--text-color);
-  padding-bottom: 20px;
-  padding-top: 10px;
-  width: 100%;
 }

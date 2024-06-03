@@ -32,7 +32,7 @@ const ProfileCard = () => {
           <PencilIcon />
         </Button>
       </div>
-      <h2 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>Szymon Muszyński</h2>
+      <h3 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>Szymon Muszyński</h3>
       <p className="user-role" style={{ fontSize: `${fontSize}px` }}>Student</p>
       {modalOpen && (
         <Modal updateAvatar={updateAvatar} closeModal={() => setModalOpen(false)} skipBackdrop={true} />
