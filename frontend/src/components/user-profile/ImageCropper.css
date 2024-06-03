@@ -10,22 +10,22 @@
     display: block;
     width: 100%;
     font-size: 0.875rem;
-    color: whitesmoke;
+    color: var(--gray);
   }
   
   .file-input::file-selector-button {
     margin-right: 1rem;
     padding: 0.25rem 0.5rem;
     border-radius: 5px;
-    border: white;
+    border: var(--white);
     font-size: 0.75rem;
     background-color: var(--main-color);
-    color: white;
+    color: var(--white);
     cursor: pointer;
   }
   
   .file-input::file-selector-button:hover {
-    background-color: #444;
+    background-color: var(--change-photo-button-background-hover);
   }
  
   .image-cropper-container {
@@ -40,7 +40,7 @@
 
   .modal-header {
     text-align: center;
-    color: white;
+    color: var(--white);
     padding-bottom: 20px;
     padding-top: 20px;
     width: 100%;

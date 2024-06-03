@@ -1,3 +1,5 @@
+@import "../../GlobalColors.css";
+
 .profile-wrapper {
     display: flex;
     flex-direction: column;
@@ -28,7 +30,7 @@
 }
 
 .profile-image {
-    border: 2px solid black;
+    border: 2px solid var(--black);
 }
 
 h2 {
