@@ -136,8 +136,6 @@ const Register = () => {
                         className="group"
                         controlId="lastName"
                         size="lg"
-                        minLength={2} 
-                        maxLength={40} 
                         required 
                     >
                         <Form.Label> Lastname </Form.Label>
