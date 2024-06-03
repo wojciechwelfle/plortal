@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import CloseIcon from "./CloseIcon";
+import CloseIcon from "./icons-folder/CloseIcon";
 import ImageCropper from "./ImageCropper";
 import './Modal.css'; 
 

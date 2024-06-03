@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "react-bootstrap";
-import PencilIcon from "./PencilIcon";
+import PencilIcon from "./icons-folder/PencilIcon";
 import Modal from "./Modal";
 import './ProfileCard.css';
 
