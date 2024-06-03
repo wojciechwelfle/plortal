@@ -64,7 +64,7 @@ body {
 
 #btn {
   position: absolute;
-  left: 5em;
+  left: 6em;
   border-color: var(--text-color);
   color: var(--text-color);
 }
@@ -113,5 +113,5 @@ body.modal-open {
 .logoImg,.logoImg2 {
   height: 90px;
   width: 90px;
-  margin: 3px;
+  padding: 1px;
 }
