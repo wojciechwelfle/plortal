@@ -22,8 +22,8 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
             icon: "bi bi-house",
         },
         {
-            pathname: "#",
-            title: "Wykładowcy",
+            pathname: "/profile",
+            title: "Profil Użytkownika",
             icon: "bi bi-person",
             disabled: true
         },

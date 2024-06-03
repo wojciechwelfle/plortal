@@ -1,0 +1,91 @@
+@import "../../GlobalColors.css";
+
+.profile-header {
+    text-align: center;
+    color: var(--text-color);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.profile-wrapper {
+    width: 80%;
+    margin: auto;
+}
+
+.columns-container {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.picture-column, .textbox-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    border: 2px solid var(--black);
+}
+
+@media (min-width: 769px) {
+    .picture-column {
+        float: left;
+        width: 40%;
+        padding: 10px;
+    }
+
+    .textbox-column {
+        float: left;
+        width: 60%;
+        padding: 10px;
+        max-height: calc(100vh - 180px); 
+        overflow-y: auto; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    .picture-column {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .textbox-column {
+        width: 100%;
+        padding: 10px;
+        max-height: calc(100vh - 180px); 
+        overflow-y: auto;
+    }
+}
+
+.input-boxes {
+    padding-top: 20px;
+}
+
+.label-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textbox-description {
+    padding-left: 10px !important;
+    width: 70%;
+}
+
+.button-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.save-button {
+    max-width: 100px;
+    vertical-align: middle;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    margin-right: 1em;
+}

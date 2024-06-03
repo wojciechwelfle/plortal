@@ -10,6 +10,7 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 import AdminPanelPage from "../pages/AdminPanelPage";
 import SettingsPage from "../pages/SettingsPage";
+import UserProfilePage from "../pages/UserProfilePage";
 
 import "../App.css";
 
@@ -83,6 +84,17 @@ const PageRouter = () => {
                             <ProtectedRoute
                                 requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
                                 element={SettingsPage}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/profile"
+                        element={
+                            <ProtectedRoute
+                                path="/profile"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={UserProfilePage}
                             />
                         }
                     />
