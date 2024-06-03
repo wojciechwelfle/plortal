@@ -7,9 +7,7 @@ const App = () => {
     return (
         <>
             <ThemeProvider>
-                <div>
             <PageRouter />
-                </div>
             </ThemeProvider>
         </>
     );
