@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './DeleteNote.css';
 import axios from 'axios';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import {useTheme} from "../facility/ThemeContext";
 
 const REST_API_URL = 'http://localhost:8080/api/v1/schedule-notes';
 
@@ -34,18 +35,7 @@ const DeleteNote = () => {
     const [notes, setNotes] = useState([]);
     const userId = localStorage.getItem('id');
 
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize, setFontSize] = useState(savedFontSize);
-    const [theme, setTheme] = useState(savedTheme);
-
-
-    useEffect(() => {
-        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
-
+    const { fontSize, theme } = useTheme();
 
 
     useEffect(() => {

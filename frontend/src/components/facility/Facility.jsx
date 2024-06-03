@@ -6,14 +6,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import "../././../GlobalColors.css";
+import { useTheme } from './ThemeContext';
 
 const Facility = () => {
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize, setFontSize] = useState(savedFontSize);
-    const [theme, setTheme] = useState(savedTheme);
-    const [tempTheme, setTempTheme] = useState(savedTheme);
-    const [tempFontSize, setTempFontSize] = useState(savedFontSize);
+    const { fontSize, theme, updateFontSize, updateTheme } = useTheme();
+    const [tempTheme, setTempTheme] = useState(theme);
+    const [tempFontSize, setTempFontSize] = useState(fontSize);
 
     const handleFontSizeChange = (event) => {
         const newSize = parseInt(event.target.value, 10);
@@ -25,17 +23,9 @@ const Facility = () => {
     };
 
     const handleApplyChanges = () => {
-        setFontSize(tempFontSize);
-        setTheme(tempTheme);
-        localStorage.setItem('fontSize', tempFontSize);
-        localStorage.setItem('theme', tempTheme);
+        updateFontSize(tempFontSize);
+        updateTheme(tempTheme);
     };
-
-    useEffect(() => {
-        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
 
     const tempThemeStyles = {
         backgroundColor: `var(--${tempTheme}-background)`,

@@ -10,6 +10,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./NotesNotification.css";
 import NotesNotification from "./NotesNotification";
 import { createScheduleNote, getNotesByDateAndUserId } from "../../services/scheduleNotesService";
+import { useTheme } from '../facility/ThemeContext';
 
 const Schedule = () => {
     const [firstDate, setFirstDate] = useState(dayjs());
@@ -19,20 +20,12 @@ const Schedule = () => {
     const userId = localStorage.getItem("id");
     const NotesNotificationRef = useRef();
 
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 25;
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize] = useState(savedFontSize);
-    const [theme] = useState(savedTheme);
+    const { fontSize, theme } = useTheme();
 
     useEffect(() => {
         fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userId);
     }, [selectedDate, userId]);
 
-    useEffect(() => {
-        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
 
     const handleNoteChange = (event) => {
         setNoteInput(event.target.value);

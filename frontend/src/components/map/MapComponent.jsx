@@ -5,6 +5,8 @@ import "../map/MapComponent.css";
 import { Icon } from "leaflet";
 import LocationSearcher from "./LocationSearcher";
 import ResetViewButton from "./ResetViewButton";
+import {useTheme} from "../facility/ThemeContext";
+
 
 const position = [51.74831, 19.45048];
 
@@ -18,21 +20,8 @@ const MapWrapper = ({ children }) => {
 };
 
 const MapComponent = ({ selectedRestaurants, selectedParks, selectedBuildings }) => {
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize] = useState(savedFontSize);
-    const [theme] = useState(savedTheme);
 
-    useEffect(() => {
-        document.documentElement.style.setProperty("--font-size", `${fontSize}px`);
-        document.documentElement.classList.remove(
-            "light-theme",
-            "dark-theme",
-            "blue-theme",
-            "purple-theme"
-        );
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
+    const { fontSize, theme } = useTheme();
 
     return (
         <MapWrapper>
