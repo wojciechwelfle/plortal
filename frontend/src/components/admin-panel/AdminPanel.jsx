@@ -3,7 +3,7 @@ import MapPanel from "./map-panel/MapPanel";
 import NewsPanel from "./news-panel/NewsPanel";
 import UserPanel from "./user-panel/UserPanel";
 import AdminNav from "./AdminNav";
-import {useTheme} from "../facility/ThemeContext";
+import {useTheme} from "../theme-context/ThemeContext";
 
 const navItems = [
     {

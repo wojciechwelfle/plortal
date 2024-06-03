@@ -10,7 +10,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./NotesNotification.css";
 import NotesNotification from "./NotesNotification";
 import { createScheduleNote, getNotesByDateAndUserId } from "../../services/scheduleNotesService";
-import { useTheme } from '../facility/ThemeContext';
+import { useTheme } from '../theme-context/ThemeContext';
 
 const Schedule = () => {
     const [firstDate, setFirstDate] = useState(dayjs());

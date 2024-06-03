@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import "../././../GlobalColors.css";
-import { useTheme } from './ThemeContext';
+import { useTheme } from '../theme-context/ThemeContext';
 
 const Facility = () => {
     const { fontSize, theme, updateFontSize, updateTheme } = useTheme();

@@ -4,7 +4,7 @@ import ChangePassword from './ChangePassword';
 import DeleteNote from './DeleteNote';
 import './SettingsMenu.css';
 import NavigationBar from '../navbar/Navbar';
-import { useTheme } from '../facility/ThemeContext';
+import { useTheme } from '../theme-context/ThemeContext';
 
 const SettingsMenu = () => {
     const [activeTab, setActiveTab] = useState('');

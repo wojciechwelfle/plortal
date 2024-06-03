@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './DeleteNote.css';
 import axios from 'axios';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import {useTheme} from "../facility/ThemeContext";
+import {useTheme} from "../theme-context/ThemeContext";
 
 const REST_API_URL = 'http://localhost:8080/api/v1/schedule-notes';
 

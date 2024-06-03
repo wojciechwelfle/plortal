@@ -5,7 +5,7 @@ import "../map/MapComponent.css";
 import { Icon } from "leaflet";
 import LocationSearcher from "./LocationSearcher";
 import ResetViewButton from "./ResetViewButton";
-import {useTheme} from "../facility/ThemeContext";
+import {useTheme} from "../theme-context/ThemeContext";
 
 
 const position = [51.74831, 19.45048];
