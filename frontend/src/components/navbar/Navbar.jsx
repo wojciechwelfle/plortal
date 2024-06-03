@@ -25,6 +25,7 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
             pathname: "#",
             title: "Wykładowcy",
             icon: "bi bi-person",
+            disabled: true
         },
         {
             pathname: "/map",
@@ -35,11 +36,13 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
             pathname: "#",
             title: "Plan zajęć",
             icon: "bi bi-file-spreadsheet",
+            disabled: true
         },
         {
             pathname: "#",
             title: "Przedmioty",
             icon: "bi bi-book-half",
+            disabled: true
         },
         {
             pathname: "/schedule",
@@ -141,6 +144,7 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
                                                     href={item.pathname}
                                                     variant="null"
                                                     aria-current="page"
+                                                    disabled={item.disabled}
                                                 >
                                                     <i
                                                         className={`bi ${item.icon}`}
