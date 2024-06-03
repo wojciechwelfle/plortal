@@ -16,6 +16,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Size(min = 3, max = 60)
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Size(min = 2, max = 40)
+    @Column(name = "lastName")
+    private String lastName;
+
     @NonNull
     @Size(min = 7, max = 100)
     @Column(name = "email", length = 100)
