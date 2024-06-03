@@ -4,6 +4,7 @@ import News from "../components/news/News";
 import "../components/news/News.css";
 import { getAllNews } from "../services/newsService";
 import NavigationBar from "../components/navbar/Navbar";
+import { ThemeProvider } from '../components/facility/ThemeContext';
 
 const NewsPage = () => {
   const [newsData, setNewsData] = useState([]);
@@ -21,8 +22,12 @@ const NewsPage = () => {
 
   return (
     <>
+        <ThemeProvider>
+            <div>
       <NavigationBar />
       <News newsData={newsData} />
+            </div>
+        </ThemeProvider>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MapComponent from "../components/map/MapComponent";
 import NavigationBar from "../components/navbar/Navbar";
+import { ThemeProvider } from '../components/facility/ThemeContext';
 
 const MapPage = () => {
   const [selectedRestaurants, setSelectedRestaurants] = useState([]);
@@ -8,6 +9,8 @@ const MapPage = () => {
   const [selectedBuildings, setSelectedBuildings] = useState([]);
   return (
     <>
+        <ThemeProvider>
+            <div>
       <NavigationBar
         selectedRestaurants={selectedRestaurants} setSelectedRestaurants={setSelectedRestaurants}
         selectedParks={selectedParks} setSelectedParks={setSelectedParks}
@@ -18,6 +21,8 @@ const MapPage = () => {
         selectedParks={selectedParks}
         selectedBuildings={selectedBuildings}
       />
+        </div>
+    </ThemeProvider>
     </>
   );
 };
