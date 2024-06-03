@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { getRestaurants, getBuildings, getParks } from '../../services/locationService';
 import "./FilterButton.css";
 
-const FilterButton = ({ selectedLocations, setSelectedRestaurants, setSelectedParks, setSelectedBuildings }) => {
+const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBuildings }) => {
     const [restaurants, setRestaurants] = useState([]);
     const [parks, setParks] = useState([]);
     const [buildings, setBuildings] = useState([]);
@@ -14,7 +14,6 @@ const FilterButton = ({ selectedLocations, setSelectedRestaurants, setSelectedPa
     const [checkedStateBuildings, setCheckedStateBuildings] = useState([]);
 
     useEffect(() => {
-        // Fetch locations from the backend
         const fetchLocations = async () => {
             try {
                 const responseRestaurants = await getRestaurants();
