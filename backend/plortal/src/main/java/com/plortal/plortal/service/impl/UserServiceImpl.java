@@ -39,7 +39,9 @@ public class UserServiceImpl implements UserService {
         if (isPasswordInvalid(user.getPassword())) {
             throw new PasswordInvalidException();
         }
-        user.setRole(UserRole.STUDENT);
+        if (!user.getRole().equals(UserRole.TEACHER)) {
+            user.setRole(UserRole.STUDENT);
+        }
         userRepository.save(user);
     }
 

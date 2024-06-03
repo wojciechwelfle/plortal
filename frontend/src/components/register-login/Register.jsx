@@ -16,10 +16,16 @@ const Register = () => {
         console.log("Handle Submit");
 
         event.preventDefault();
-        addUserToDatabase(
-            event.target.email.value,
-            event.target.password.value
-        );
+
+        const user = {
+            firstName: event.target.firstName.value,
+            lastName: event.target.lastName.value,
+            email: event.target.email.value,
+            password: event.target.password.value,
+            role: event.target.role.value,
+        };
+
+        addUserToDatabase(user);
     };
 
     const handlePasswordChange = (event) => {
@@ -54,8 +60,7 @@ const Register = () => {
         setPasswordStrength(strength);
     };
 
-    const addUserToDatabase = (email, password) => {
-        const user = { email: email, password: password };
+    const addUserToDatabase = (user) => {
         registerUser(user)
             .then((response) => {
                 console.log(response.status);
@@ -83,9 +88,10 @@ const Register = () => {
                         "Example of correct email: example@domain.com"
                     );
                 } else if (error.response.status === 400) {
+                    console.log(error);
                     showAlertNotification(
                         "danger",
-                        "Wrong password format!",
+                        "Wrong password format or name/lastname too short!",
                         "Password must contains min 8 letters, 1 lowercase letter and 1 uppercase letter and a number"
                     );
                 } else if (error.response.status === 409) {
@@ -113,10 +119,29 @@ const Register = () => {
 
     return (
         <>
-            <div className="register">
+            <div className="register" style={{margin: "10vh auto"}}>
                 <h1 className="register-header">Register</h1>
 
                 <Form onSubmit={handleRegistration}>
+                    <Form.Group
+                        className="group"
+                        controlId="firstName"
+                        size="lg"
+                    >
+                        <Form.Label> Name </Form.Label>
+                        <Form.Control autoFocus name="firstName" />
+                    </Form.Group>
+
+                    <Form.Group
+                        className="group"
+                        controlId="lastName"
+                        size="lg"
+                        required 
+                    >
+                        <Form.Label> Lastname </Form.Label>
+                        <Form.Control autoFocus name="lastName" />
+                    </Form.Group>
+
                     <Form.Group
                         className="group"
                         controlId="username"
@@ -124,6 +149,14 @@ const Register = () => {
                     >
                         <Form.Label> Email </Form.Label>
                         <Form.Control autoFocus name="email" />
+                    </Form.Group>
+
+                    <Form.Group className="group" controlId="role" size="lg">
+                        <Form.Label>Role</Form.Label>
+                        <Form.Select name="role">
+                            <option>STUDENT</option>
+                            <option>TEACHER</option>
+                        </Form.Select>
                     </Form.Group>
 
                     <Form.Group
@@ -148,7 +181,12 @@ const Register = () => {
                     </div>
 
                     <div className="d-grid gap-2">
-                        <Button variant="dark" className="btn" type="submit" style={{backgroundColor: "var(--main-color)"}}>
+                        <Button
+                            variant="dark"
+                            className="btn"
+                            type="submit"
+                            style={{ backgroundColor: "var(--main-color)" }}
+                        >
                             Register
                         </Button>
                     </div>
