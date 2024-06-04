@@ -11,11 +11,22 @@ const UserProfile = () => {
     const [fontSize, setFontSize] = useState(savedFontSize);
     const [theme, setTheme] = useState(savedTheme);
 
+    const [isEditMode1, setIsEditMode1] = useState(false);
+    const [isEditMode2, setIsEditMode2] = useState(false);
+
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
         document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
+
+    const handleToggleEdit1 = () => {
+        setIsEditMode1(!isEditMode1);
+    };
+
+    const handleToggleEdit2 = () => {
+        setIsEditMode2(!isEditMode2);
+    };
 
     return (
         <div className='profile-wrapper'>
@@ -26,7 +37,7 @@ const UserProfile = () => {
                 </div>
                 <div className="textbox-column">
                     <Form className='input-boxes'>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Group className="mb-3" controlId="basicInfo">
                             <div className="label-button-container">
                                 <Form.Label className='textbox-description' style={{ fontSize: `${fontSize - 1}px` }}>Podstawowe informacje</Form.Label>
                                 <div className='button-column'>
@@ -35,15 +46,16 @@ const UserProfile = () => {
                                             className="Btn"
                                             variant="dark"
                                             style={{ backgroundColor: "var(--main-color)" }}
+                                            onClick={handleToggleEdit1}
                                         >
-                                            Zapisz
+                                            {isEditMode1 ? 'Zapisz' : 'Edytuj'}
                                         </Button>
                                     </div>
                                 </div>
                             </div>
-                            <Form.Control as="textarea" rows={5} />
+                            <Form.Control as="textarea" rows={5} readOnly={!isEditMode1} />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Group className="mb-3" controlId="additionalInfo">
                             <div className="label-button-container">
                                 <Form.Label className='textbox-description' style={{ fontSize: `${fontSize - 1}px` }}>Dodatkowe informacje</Form.Label>
                                 <div className='button-column'>
@@ -52,13 +64,14 @@ const UserProfile = () => {
                                             className="Btn"
                                             variant="dark"
                                             style={{ backgroundColor: "var(--main-color)" }}
+                                            onClick={handleToggleEdit2}
                                         >
-                                            Zapisz
+                                            {isEditMode2 ? 'Zapisz' : 'Edytuj'}
                                         </Button>
                                     </div>
                                 </div>
                             </div>
-                            <Form.Control as="textarea" rows={5} />
+                            <Form.Control as="textarea" rows={5} readOnly={!isEditMode2} />
                         </Form.Group>
                     </Form>
                 </div>
