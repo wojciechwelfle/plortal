@@ -38,6 +38,14 @@ public class User {
     @Column(name = "role")
     private UserRole role;
 
+    @Size(max = 250)
+    @Column(name = "basicInfo")
+    private String basicInfo;
+
+    @Size(max = 250)
+    @Column(name = "additionalInfo")
+    private String additionalInfo;
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
