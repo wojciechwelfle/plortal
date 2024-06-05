@@ -1,6 +1,6 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.model.User;
+import com.plortal.plortal.model.entity.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,4 +15,8 @@ public interface UserService {
     void authenticateAdmin(String email, String password);
 
     Optional<User> findUserByEmail(String email);
+
+    void deleteUser(Long id);
+
+    void changePassword(Long userId, String oldPassword, String newPassword);
 }

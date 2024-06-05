@@ -53,15 +53,12 @@ body{
 
 .alert-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding-top: 20px;
 }
 
 @media (max-width: 480px) {
     .register {
-        margin: 10vh auto;
+        margin: 30vh auto;
         min-width: 350px;
         max-width: 90%;
     }

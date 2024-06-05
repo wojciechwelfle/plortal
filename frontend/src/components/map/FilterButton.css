@@ -1,0 +1,21 @@
+@import "../../GlobalColors.css";
+
+
+.filter-button {
+    max-width: 100px;
+    padding-bottom: 0.5em;
+    margin-right: 10px;
+}
+.nav-link{
+    color: var(--black) !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.custom-button:hover {
+    border-color: var(--main-color) !important;
+    color: var(--main-color) !important;
+}

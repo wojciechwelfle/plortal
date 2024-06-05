@@ -1,12 +1,14 @@
 package com.plortal.plortal.controller;
 
-import com.plortal.plortal.dto.LoginRequest;
-import com.plortal.plortal.dto.NewsDTO;
+import com.plortal.plortal.model.dto.LoginRequest;
+import com.plortal.plortal.model.dto.NewsDTO;
 import com.plortal.plortal.exception.IncorrectPasswordException;
 import com.plortal.plortal.exception.UserIsNotAdminException;
 import com.plortal.plortal.exception.UserNotExistException;
 import com.plortal.plortal.service.NewsService;
 import com.plortal.plortal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
+@RequestMapping("/api/v1/news")
+@Tag(name = "News")
 public class NewsController {
     private final NewsService newsService;
 
@@ -28,21 +31,19 @@ public class NewsController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/v1/news")
+    @GetMapping
     public List<NewsDTO> getAllNews() {
         return newsService.getAllNews();
     }
 
-    @PostMapping("/api/v1/news")
-    public ResponseEntity<?> addNews(@RequestBody NewsDTO newsDto) {
+    @PostMapping
+    public ResponseEntity<?> addNews(@Valid @RequestBody NewsDTO newsDto) {
         newsService.addNews(newsDto);
         return ResponseEntity.ok("News added!");
     }
 
-    @DeleteMapping("/api/v1/news/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteNews(@PathVariable Long id, @RequestBody LoginRequest loginRequest) {
-        System.out.println("Delete");
-        System.out.println(loginRequest);
         try {
             userService.authenticateAdmin(loginRequest.email(), loginRequest.password());
         } catch (UserNotExistException | IncorrectPasswordException e) {

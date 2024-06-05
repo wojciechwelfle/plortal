@@ -1,6 +1,6 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.model.ScheduleNotes;
+import com.plortal.plortal.model.entity.ScheduleNotes;
 
 import java.util.List;
 
@@ -9,11 +9,10 @@ public interface ScheduleNotesService {
 
     List<ScheduleNotes> findAll();
 
-    List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail);
+    List<ScheduleNotes> findByDateAndUserId(String dateString, Long userId);
 
-    List<ScheduleNotes> findByUserEmailAll(String userEmail);
+    List<ScheduleNotes> findByUserIdAll(Long userId);
 
     void deleteNoteById(Long id);
 
-    boolean isNoteValid(String description);
 }

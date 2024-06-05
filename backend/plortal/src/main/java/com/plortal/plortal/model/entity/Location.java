@@ -1,6 +1,8 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.entity;
 
+import com.plortal.plortal.model.enums.LocationType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -9,21 +11,20 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Locations {
+public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "locationId")
     private int id;
 
     @NonNull
+    @Size(max = 100)
     @Column(name = "name", length = 100)
     private String name;
 
-    @NonNull
     @Column(name = "latitude")
     private double latitude;
 
-    @NonNull
     @Column(name = "longitude")
     private double longitude;
 

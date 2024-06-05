@@ -1,8 +1,8 @@
 package com.plortal.plortal.service.impl;
 
 import com.plortal.plortal.exception.*;
-import com.plortal.plortal.model.User;
-import com.plortal.plortal.model.UserRole;
+import com.plortal.plortal.model.entity.User;
+import com.plortal.plortal.model.enums.UserRole;
 import com.plortal.plortal.repository.UserRepository;
 import com.plortal.plortal.service.UserService;
 import com.plortal.plortal.validation.EmailValidator;
@@ -36,10 +36,12 @@ public class UserServiceImpl implements UserService {
         if (!isEmailValid(user.getEmail())) {
             throw new EmailInvalidException();
         }
-        if (!isPasswordValid(user.getPassword())) {
+        if (isPasswordInvalid(user.getPassword())) {
             throw new PasswordInvalidException();
         }
-        user.setRole(UserRole.STUDENT);
+        if (!user.getRole().equals(UserRole.TEACHER)) {
+            user.setRole(UserRole.STUDENT);
+        }
         userRepository.save(user);
     }
 
@@ -57,7 +59,7 @@ public class UserServiceImpl implements UserService {
     public void authenticateAdmin(String email, String password) {
         authenticateUser(email, password);
         Optional<User> user = userRepository.findUserByEmail(email);
-        if(user.isEmpty() || user.get().getRole() != UserRole.ADMIN) {
+        if (user.isEmpty() || user.get().getRole() != UserRole.ADMIN) {
             throw new UserIsNotAdminException();
         }
     }
@@ -65,6 +67,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
     private boolean isUserPresent(User user) {
@@ -85,7 +92,25 @@ public class UserServiceImpl implements UserService {
         return EmailValidator.validateEmail(email);
     }
 
-    private boolean isPasswordValid(String password) {
-        return PasswordValidator.validatePassword(password);
+    private boolean isPasswordInvalid(String password) {
+        return !PasswordValidator.validatePassword(password);
+    }
+
+    @Override
+    public void changePassword(Long userId, String oldPassword, String newPassword) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.getPassword().equals(oldPassword)) {
+                throw new IncorrectPasswordException();
+            }
+            if (isPasswordInvalid(newPassword)) {
+                throw new PasswordInvalidException();
+            }
+            user.setPassword(newPassword);
+            userRepository.save(user);
+        } else {
+            throw new UserNotExistException();
+        }
     }
 }

@@ -1,6 +1,6 @@
 package com.plortal.plortal.service.impl;
 
-import com.plortal.plortal.model.ScheduleNotes;
+import com.plortal.plortal.model.entity.ScheduleNotes;
 import com.plortal.plortal.repository.ScheduleNotesRepository;
 import com.plortal.plortal.service.ScheduleNotesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +28,19 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         return scheduleNotesRepository.findAll();
     }
 
-    public List<ScheduleNotes> findByDateAndUserEmail(String dateString, String userEmail) {
+    public List<ScheduleNotes> findByDateAndUserId(String dateString, Long userId) {
         try {
             LocalDate date = LocalDate.parse(dateString);
-            return scheduleNotesRepository.findByDateAndUserEmail(date, userEmail);
+            return scheduleNotesRepository.findByDateAndUserId(date, userId);
         } catch (DateTimeParseException e) {
             return Collections.emptyList();
         }
     }
 
     @Override
-    public List<ScheduleNotes> findByUserEmailAll(String userEmail) {
-        System.out.println("Finding notes for email: " + userEmail);
-        List<ScheduleNotes> notes = scheduleNotesRepository.findByUserEmail(userEmail);
+    public List<ScheduleNotes> findByUserIdAll(Long userId) {
+        System.out.println("Finding notes for id: " + userId);
+        List<ScheduleNotes> notes = scheduleNotesRepository.findByUserId(userId);
         System.out.println("Found notes: " + notes);
         return notes;
     }
@@ -50,7 +50,4 @@ public class ScheduleNotesServiceImpl implements ScheduleNotesService {
         scheduleNotesRepository.deleteById(id);
     }
 
-    public boolean isNoteValid(String description) {
-        return description != null && description.length() <= 50;
-    }
 }

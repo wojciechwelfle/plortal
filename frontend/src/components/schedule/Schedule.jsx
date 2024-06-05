@@ -9,24 +9,24 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import "./NotesNotification.css";
 import NotesNotification from "./NotesNotification";
-import { createScheduleNote, getNotesByDateAndEmail } from "../../services/scheduleNotesService";
+import { createScheduleNote, getNotesByDateAndUserId } from "../../services/scheduleNotesService";
 
 const Schedule = () => {
     const [firstDate, setFirstDate] = useState(dayjs());
     const [selectedDate, setSelectedDate] = useState(dayjs());
     const [notes, setNotes] = useState([]);
     const [noteInput, setNoteInput] = useState("");
-    const userMail = localStorage.getItem("email");
+    const userId = localStorage.getItem("id");
     const NotesNotificationRef = useRef();
 
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
+    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 25;
     const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize, setFontSize] = useState(savedFontSize);
-    const [theme, setTheme] = useState(savedTheme);
+    const [fontSize] = useState(savedFontSize);
+    const [theme] = useState(savedTheme);
 
     useEffect(() => {
-        fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userMail);
-    }, [selectedDate, userMail]);
+        fetchNotesForDate(selectedDate.format("YYYY-MM-DD"), userId);
+    }, [selectedDate, userId]);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
@@ -41,7 +41,7 @@ const Schedule = () => {
     const addNote = () => {
         if (selectedDate && noteInput) {
             const dateString = selectedDate.format("YYYY-MM-DD");
-            addNoteToData(noteInput, dateString, userMail);
+            addNoteToData(noteInput, dateString, userId);
         } else {
             showNotesNotification(
                 "warning",
@@ -51,11 +51,11 @@ const Schedule = () => {
         }
     };
 
-    const addNoteToData = (noteInput, dateString, userMail) => {
+    const addNoteToData = (noteInput, dateString, userId) => {
         const note = {
             date: dateString,
             description: noteInput,
-            userEmail: userMail,
+            userId: userId,
         };
 
         createScheduleNote(note)
@@ -66,7 +66,7 @@ const Schedule = () => {
                     "Adding note completed! Note is signed to your account"
                 );
                 console.log("Note added successfully");
-                fetchNotesForDate(dateString, userMail);
+                fetchNotesForDate(dateString, userId);
                 setNoteInput("");
             })
             .catch((error) => {
@@ -80,7 +80,7 @@ const Schedule = () => {
 
     const selectDate = (newValue) => {
         const dateString = newValue.format("YYYY-MM-DD");
-        fetchNotesForDate(dateString, userMail);
+        fetchNotesForDate(dateString, userId);
         setSelectedDate(newValue);
         setNoteInput("");
     };
@@ -90,8 +90,8 @@ const Schedule = () => {
         selectDate(newValue);
     };
 
-    const fetchNotesForDate = (dateString, userMail) => {
-        getNotesByDateAndEmail(dateString, userMail)
+    const fetchNotesForDate = (dateString, userId) => {
+        getNotesByDateAndUserId(dateString, userId)
             .then((response) => {
                 console.log(`Notes for ${dateString}:`, response.data);
                 setNotes((prevNotes) => ({
@@ -183,11 +183,11 @@ const Schedule = () => {
                                     {todaysNotes.map((note) => (
                                         <li key={note.id}>
                                             <p>
-                                                <b>Description</b>
+                                                <b>Opis</b>
                                             </p>
                                             <p>{note.description}</p>
                                             <p>
-                                                <b>Date</b>
+                                                <b>Data</b>
                                             </p>
                                             <p>{note.date}</p>
                                         </li>

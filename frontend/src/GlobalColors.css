@@ -29,6 +29,9 @@
 
     --purple-background: #be91f3;
     --purple-text: #001157;
+
+    --change-photo-button-background: #333;
+    --change-photo-button-background-hover: #444;
 }
 
 .dark-theme {
