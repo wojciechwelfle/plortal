@@ -32,8 +32,8 @@ const ProfileCard = () => {
           <PencilIcon />
         </Button>
       </div>
-      <h3 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>Szymon Muszyński</h3>
-      <p className="user-role" style={{ fontSize: `${fontSize}px` }}>Student</p>
+      <h3 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>{localStorage.getItem("firstname")} {localStorage.getItem("lastname")}</h3>
+      <p className="user-role" style={{ fontSize: `${fontSize}px` }}>{localStorage.getItem("role")}</p>
       {modalOpen && (
         <Modal updateAvatar={updateAvatar} closeModal={() => setModalOpen(false)} skipBackdrop={true} />
       )}

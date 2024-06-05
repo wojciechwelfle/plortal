@@ -33,7 +33,9 @@ const Login = () => {
                 );
                 const role = response.data.role;
                 const id = response.data.id;
-                setLoginUser(email, password, role,id);
+                const firstName = response.data.firstName;
+                const lastName = response.data.lastName;
+                setLoginUser(email, password, role, id, firstName, lastName);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);
@@ -106,7 +108,7 @@ const Login = () => {
                     </div>
 
                     <div className="d-grid gap-2">
-                        <Button variant="dark" className="btn" type="submit" style={{backgroundColor: "var(--main-color)"}}>
+                        <Button variant="dark" className="btn" type="submit" style={{ backgroundColor: "var(--main-color)" }}>
                             Login
                         </Button>
                     </div>
