@@ -1,11 +1,11 @@
 import NavigationBar from "../components/navbar/Navbar";
-import Calendar from "../components/plan/components/Calendar/Calendar";
+import Formular from "../components/plan/formular";
 
 const PlanPage = () => {
   return (
     <>
       <NavigationBar />
-      <Calendar />
+      <Formular />
     </>
   );
 };
