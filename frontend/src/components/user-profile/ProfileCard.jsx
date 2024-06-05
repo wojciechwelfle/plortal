@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import './ProfileCard.css';
 
 const ProfileCard = () => {
-  const avatarUrl = useRef("https://avatarfiles.alphacoders.com/161/161002.jpg");
+  const avatarUrl = useRef("https://th.bing.com/th/id/OIP.qw42y3S9KyR2Wn9JVAWArgHaHa?rs=1&pid=ImgDetMain");
   const [modalOpen, setModalOpen] = useState(false);
 
 
