@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import "./UserProfile.css";
 import ProfileCard from './ProfileCard';
 import "react-image-crop/dist/ReactCrop.css";
+import { updateBasicInfo, updateAdditionalInfo, getBasicInfo, getAdditionalInfo } from '../../services/userService';
 
 const UserProfile = () => {
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
@@ -13,6 +14,10 @@ const UserProfile = () => {
 
     const [isEditMode1, setIsEditMode1] = useState(false);
     const [isEditMode2, setIsEditMode2] = useState(false);
+    const [basicInfo, setBasicInfo] = useState("");
+    const [additionalInfo, setAdditionalInfo] = useState("");
+
+    const userId = localStorage.getItem('id');
 
     useEffect(() => {
         document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
@@ -20,11 +25,43 @@ const UserProfile = () => {
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
 
+    useEffect(() => {
+        getBasicInfo(userId)
+            .then(response => {
+                setBasicInfo(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the basic info!', error);
+            });
+
+        getAdditionalInfo(userId)
+            .then(response => {
+                setAdditionalInfo(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the additional info!', error);
+            });
+    }, [userId]);
+
     const handleToggleEdit1 = () => {
+        if (isEditMode1) {
+            updateBasicInfo(userId, basicInfo).then(() => {
+                console.log("Basic info updated successfully");
+            }).catch(error => {
+                console.error("There was an error updating the basic info!", error);
+            });
+        }
         setIsEditMode1(!isEditMode1);
     };
 
     const handleToggleEdit2 = () => {
+        if (isEditMode2) {
+            updateAdditionalInfo(userId, additionalInfo).then(() => {
+                console.log("Additional info updated successfully");
+            }).catch(error => {
+                console.error("There was an error updating the additional info!", error);
+            });
+        }
         setIsEditMode2(!isEditMode2);
     };
 
@@ -53,7 +90,13 @@ const UserProfile = () => {
                                     </div>
                                 </div>
                             </div>
-                            <Form.Control as="textarea" rows={5} readOnly={!isEditMode1} />
+                            <Form.Control 
+                                as="textarea" 
+                                rows={5} 
+                                readOnly={!isEditMode1} 
+                                value={basicInfo}
+                                onChange={(e) => setBasicInfo(e.target.value)}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="additionalInfo">
                             <div className="label-button-container">
@@ -71,7 +114,13 @@ const UserProfile = () => {
                                     </div>
                                 </div>
                             </div>
-                            <Form.Control as="textarea" rows={5} readOnly={!isEditMode2} />
+                            <Form.Control 
+                                as="textarea" 
+                                rows={5} 
+                                readOnly={!isEditMode2}     
+                                value={additionalInfo}
+                                onChange={(e) => setAdditionalInfo(e.target.value)}
+                            />
                         </Form.Group>
                     </Form>
                 </div>

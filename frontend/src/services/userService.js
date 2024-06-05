@@ -35,6 +35,10 @@ export const updateAdditionalInfo = (userId, additionalInfo) => {
     });
 };
 
-export const getUserById = (userId) => {
-    return axios.get(`${REST_API_URL}/${userId}`);
+export const getBasicInfo = (userId) => {
+    return axios.get(`${REST_API_URL}/${userId}/basic-info`);
+};
+
+export const getAdditionalInfo = (userId) => {
+    return axios.get(`${REST_API_URL}/${userId}/additional-info`);
 };

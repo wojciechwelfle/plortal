@@ -137,4 +137,22 @@ public class UserServiceImpl implements UserService {
             throw new UserNotExistException();
         }
     }
+
+    @Override
+    public String getBasicInfo(Long userId) throws UserNotExistException {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new UserNotExistException();
+        }
+        return user.get().getBasicInfo();
+    }
+
+    @Override
+    public String getAdditionalInfo(Long userId) throws UserNotExistException {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new UserNotExistException();
+        }
+        return user.get().getAdditionalInfo();
+    }
 }

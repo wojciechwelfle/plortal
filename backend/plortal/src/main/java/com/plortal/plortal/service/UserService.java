@@ -23,4 +23,8 @@ public interface UserService {
     void updateBasicInfo(Long userId, String basicInfo);
 
     void updateAdditionalInfo(Long userId, String additionalInfo);
+
+    String getBasicInfo(Long userId);
+
+    String getAdditionalInfo(Long userId);
 }

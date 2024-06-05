@@ -126,4 +126,28 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
     }
+
+    @GetMapping("/{userId}/basic-info")
+    public ResponseEntity<?> getBasicInfo(@PathVariable Long userId) {
+        try {
+            String basicInfo = userService.getBasicInfo(userId);
+            return ResponseEntity.ok(basicInfo);
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
+    }
+
+    @GetMapping("/{userId}/additional-info")
+    public ResponseEntity<?> getAdditionalInfo(@PathVariable Long userId) {
+        try {
+            String additionalInfo = userService.getAdditionalInfo(userId);
+            return ResponseEntity.ok(additionalInfo);
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
+    }
 }
