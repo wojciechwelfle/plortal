@@ -103,4 +103,27 @@ public class UserController {
         }
     }
 
+    @PostMapping("/update-basic-info/{userId}")
+    public ResponseEntity<?> updateBasicInfo(@PathVariable Long userId, @RequestParam String basicInfo) {
+        try {
+            userService.updateBasicInfo(userId, basicInfo);
+            return ResponseEntity.ok("Basic info updated successfully");
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
+    }
+
+    @PostMapping("/update-additional-info/{userId}")
+    public ResponseEntity<?> updateAdditionalInfo(@PathVariable Long userId, @RequestParam String additionalInfo) {
+        try {
+            userService.updateAdditionalInfo(userId, additionalInfo);
+            return ResponseEntity.ok("Additional info updated successfully");
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        }
+    }
 }
