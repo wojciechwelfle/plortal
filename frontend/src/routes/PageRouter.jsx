@@ -10,9 +10,9 @@ import Facility from "../pages/FacilityPage";
 import MapPage from "../pages/MapPage";
 import AdminPanelPage from "../pages/AdminPanelPage";
 import SettingsPage from "../pages/SettingsPage";
-import  Calendar  from "../components/plan/components/Calendar/Calendar";
-
+import PlanPage from "../pages/PlanPage";
 import "../App.css";
+
 
 
 
@@ -95,7 +95,7 @@ const PageRouter = () => {
                             <ProtectedRoute
                                 path="/plan"
                                 requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
-                                element={Calendar}
+                                element={PlanPage}
                             />
                         }
                     />

@@ -1,0 +1,23 @@
+.column-wide {
+    flex: 0 0 70%; /* Ustalona szerokość dla drugiej kolumny */
+  }
+  
+  .calendar {
+    color: white; /* Biały kolor tekstu dla kalendarza */
+    padding: 20px; /* Wewnętrzny padding dla kalendarza */
+  }
+  
+  .row {
+    display: flex; /* Ustawienie kontenera na flexbox */
+  }
+  
+  .column {
+    padding: 10px; /* Wewnętrzny padding dla pierwszej kolumny */
+    padding-right: 10%;
+  }
+  .cell{
+    width: 150px;
+  }
+
+  
+  
