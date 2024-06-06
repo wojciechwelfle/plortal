@@ -4,6 +4,7 @@
 .filter-button {
     max-width: 100px;
     padding-bottom: 0.5em;
+    padding-right: 8em;
     margin-right: 10px;
 }
 .nav-link{

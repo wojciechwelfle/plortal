@@ -45,7 +45,7 @@ const Schedule = () => {
         } else {
             showNotesNotification(
                 "warning",
-                "Failed to add! Selected date or note input is missing!"
+                "Niepowodznie! Uzupełnij datę i nazwę wydarzenia"
             );
             console.error("Selected date or note input is missing!");
         }
@@ -63,7 +63,7 @@ const Schedule = () => {
                 console.log(response.data);
                 showNotesNotification(
                     "success",
-                    "Adding note completed! Note is signed to your account"
+                    "Sukces! Przypisano notatkę do twojego konta"
                 );
                 console.log("Note added successfully");
                 fetchNotesForDate(dateString, userId);
@@ -72,7 +72,7 @@ const Schedule = () => {
             .catch((error) => {
                 showNotesNotification(
                     "danger",
-                    "Failed to add! Message is above 50 character!"
+                    "Błąd! Maksymalnie można wpisać 50 znaków"
                 );
                 console.error("Failed to add", error.response.status);
             });

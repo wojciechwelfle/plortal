@@ -69,9 +69,9 @@ const AddLocationForm = ({getLocations}) => {
                     >
                         <Form.Label>Typ Budynku</Form.Label>
                         <Form.Select name="locationType">
-                            <option>UNIVERSITY_BUILDING</option>
-                            <option>PARK</option>
-                            <option>RESTAURANT</option>
+                            <option label="Budynek Uniwersytecki">UNIVERSITY_BUILDING</option>
+                            <option label="Park">PARK</option>
+                            <option label="Restauracja">RESTAURANT</option>
                         </Form.Select>
                     </Form.Group>
                     <br />
