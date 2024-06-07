@@ -3,31 +3,11 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Button } from 'react-bootstrap';
+import { getAllCourses } from '../../services/courseService';
 import "./Courses.css"
 
-const data = [
-    {
-        "id": 1,
-        "country_name": "Programowanie Obiektowe 2",
-        "address": "http://google.com"
-    },
-    {
-        "id": 2,
-        "country_name": "Podstawy programowania 1",
-        "address": "http://facebook.com"
-    },
-    {
-        "id": 3,
-        "country_name": "Podstawy programowania 2",
-        "address": "http://wikipedia.org"
-    },
-    {
-        "id": 4,
-        "country_name": "Architektura Komputerów",
-        "address": "http://x.com"
-    }]
-
 const Courses = () => {
+    const [courses, setCourses] = useState([]);
     const [search, setSearch] = useState('');
 
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
@@ -40,6 +20,19 @@ const Courses = () => {
         document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
         document.documentElement.classList.add(`${theme}-theme`);
     }, [fontSize, theme]);
+
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const response = await getAllCourses();
+                setCourses(response.data);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            }
+        };
+
+        fetchCourses();
+    }, []);
 
     return (
         <div className='courses-wrapper'>
@@ -62,23 +55,23 @@ const Courses = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data
-                        .filter((item) => {
+                    {courses
+                        .filter((course) => {
                             return search.toLowerCase() === ''
-                                ? item
-                                : item.country_name.toLowerCase().includes(search.toLowerCase());
+                                ? course
+                                : course.name.toLowerCase().includes(search.toLowerCase());
                         })
-                        .map((item, index) => (
+                        .map((course, index) => (
                             <tr key={index}>
                                 <td >
                                     <div className='table-element' style={{ fontSize: `${fontSize}px` }}>
-                                        {item.country_name}
+                                        {course.name}
                                         <div className='search-button'>
                                             <Button
                                                 className="Btn"
                                                 variant="dark"
                                                 style={{ backgroundColor: "var(--main-color)" }}
-                                                onClick={() => window.open(item.address, '_blank')}
+                                                onClick={() => window.open(course.address, '_blank')}
                                             >
                                                 Przejdź
                                             </Button>
