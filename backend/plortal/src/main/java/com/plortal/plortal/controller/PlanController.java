@@ -1,8 +1,8 @@
 package com.plortal.plortal.controller;
 
-import com.plortal.plortal.model.Plan;
+import com.plortal.plortal.model.entity.Plan;
+
 import com.plortal.plortal.service.PlanService;
-import com.plortal.plortal.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.format.DateTimeParseException;
+
 import java.util.List;
 
 @RestController
@@ -33,6 +33,15 @@ public class PlanController {
         }
         List<Plan> plans = planService.findByUserIdAll(userId);
         return new ResponseEntity<>(plans, HttpStatus.OK);
+    }
+    @PostMapping
+    public ResponseEntity<Plan> createEvent(@Valid @RequestBody Plan event) {
+        try {
+            Plan savedEvent = planService.saveOrUpdate(event);
+            return new ResponseEntity<>(savedEvent, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

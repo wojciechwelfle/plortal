@@ -4,7 +4,7 @@ const REST_API_URL = 'http://localhost:8080/api/v1/plan';
 
 export const getAllEvents = () => axios.get(REST_API_URL);
 
-export const getEventByEmail = (dateString, userMail) => axios.get(`${REST_API_URL}/email?email=${userMail}`);
+export const getEventByEmail = (userId) => axios.get(`${REST_API_URL}/userId?userId=${userId}`);
 
 export const createEvent = (event) => axios.post(REST_API_URL, event);
 

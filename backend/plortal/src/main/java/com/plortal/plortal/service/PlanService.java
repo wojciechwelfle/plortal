@@ -1,7 +1,7 @@
 package com.plortal.plortal.service;
 
-import com.plortal.plortal.model.Plan;
-import com.plortal.plortal.model.entity.ScheduleNotes;
+
+import com.plortal.plortal.model.entity.Plan;
 
 import java.util.List;
 

@@ -1,9 +1,7 @@
 package com.plortal.plortal.service.impl;
 
-import com.plortal.plortal.model.Plan;
-import com.plortal.plortal.model.entity.ScheduleNotes;
+import com.plortal.plortal.model.entity.Plan;
 import com.plortal.plortal.repository.PlanRepository;
-import com.plortal.plortal.repository.ScheduleNotesRepository;
 import com.plortal.plortal.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

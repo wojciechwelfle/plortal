@@ -1,10 +1,11 @@
-package com.plortal.plortal.model;
+package com.plortal.plortal.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Table(name = "Plans")
+@Table(name = "Plan")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,6 +28,6 @@ public class Plan {
     @Column(name = "time", length = 5,nullable = false)
     private String time;
 
-    @Column(name = "userEmail", nullable = false)
-    private String userEmail;
+    @Column(name = "userId", nullable = false)
+    private Long userId;
 }
