@@ -113,5 +113,5 @@ body.modal-open {
 .logoImg,.logoImg2 {
   height: 90px;
   width: 90px;
-  margin: 3px;
+  padding: 1px;
 }
