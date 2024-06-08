@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Plan {
     @Id
-    @Column(name = "noteId")
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

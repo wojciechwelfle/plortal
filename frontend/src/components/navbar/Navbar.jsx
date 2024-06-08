@@ -42,7 +42,6 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
             pathname: "/plan",
             title: "Przedmioty",
             icon: "bi bi-book-half",
-            disabled: true
         },
         {
             pathname: "/schedule",

@@ -17,7 +17,7 @@ const News = ({ newsData }) => {
 
     useEffect(() => {
         const revealCards = () => {
-            const delay = 200;
+            const delay = 2000;
             newsData.forEach((_, index) => {
                 setTimeout(() => {
                     setVisibleCards((prevVisibleCards) => [
