@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import "./UserProfile.css";
 import ProfileCard from './ProfileCard';
 import "react-image-crop/dist/ReactCrop.css";
-import { updateBasicInfo, updateAdditionalInfo, getBasicInfo, getAdditionalInfo } from '../../services/userService';
+import { updateBasicInfo, updateAdditionalInfo, getBasicInfo, getAdditionalInfo } from '../../services/userInfoService';
 
 const UserProfile = () => {
     const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;

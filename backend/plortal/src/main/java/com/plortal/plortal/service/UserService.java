@@ -19,12 +19,4 @@ public interface UserService {
     void deleteUser(Long id);
 
     void changePassword(Long userId, String oldPassword, String newPassword);
-
-    void updateBasicInfo(Long userId, String basicInfo);
-
-    void updateAdditionalInfo(Long userId, String additionalInfo);
-
-    String getBasicInfo(Long userId);
-
-    String getAdditionalInfo(Long userId);
 }
