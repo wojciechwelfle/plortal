@@ -33,13 +33,12 @@ const NavigationBar = ({ selectedRestaurants, setSelectedRestaurants, selectedPa
             icon: "bi bi-pin-map",
         },
         {
-            pathname: "#",
+            pathname: "/plan",
             title: "Plan zajęć",
             icon: "bi bi-file-spreadsheet",
-            disabled: true
         },
         {
-            pathname: "/plan",
+            pathname: "/courses",
             title: "Przedmioty",
             icon: "bi bi-book-half",
         },

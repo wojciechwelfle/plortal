@@ -12,6 +12,8 @@ import AdminPanelPage from "../pages/AdminPanelPage";
 import SettingsPage from "../pages/SettingsPage";
 import UserProfilePage from "../pages/UserProfilePage";
 import PlanPage from "../pages/PlanPage";
+import CoursesPage from "../pages/CoursesPage";
+
 import "../App.css";
 
 
@@ -108,6 +110,17 @@ const PageRouter = () => {
                                 path="/plan"
                                 requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
                                 element={PlanPage}
+                            />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/courses"
+                        element={
+                            <ProtectedRoute
+                                path="/courses"
+                                requiredRoles={["STUDENT", "TEACHER", "ADMIN"]}
+                                element={CoursesPage}
                             />
                         }
                     />

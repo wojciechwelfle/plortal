@@ -10,7 +10,7 @@ const PanelHeader = ({ children }) => {
                 alignItems: "center"
             }}
         >
-            <b style={{ color: "white" }}>
+            <b style={{ color: "var(--white)" }}>
                 {children}
             </b>
         </Card>
