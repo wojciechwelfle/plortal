@@ -39,11 +39,11 @@ public class User {
     private UserRole role;
 
     @Size(max = 250)
-    @Column(name = "basicInfo")
+    @Column(name = "basicInfo", length = 250)
     private String basicInfo;
 
     @Size(max = 250)
-    @Column(name = "additionalInfo")
+    @Column(name = "additionalInfo", length = 250)
     private String additionalInfo;
 
     public User(String email, String password) {
