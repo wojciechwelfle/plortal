@@ -27,3 +27,16 @@ INSERT INTO Locations (name, latitude, longitude, location_type) VALUES ('Restau
 INSERT INTO Locations (name, latitude, longitude, location_type) VALUES ('Restauracja ''McDonald''s''', 51.757506, 19.450257, 'RESTAURANT');
 
 INSERT INTO Locations (name, latitude, longitude, location_type) VALUES ('Restauracja ''Fabryka Śniadań''', 51.739656, 19.466108, 'RESTAURANT');
+
+--dodanie przykładowych przedmiotów
+TRUNCATE TABLE Courses;
+insert into Courses (name, address) values ("Teoretyczne Podstawy Informatyki", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=169044&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Podstawy Programowania 1", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=180218&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Programowanie skryptowe", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=169078&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Oprogramowanie użytkowe", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=169052&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Prawo inżynierskie i ochrona własności intelektualnej", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=171739&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Aspekty normalizacji, bezpieczeństwa i higieny pracy", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=180222&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Wstęp do analizy matematycznej", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=169218&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Analiza matematyczna", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=180132&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Algebra liniowa", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=180131&pkId=1672&s=1&j=0&w=informatyka.&v=4");
+insert into Courses (name, address) values ("Fizyka I", "https://programy.p.lodz.pl/ectslabel-web/przedmiot_4.jsp?l=pl&idPrzedmiotu=180269&pkId=1672&s=1&j=0&w=informatyka.&v=4");
