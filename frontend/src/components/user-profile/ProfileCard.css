@@ -1,0 +1,48 @@
+@import "../../GlobalColors.css";
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid var(--change-photo-button-background-hover);
+}
+
+.change-photo-btn {
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background-color: var(--change-photo-button-background);
+  border: 1px solid var(--change-photo-button-background-hover);
+  color: var(--white);
+  width: 2rem;
+}
+
+.change-photo-btn:hover {
+  background-color: var(--change-photo-button-background-hover);
+}
+
+.user-name {
+  text-align: center;
+  color: var(--text-color);
+  padding-top: 20px;
+}
+
+.user-role {
+  text-align: center;
+  color: var(--text-color);
+}

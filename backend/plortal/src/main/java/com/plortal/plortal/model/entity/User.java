@@ -16,6 +16,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Size(min = 3, max = 60)
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Size(min = 2, max = 40)
+    @Column(name = "lastName")
+    private String lastName;
+
     @NonNull
     @Size(min = 7, max = 100)
     @Column(name = "email", length = 100)
@@ -29,6 +37,14 @@ public class User {
     @NonNull
     @Column(name = "role")
     private UserRole role;
+
+    @Size(max = 250)
+    @Column(name = "basicInfo", length = 250)
+    private String basicInfo;
+
+    @Size(max = 250)
+    @Column(name = "additionalInfo", length = 250)
+    private String additionalInfo;
 
     public User(String email, String password) {
         this.email = email;

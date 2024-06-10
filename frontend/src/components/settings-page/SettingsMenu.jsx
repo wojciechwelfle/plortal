@@ -4,21 +4,12 @@ import ChangePassword from './ChangePassword';
 import DeleteNote from './DeleteNote';
 import './SettingsMenu.css';
 import NavigationBar from '../navbar/Navbar';
+import { useTheme } from '../theme-context/ThemeContext';
 
 const SettingsMenu = () => {
     const [activeTab, setActiveTab] = useState('');
 
-    const savedFontSize = parseInt(localStorage.getItem('fontSize'), 10) || 20;
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const [fontSize] = useState(savedFontSize);
-    const [theme] = useState(savedTheme);
-
-
-    useEffect(() => {
-        document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-        document.documentElement.classList.remove('light-theme', 'dark-theme', 'blue-theme', 'purple-theme');
-        document.documentElement.classList.add(`${theme}-theme`);
-    }, [fontSize, theme]);
+    const { fontSize, theme } = useTheme();
 
 
     return (

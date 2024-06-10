@@ -1,0 +1,47 @@
+@import "../../GlobalColors.css";
+
+.file-input-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    width: fit-content;
+  }
+  
+  .file-input {
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    color: var(--gray);
+  }
+  
+  .file-input::file-selector-button {
+    margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: var(--white);
+    font-size: 0.75rem;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+  }
+  
+  .file-input::file-selector-button:hover {
+    background-color: var(--change-photo-button-background-hover);
+  }
+ 
+  .image-cropper-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .preview-canvas {
+    margin-top: 1rem;
+  }
+
+  .modal-header {
+    text-align: center;
+    color: var(--white);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+  }

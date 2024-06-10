@@ -1,0 +1,28 @@
+.courses-wrapper {
+    width: 70%;
+    margin: auto;
+}
+
+.form-wrapper {
+    width: 100%;
+}
+
+.search-bar-wrapper {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    width: 80%;
+    margin: auto;
+}
+
+.table-element {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-button {
+    max-width: 100px;
+    vertical-align: middle;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    margin-right: 0.5em;
+}
