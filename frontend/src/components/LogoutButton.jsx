@@ -15,7 +15,7 @@ const LogoutButton = () => {
                         onClick={logoutUser}
                         style={{backgroundColor: "var(--main-color)"}}
                     >
-                        Wyloguj się
+                        Wyloguj
                     </Button>
                 </div>
             </div>
