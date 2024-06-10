@@ -32,7 +32,7 @@ const NewsPanel = () => {
         },
         {
             eventKey: "second",
-            text: "Edytuj Newsa",
+            text: "Usuń Newsa",
             component: <ModificationNewsPanel news={news} setNews={setNews} getNews={getNews}/>,
         },
     ];

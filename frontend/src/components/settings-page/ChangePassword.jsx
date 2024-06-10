@@ -27,12 +27,12 @@ const ChangePassword = () => {
         const userId = localStorage.getItem("id");
 
         if (passwordStrength.newPassword === "Weak") {
-            setChangePasswordMessage("New password is weak");
+            setChangePasswordMessage("Nowe hasło jest za słabe");
             return;
         }
 
         if (passwords.newPassword === ActualPassword) {
-            setChangePasswordMessage("New password cannot be the same as the old password");
+            setChangePasswordMessage("Nowe hasło nie może być takie same jak poprzednie");
             return;
         }
 
@@ -50,9 +50,9 @@ const ChangePassword = () => {
                 });
         } else {
             if (passwords.newPassword !== passwords.confirmPassword) {
-                setChangePasswordMessage("New password and confirmation password do not match");
+                setChangePasswordMessage("Hasła są różne!");
             } else if (passwords.actualPassword !== ActualPassword) {
-                setChangePasswordMessage("Current password is incorrect");
+                setChangePasswordMessage("Hasło jest niepoprawne");
             }
         }
     };
