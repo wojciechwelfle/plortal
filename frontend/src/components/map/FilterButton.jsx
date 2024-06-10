@@ -160,8 +160,8 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetRestaurants} variant="dark" size="sm" className="custom-button">Schowaj wszystkie</Button>
-                                    <Button onClick={handleSelectAllRestaurants} variant="dark" size="sm" className="custom-button">Pokaż wszystkie</Button>
+                                    <Button onClick={handleResetRestaurants} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllRestaurants} variant="dark" size="sm" className="custom-button">Pokaż</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {restaurants.map((location, index) => (
