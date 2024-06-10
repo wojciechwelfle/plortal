@@ -3,7 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import { deleteNews } from "../../../services/newsService";
 
 const ModificationNewsPanel = ({news, setNews, getNews}) => {
-    const fields = ["NewsId", "Date", "Title", "Actions"];
+    const fields = ["Id", "Data", "Tytuł", "Akcja"];
 
     const deleteNewsById = (id) => {
         const loginRequest = getLoginRequest();
@@ -48,7 +48,7 @@ const ModificationNewsPanel = ({news, setNews, getNews}) => {
                                     onClick={() => deleteNewsById(newsItem.id)}
                                     variant="danger"
                                 >
-                                    Delete
+                                    Usuń
                                 </Button>
                             </td>
                         </tr>

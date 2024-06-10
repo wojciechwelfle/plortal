@@ -66,8 +66,8 @@ const Register = () => {
                 console.log(response.status);
                 showAlertNotification(
                     "success",
-                    "User has been registered!",
-                    "Moving to the login page in 3 sec..."
+                    "Zarejestrowano użytkownika",
+                    "Trwa przekierowywanie na stronę główną..."
                 );
                 setTimeout(() => {
                     window.location.href = "/login";
@@ -78,33 +78,33 @@ const Register = () => {
                 if (!error.response) {
                     showAlertNotification(
                         "danger",
-                        "Error",
-                        "Run backend server!"
+                        "Błąd",
+                        "Brak odpowiedzi serwera"
                     );
                 } else if (error.response.status === 422) {
                     showAlertNotification(
                         "danger",
-                        "Wrong email format!",
-                        "Example of correct email: example@domain.com"
+                        "Niewłaściwy Email",
+                        "Przykładowy email: przykład@domena.com"
                     );
                 } else if (error.response.status === 400) {
                     console.log(error);
                     showAlertNotification(
                         "danger",
-                        "Wrong password format or name/lastname too short!",
-                        "Password must contains min 8 letters, 1 lowercase letter and 1 uppercase letter and a number"
+                        "Niewłaściwe hasło, nazwisko lub imię",
+                        "Hasło musi zawierać conajmniej 8 liter, w tym: 1 małą, 1 wielką, liczbę i znak specjalny! "
                     );
                 } else if (error.response.status === 409) {
                     showAlertNotification(
                         "danger",
-                        "Email is already taken!",
-                        "Please enter new email"
+                        "Ten email jest już zajęty",
+                        "Wprowadź nowy email"
                     );
                 } else {
                     showAlertNotification(
                         "danger",
-                        "Other error occured!",
-                        "Contact administrator"
+                        "Nieznany błąd",
+                        "Skontaktuj się z administratorem"
                     );
                 }
             });
@@ -120,7 +120,7 @@ const Register = () => {
     return (
         <>
             <div className="register" style={{margin: "10vh auto"}}>
-                <h1 className="register-header">Register</h1>
+                <h1 className="register-header">Rejestracja</h1>
 
                 <Form onSubmit={handleRegistration}>
                     <Form.Group
@@ -128,7 +128,7 @@ const Register = () => {
                         controlId="firstName"
                         size="lg"
                     >
-                        <Form.Label> Name </Form.Label>
+                        <Form.Label> Imię </Form.Label>
                         <Form.Control autoFocus name="firstName" />
                     </Form.Group>
 
@@ -138,7 +138,7 @@ const Register = () => {
                         size="lg"
                         required 
                     >
-                        <Form.Label> Lastname </Form.Label>
+                        <Form.Label> Nazwisko </Form.Label>
                         <Form.Control autoFocus name="lastName" />
                     </Form.Group>
 
@@ -152,10 +152,10 @@ const Register = () => {
                     </Form.Group>
 
                     <Form.Group className="group" controlId="role" size="lg">
-                        <Form.Label>Role</Form.Label>
+                        <Form.Label>Rola</Form.Label>
                         <Form.Select name="role">
-                            <option>STUDENT</option>
-                            <option>TEACHER</option>
+                            <option label="Student">STUDENT</option>
+                            <option label="Nauczyciel">TEACHER</option>
                         </Form.Select>
                     </Form.Group>
 
@@ -164,7 +164,7 @@ const Register = () => {
                         controlId="password"
                         size="lg"
                     >
-                        <Form.Label> Password </Form.Label>
+                        <Form.Label> Hasło </Form.Label>
                         <Form.Control
                             type="password"
                             name="password"
@@ -187,7 +187,7 @@ const Register = () => {
                             type="submit"
                             style={{ backgroundColor: "var(--main-color)" }}
                         >
-                            Register
+                            Zarejestruj się
                         </Button>
                     </div>
                 </Form>
