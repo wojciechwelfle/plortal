@@ -140,8 +140,8 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetParks} variant="dark" size="sm" className="custom-button">Schowaj wszystkie</Button>
-                                    <Button onClick={handleSelectAllParks} variant="dark" size="sm" className="custom-button">Pokaż wszystkie</Button>
+                                    <Button onClick={handleResetParks} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllParks} variant="dark" size="sm" className="custom-button">Pokaż</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {parks.map((location, index) => (
@@ -180,8 +180,8 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetBuildings} variant="dark" size="sm" className="custom-button">Schowaj wszystkie</Button>
-                                    <Button onClick={handleSelectAllBuildings} variant="dark" size="sm" className="custom-button">Wybierz wszystkie</Button>
+                                    <Button onClick={handleResetBuildings} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllBuildings} variant="dark" size="sm" className="custom-button">Wybierz</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {buildings.map((location, index) => (
