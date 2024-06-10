@@ -8,7 +8,8 @@ import java.util.List;
 public interface PlanService {
     Plan saveOrUpdate(Plan plan);
 
-    public List<Plan> findByUserIdAll(Long userId);
+    List<Plan> findByUserId(Long userId);
+    void createEvent(Plan plan);
 
    // public List<Plan> findByUserId(Long userId);
 

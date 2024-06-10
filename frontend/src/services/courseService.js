@@ -6,4 +6,6 @@ export const getAllCourses = () => axios.get(REST_API_URL);
 
 export const addCourse = (course) => axios.post(REST_API_URL, course);
 
+export const findByUserId = () => axios.get(`${REST_API_URL}/getById`);
+
 export const deleteCourse = (id) => axios.delete(`${REST_API_URL}/${id}`);

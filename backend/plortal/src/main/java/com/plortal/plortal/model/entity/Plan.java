@@ -1,7 +1,6 @@
 package com.plortal.plortal.model.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -10,6 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Plan {
     @Id
     @Column(name = "Id")
@@ -25,7 +25,7 @@ public class Plan {
     private String weekday;
 
     @NonNull
-    @Column(name = "time", length = 5,nullable = false)
+    @Column(name = "time", length = 10,  nullable = false)
     private String time;
 
     @Column(name = "userId", nullable = false)

@@ -1,23 +1,42 @@
-.column-wide {
-    flex: 0 0 70%; /* Ustalona szerokość dla drugiej kolumny */
-  }
-  
-  .calendar {
-    color: white; /* Biały kolor tekstu dla kalendarza */
-    padding: 20px; /* Wewnętrzny padding dla kalendarza */
-  }
-  
-  .row {
-    display: flex; /* Ustawienie kontenera na flexbox */
-  }
-  
-  .column {
-    padding: 10px; /* Wewnętrzny padding dla pierwszej kolumny */
-    padding-right: 10%;
-  }
-  .cell{
-    width: 150px;
-  }
+@import "../../GlobalColors.css";
+.calendar {
+  margin-top: 10px;
+}
 
-  
+.calendar-table {
+  margin-left: 13%; 
+}
+
+.calendar-form {
+  margin-right: 0%; 
+  margin-left: auto; 
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid #ddd; 
+  padding: 8px;
+}
+
+.calendar th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.calendar-event-item {
+  border: 2px solid var(--main-color); 
+  padding: 5px;
+  margin: 2px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
+}
   

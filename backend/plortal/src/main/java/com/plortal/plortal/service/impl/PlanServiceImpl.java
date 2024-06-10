@@ -13,22 +13,25 @@ public class PlanServiceImpl implements PlanService {
 
     @Autowired
     public PlanServiceImpl(PlanRepository repository) {
-        this.planRepository = repository;
+        planRepository = repository;
     }
     public Plan saveOrUpdate(Plan plan){
-        return this.planRepository.save(plan);
+        return planRepository.save(plan);
     }
 
 
     @Override
-    public List<Plan> findByUserIdAll(Long userId) {
-        System.out.println("Finding planss for id: " + userId);
+    public List<Plan> findByUserId(Long userId) {
+        System.out.println("Finding plans for id: " + userId);
         List<Plan> plans = planRepository.findByUserId(userId);
         System.out.println("Found notes: " + plans);
         return plans;
     }
 
-//    @Override
+    @Override
+    public void createEvent(Plan plan){
+        planRepository.save(plan);
+    }
 //    void deletePlanById(Long id){
 //        planRepository.deleteById(id);
 //    }

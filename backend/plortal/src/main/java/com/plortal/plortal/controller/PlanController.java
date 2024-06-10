@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
-@RequestMapping("/api/v1/plan")
+@RequestMapping("/api/v1/plans")
 @Tag(name = "Plan")
 public class PlanController {
-
     private final PlanService planService;
 
     @Autowired
@@ -26,16 +24,18 @@ public class PlanController {
         this.planService = ps;
     }
 
-    @GetMapping("/plans")
-    public ResponseEntity<?> findByUserId(@RequestParam(required = false) Long userId) {
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getEventByUserId(@PathVariable Long userId) {
         if (userId == null) {
             return ResponseEntity.badRequest().body("id parameter is required");
         }
-        List<Plan> plans = planService.findByUserIdAll(userId);
+        List<Plan> plans = planService.findByUserId(userId);
         return new ResponseEntity<>(plans, HttpStatus.OK);
     }
+
     @PostMapping
     public ResponseEntity<Plan> createEvent(@Valid @RequestBody Plan event) {
+        System.out.println(event);
         try {
             Plan savedEvent = planService.saveOrUpdate(event);
             return new ResponseEntity<>(savedEvent, HttpStatus.CREATED);
@@ -43,7 +43,39 @@ public class PlanController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
 }
+
+//
+//@CrossOrigin(origins = "http://localhost:3000")
+//@RestController
+//@RequestMapping("/api/v1/plans")
+//@Tag(name = "Plan")
+//public class PlanController {
+//
+//    private final PlanService planService;
+//
+//    @Autowired
+//    public PlanController(PlanService ps) {
+//        this.planService = ps;
+//    }
+//
+//    @GetMapping("/find-plan")
+//    public ResponseEntity<?> findByUserId(@RequestParam(required = false) Long userId) {
+//        if (userId == null) {
+//            return ResponseEntity.badRequest().body("id parameter is required");
+//        }
+//        List<Plan> plans = planService.findByUserIdAll(userId);
+//        return new ResponseEntity<>(plans, HttpStatus.OK);
+//    }
+//    @PostMapping("/create-plan")
+//    public ResponseEntity<?> createEvent(@Valid @RequestBody Plan event) {
+//        planService.createEvent(event);
+//        return ResponseEntity.ok("Event added!");
+////        try {
+////            Plan savedEvent = planService.saveOrUpdate(event);
+////            return new ResponseEntity<>(savedEvent, HttpStatus.CREATED);
+////        } catch (Exception e) {
+////            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+////        }
+//    }
+//}
