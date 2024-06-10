@@ -33,7 +33,9 @@ const Login = () => {
                 );
                 const role = response.data.role;
                 const id = response.data.id;
-                setLoginUser(email, password, role,id);
+                const firstName = response.data.firstName;
+                const lastName = response.data.lastName;
+                setLoginUser(email, password, role, id, firstName, lastName);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);
