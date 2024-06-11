@@ -11,7 +11,7 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
   const [eventInput, setEventInput] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const userId = localStorage.getItem("Id");
+  const userId = localStorage.getItem("id");
 
   const handleEventChange = (event) => {
     setEventInput(event.target.value);
@@ -26,36 +26,41 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
   };
 
   const addEvent = () => {  
-    if (selectedDay && selectedTime && eventInput) {
+    console.log('eveeent');
+    if (1) {  /* selectedDay && selectedTime && eventInput*/
       addEventToData(eventInput, selectedDay, selectedTime, userId);
+      console.log("doszlo!");
       
     } else {
       console.error("Selected date or note input is missing!");
     }
-    setEventInput("");
-       setSelectedDay("");
-      setSelectedTime("");
+    
   };
 
   const addEventToData = (eventName, day, time, userId) => {
+    console.log("doszlo2!");
     const event = {
       weekday: day,
       time: time,
       subjectName: eventName,
       userId: userId,
     };
-
+    console.log('Event Data:', event); 
     createEvent(event)
       .then((response) => {
         console.log("Note added successfully:", response.data);
-        setEventInput("");
-        setSelectedDay("");
-        setSelectedTime("");
+      
+        console.log("doszlo3!");
       })
       .catch((error) => {
+        
         console.log(day,time,eventName,userId);
         console.error("Failed to add event:", error);
+        console.log("doszlo4!");
       });
+      setEventInput("");
+       setSelectedDay("");
+      setSelectedTime("");
   };
 
   return (

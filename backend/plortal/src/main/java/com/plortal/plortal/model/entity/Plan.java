@@ -12,13 +12,13 @@ import lombok.*;
 @ToString
 public class Plan {
     @Id
-    @Column(name = "Id")
+    @Column(name = "planId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NonNull
-    @Column(name = "subjectName", length = 50, nullable = false)
-    private String description;
+    @Column(name = "subjectName", length = 50,nullable = false)
+    private String subjectName;
 
     @NonNull
     @Column(name = "weekday", length = 10,nullable = false)

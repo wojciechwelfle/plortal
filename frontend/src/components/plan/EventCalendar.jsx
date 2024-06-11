@@ -27,10 +27,12 @@ const EventCalendar = () => {
   ];
 
   const [events, setEvents] = useState([]);
-  const userId = localStorage.getItem("Id");
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
+    console.log("doszlo12");
     if (userId) {
+      console.log("proba get event####");
       getEventByUserId(userId)
         .then((response) => {
           if (response.data) {
@@ -42,7 +44,10 @@ const EventCalendar = () => {
         });
     }
   }, [userId]);
-
+  useEffect(() => {
+    console.log('Current events:', events);
+  }, [events]);
+  
   return (
     <div className="calendar">
       <Container fluid style={{ marginTop: "10px" }}>
