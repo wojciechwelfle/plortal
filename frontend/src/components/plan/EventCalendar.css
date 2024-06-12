@@ -30,6 +30,7 @@
 
 .calendar-event-item {
   border: 2px solid var(--main-color); 
+  color: black;
   padding: 5px;
   margin: 2px;
   text-align: center;
@@ -39,4 +40,26 @@
   align-items: center; 
   height: 100%; 
 }
-  
+.event-td{
+  background-color: aqua;
+  color: black;
+}
+.calendar-event-item{
+  color: black;
+}
+.del-btn {
+  max-width: 40px;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.del-btn:hover {
+  background-color: var(--button-gray);
+}

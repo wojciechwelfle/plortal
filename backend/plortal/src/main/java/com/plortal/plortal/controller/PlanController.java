@@ -1,5 +1,7 @@
 package com.plortal.plortal.controller;
 
+import com.plortal.plortal.exception.CourseNotFoundException;
+import com.plortal.plortal.exception.PlanNotFoundException;
 import com.plortal.plortal.model.entity.Plan;
 
 import com.plortal.plortal.service.PlanService;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.plortal.plortal.service.PlanService;
 
 
 import java.util.List;
@@ -41,6 +44,20 @@ public class PlanController {
             return new ResponseEntity<>(savedEvent, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEvent(@PathVariable Long id) {
+        try {
+            planService.deleteEventById(id);
+            return ResponseEntity.ok("Plan id = " + id + " has been deleted!");
+        }
+        catch (PlanNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
     }
 }

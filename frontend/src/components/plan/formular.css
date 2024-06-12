@@ -14,6 +14,7 @@
   }
   .btn-notes{
     background-color: var(--main-color);
+    color:white;
   }
   .calendar-form .btn-notes {
     display: block;

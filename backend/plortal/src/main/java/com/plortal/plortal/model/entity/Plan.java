@@ -21,6 +21,10 @@ public class Plan {
     private String subjectName;
 
     @NonNull
+    @Column(name = "description", length = 50,nullable = false)
+    private String description;
+
+    @NonNull
     @Column(name = "weekday", length = 10,nullable = false)
     private String weekday;
 

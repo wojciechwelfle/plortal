@@ -32,7 +32,9 @@ public class PlanServiceImpl implements PlanService {
     public void createEvent(Plan plan){
         planRepository.save(plan);
     }
-//    void deletePlanById(Long id){
-//        planRepository.deleteById(id);
-//    }
+
+    @Override
+    public void deleteEventById(Long id){
+        planRepository.deleteById(id);
+    }
 }

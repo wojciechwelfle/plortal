@@ -7,9 +7,10 @@ import { addCourse } from "../../services/courseService";
 const Formular = ({ daysOfWeek, hoursOfDay }) => {
   const savedFontSize = parseInt(localStorage.getItem("fontSize"), 10) || 20;
   const [fontSize, setFontSize] = useState(savedFontSize);
-
+  const eventType = ["wykład","labolatorium", "ćwiczenia"];
   const [eventInput, setEventInput] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
+  const [selectedEvent, setSelectedEvent] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const userId = localStorage.getItem("id");
 
@@ -24,11 +25,14 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
   const handleSelectTimeChange = (event) => {
     setSelectedTime(event.target.value);
   };
-
+  
+  const handleSelectEventChange = (event) => {
+    setSelectedEvent(event.target.value);
+  };
   const addEvent = () => {  
     console.log('eveeent');
-    if (1) {  /* selectedDay && selectedTime && eventInput*/
-      addEventToData(eventInput, selectedDay, selectedTime, userId);
+    if (selectedDay && selectedTime && eventInput && selectedEvent) {  /* */
+      addEventToData(eventInput, selectedDay, selectedTime, userId,selectedEvent);
       console.log("doszlo!");
       
     } else {
@@ -37,13 +41,14 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
     
   };
 
-  const addEventToData = (eventName, day, time, userId) => {
+  const addEventToData = (eventName, day, time, userId, selectedEvent) => {
     console.log("doszlo2!");
     const event = {
       weekday: day,
       time: time,
       subjectName: eventName,
       userId: userId,
+      description: selectedEvent,
     };
     console.log('Event Data:', event); 
     createEvent(event)
@@ -61,6 +66,7 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
       setEventInput("");
        setSelectedDay("");
       setSelectedTime("");
+
   };
 
   return (
@@ -96,6 +102,23 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
           </Form.Control>
         </Form.Group>
 
+        <Form.Group controlId="eventType">
+          <Form.Label>typ zajęć</Form.Label>
+          <Form.Control
+            as="select"
+            value={selectedEvent}
+           onChange={handleSelectEventChange}
+            required
+          >
+            <option value="" disabled>
+              Wybierz typ
+            </option>
+            {eventType.map((type) => (
+              <option key={type}>{type}</option>
+            ))}
+          </Form.Control>
+        </Form.Group>
+
         <Form.Group controlId="eventTime">
           <Form.Label>Godzina</Form.Label>
           <Form.Control
@@ -117,6 +140,7 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
           className="btn-notes"
           onClick={addEvent}
           style={{ fontSize: `${fontSize}px` }}
+          variant="null"
         >
           Dodaj zajęcia
         </Button>

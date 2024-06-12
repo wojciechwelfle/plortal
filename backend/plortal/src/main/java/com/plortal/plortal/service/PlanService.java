@@ -11,9 +11,7 @@ public interface PlanService {
     List<Plan> findByUserId(Long userId);
     void createEvent(Plan plan);
 
-   // public List<Plan> findByUserId(Long userId);
-
-    //void deleteNoteById(Long id);
+    void deleteEventById(Long id);
 
     default boolean isNameValid(String n){
         return n != null && n.length() <= 50;
