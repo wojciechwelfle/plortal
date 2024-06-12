@@ -48,7 +48,7 @@ const EventCalendar = () => {
     } else {
       console.log("User ID is not set");
     }
-  }, [userId, events]);
+  }, [userId,events]);
 
   const deleteEventById = (id) => {
     deleteEvent(id)
@@ -124,7 +124,7 @@ const EventCalendar = () => {
             </Table>
           </Col>
           <Col md={4} className="calendar-form" style={{ marginRight: "15%" }}>
-            <Formular daysOfWeek={daysOfWeek} hoursOfDay={hoursOfDay} />
+            <Formular daysOfWeek={daysOfWeek} hoursOfDay={hoursOfDay} events={events}/>
           </Col>
         </Row>
       </Container>

@@ -11,10 +11,8 @@ public interface PlanService {
     List<Plan> findByUserId(Long userId);
     void createEvent(Plan plan);
 
-    void deleteEventById(Long id);
+    boolean checkConflictingEvents(Plan plan);
 
-    default boolean isNameValid(String n){
-        return n != null && n.length() <= 50;
-    }
+    void deleteEventById(Long id);
 }
 

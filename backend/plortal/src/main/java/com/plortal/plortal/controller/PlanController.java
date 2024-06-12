@@ -2,8 +2,9 @@ package com.plortal.plortal.controller;
 
 import com.plortal.plortal.exception.CourseNotFoundException;
 import com.plortal.plortal.exception.PlanNotFoundException;
+import com.plortal.plortal.exception.TimeAndDayIsTaken;
 import com.plortal.plortal.model.entity.Plan;
-
+import com.plortal.plortal.service.impl.PlanServiceImpl.*;
 import com.plortal.plortal.service.PlanService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -38,6 +39,11 @@ public class PlanController {
 
     @PostMapping
     public ResponseEntity<Plan> createEvent(@Valid @RequestBody Plan event) {
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        if (!planService.checkConflictingEvents(event)) {
+            System.out.println("@@@@@@@@@@@@@weszlo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            throw new TimeAndDayIsTaken();
+        }
         System.out.println(event);
         try {
             Plan savedEvent = planService.saveOrUpdate(event);

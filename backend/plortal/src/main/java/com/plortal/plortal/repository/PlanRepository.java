@@ -7,4 +7,7 @@ import java.util.List;
 public interface PlanRepository extends JpaRepository<Plan, Long> {
     List<Plan> findByUserId(Long userId);
 
+    List<Plan> findByUserIdAndWeekdayAndTime( Long userId,String weekday, String time);
+
+    boolean existsByWeekdayAndTimeAndUserId(String weekday, String time, Long userId);
 }

@@ -1,5 +1,6 @@
 package com.plortal.plortal.service.impl;
 
+import com.plortal.plortal.exception.TimeAndDayIsTaken;
 import com.plortal.plortal.model.entity.Plan;
 import com.plortal.plortal.repository.PlanRepository;
 import com.plortal.plortal.service.PlanService;
@@ -28,6 +29,10 @@ public class PlanServiceImpl implements PlanService {
         return plans;
     }
 
+    @Override
+    public boolean checkConflictingEvents(Plan plan){
+        return planRepository.findByUserIdAndWeekdayAndTime(plan.getUserId(),plan.getWeekday(), plan.getTime()).isEmpty();
+    }
     @Override
     public void createEvent(Plan plan){
         planRepository.save(plan);

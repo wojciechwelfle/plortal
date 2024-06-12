@@ -5,7 +5,7 @@ import NotesNotification from "../schedule/NotesNotification";
 import "../schedule/NotesNotification.css";
 import "./formular.css";
 
-const Formular = ({ daysOfWeek, hoursOfDay }) => {
+const Formular = ({ daysOfWeek, hoursOfDay, events }) => {
   const savedFontSize = parseInt(localStorage.getItem("fontSize"), 10) || 20;
   const [fontSize, setFontSize] = useState(savedFontSize);
   const eventType = ["wykład", "labolatorium", "ćwiczenia"];
@@ -32,7 +32,8 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
     setSelectedEvent(event.target.value);
   };
   const addEvent = () => {
-    console.log("eveeent");
+    let arraySize=events.length;
+    console.log("event");
     if (selectedDay && selectedTime && eventInput && selectedEvent) {
       addEventToData(
         eventInput,
@@ -41,11 +42,15 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
         userId,
         selectedEvent
       );
-      showEventNotification("success", "Pomyślnie dodano wydarzenie do planu!");
+      
+      showEventNotification("warning", "Przekazano nowe wydarzenie do bazy.");
+      
     } else {
       console.error("Selected date or note input is missing!");
-      showEventNotification("warning", "Wypełnij poprawnie wszystkie pola");
-    }
+      showEventNotification("warning", "Wypełnij poprawnie wszystkie pola!");
+    } 
+    
+
   };
 
   const addEventToData = (eventName, day, time, userId, selectedEvent) => {
@@ -65,7 +70,6 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
       .catch((error) => {
         console.log(day, time, eventName, userId);
         console.error("Failed to add event:", error);
-        console.log("doszlo4!");
       });
     setEventInput("");
     setSelectedDay("");
