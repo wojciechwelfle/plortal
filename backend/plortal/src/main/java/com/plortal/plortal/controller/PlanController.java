@@ -1,11 +1,9 @@
 package com.plortal.plortal.controller;
 
-import com.plortal.plortal.exception.CourseNotFoundException;
 import com.plortal.plortal.exception.InputTooLong;
 import com.plortal.plortal.exception.PlanNotFoundException;
 import com.plortal.plortal.exception.TimeAndDayIsTaken;
 import com.plortal.plortal.model.entity.Plan;
-import com.plortal.plortal.service.impl.PlanServiceImpl.*;
 import com.plortal.plortal.service.PlanService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.plortal.plortal.service.PlanService;
 
 
 import java.util.List;
