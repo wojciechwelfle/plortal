@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Container, Row, Col } from "react-bootstrap";
 import Formular from "./formular";
 import "./EventCalendar.css";
-import { getEventByUserId } from "../../services/planService";
+import { getEventByUserId, deleteEvent } from "../../services/planService";
 import Button from "react-bootstrap/Button";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -37,7 +37,7 @@ const EventCalendar = () => {
       console.log("proba get event####");
       getEventByUserId(userId)
         .then((response) => {
-          console.log("Response data:", response.data); // Dodano logowanie danych odpowiedzi
+          console.log("Response data:", response.data); 
           if (response.data) {
             setEvents(response.data);
           }
@@ -46,17 +46,26 @@ const EventCalendar = () => {
           console.error("Error fetching events:", error);
         });
     } else {
-      console.log("User ID is not set"); // Logowanie, jeśli userId jest null lub undefined
+      console.log("User ID is not set");
     }
-  }, [userId]);
+  }, [userId, events]);
 
-
+  const deleteEventById = (id) => {
+    deleteEvent(id)
+      .then((res) => {
+        console.log(res);
+        setEvents(events.filter((event) => event.id !== id));
+      })
+      .catch((error) => {
+        console.log("Cant delete this event" + error);
+      });
+  };
 
   return (
     <div className="calendar">
       <Container fluid style={{ marginTop: "10px" }}>
         <Row>
-          <Col  className="calendar-table" style={{ marginLeft: "10%" }}>
+          <Col className="calendar-table" style={{ marginLeft: "10%" }}>
             <Table bordered>
               <thead>
                 <tr>
@@ -70,28 +79,41 @@ const EventCalendar = () => {
                 {hoursOfDay.map((hour) => (
                   <tr key={hour}>
                     <td>{hour}</td>
-                    
+
                     {daysOfWeek.map((day) => {
                       const eventsForHour = events.filter(
                         (event) => event.weekday === day && event.time === hour
                       );
-                      
-                      console.log(`Events for ${day} at ${hour}:`, eventsForHour); // Dodano logowanie filtrowanych wydarzeń
+
+                      console.log(
+                        `Events for ${day} at ${hour}:`,
+                        eventsForHour
+                      ); 
                       return (
                         <td key={`${day}-${hour}`} className="event-td">
                           <div className="calendar-event">
-                            {eventsForHour.map((event) => (
-                              console.log(`data: ${day} at ${hour} | ${event.day} at ${event.StartTime} `),
-                              <div
-                                key={event.id}
-                                className="calendar-event-item"
-                                style={{ width: `100%` }}
-                              >
-                                <strong>{event.subjectName}</strong>
-                                <p>{event.description}</p>
-                                <Button className="del-btn bi bi-trash" variant="null"></Button>
-                              </div>
-                            ))}
+                            {eventsForHour.map(
+                              (event) => (
+                                console.log(
+                                  `data: ${day} at ${hour} | ${event.day} at ${event.StartTime} `
+                                ),
+                                (
+                                  <div
+                                    key={event.id}
+                                    className="calendar-event-item"
+                                    style={{ width: `100%` }}
+                                  >
+                                    <strong>{event.subjectName}</strong>
+                                    <p>{event.description}</p>
+                                    <Button
+                                      className="del-btn bi bi-trash"
+                                      variant="null"
+                                      onClick={() => deleteEventById(event.id)}
+                                    ></Button>
+                                  </div>
+                                )
+                              )
+                            )}
                           </div>
                         </td>
                       );

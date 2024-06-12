@@ -1,18 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { createEvent } from "../../services/planService";
-import "./formular.css"
-import { addCourse } from "../../services/courseService";
+import NotesNotification from "../schedule/NotesNotification";
+import "../schedule/NotesNotification.css";
+import "./formular.css";
 
 const Formular = ({ daysOfWeek, hoursOfDay }) => {
   const savedFontSize = parseInt(localStorage.getItem("fontSize"), 10) || 20;
   const [fontSize, setFontSize] = useState(savedFontSize);
-  const eventType = ["wykład","labolatorium", "ćwiczenia"];
+  const eventType = ["wykład", "labolatorium", "ćwiczenia"];
   const [eventInput, setEventInput] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const userId = localStorage.getItem("id");
+  const NotesNotificationRef = useRef();
 
   const handleEventChange = (event) => {
     setEventInput(event.target.value);
@@ -25,24 +27,29 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
   const handleSelectTimeChange = (event) => {
     setSelectedTime(event.target.value);
   };
-  
+
   const handleSelectEventChange = (event) => {
     setSelectedEvent(event.target.value);
   };
-  const addEvent = () => {  
-    console.log('eveeent');
-    if (selectedDay && selectedTime && eventInput && selectedEvent) {  /* */
-      addEventToData(eventInput, selectedDay, selectedTime, userId,selectedEvent);
-      console.log("doszlo!");
-      
+  const addEvent = () => {
+    console.log("eveeent");
+    if (selectedDay && selectedTime && eventInput && selectedEvent) {
+      addEventToData(
+        eventInput,
+        selectedDay,
+        selectedTime,
+        userId,
+        selectedEvent
+      );
+      showEventNotification("success", "Pomyślnie dodano wydarzenie do planu!");
     } else {
       console.error("Selected date or note input is missing!");
+      showEventNotification("warning", "Wypełnij poprawnie wszystkie pola");
     }
-    
   };
 
   const addEventToData = (eventName, day, time, userId, selectedEvent) => {
-    console.log("doszlo2!");
+    console.log("reached addEventToData");
     const event = {
       weekday: day,
       time: time,
@@ -50,27 +57,29 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
       userId: userId,
       description: selectedEvent,
     };
-    console.log('Event Data:', event); 
+    console.log("Event Data:", event);
     createEvent(event)
       .then((response) => {
         console.log("Note added successfully:", response.data);
-      
-        console.log("doszlo3!");
       })
       .catch((error) => {
-        
-        console.log(day,time,eventName,userId);
+        console.log(day, time, eventName, userId);
         console.error("Failed to add event:", error);
         console.log("doszlo4!");
       });
-      setEventInput("");
-       setSelectedDay("");
-      setSelectedTime("");
-
+    setEventInput("");
+    setSelectedDay("");
+    setSelectedTime("");
+  };
+  const showEventNotification = (variant, alert) => {
+    NotesNotificationRef.current.setNote(alert);
+    NotesNotificationRef.current.setVariantNote(variant);
+    NotesNotificationRef.current.setVisibleNote(true);
   };
 
   return (
     <div className="calendar-form">
+      <NotesNotification className="NotesAlert" ref={NotesNotificationRef} />
       <Form>
         <h5>Dodaj zajęcia</h5>
         <Form.Group controlId="eventName">
@@ -107,7 +116,7 @@ const Formular = ({ daysOfWeek, hoursOfDay }) => {
           <Form.Control
             as="select"
             value={selectedEvent}
-           onChange={handleSelectEventChange}
+            onChange={handleSelectEventChange}
             required
           >
             <option value="" disabled>
