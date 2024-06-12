@@ -1,6 +1,7 @@
 package com.plortal.plortal.controller;
 
 import com.plortal.plortal.exception.CourseNotFoundException;
+import com.plortal.plortal.exception.InputTooLong;
 import com.plortal.plortal.exception.PlanNotFoundException;
 import com.plortal.plortal.exception.TimeAndDayIsTaken;
 import com.plortal.plortal.model.entity.Plan;
@@ -39,9 +40,10 @@ public class PlanController {
 
     @PostMapping
     public ResponseEntity<Plan> createEvent(@Valid @RequestBody Plan event) {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        if(event.getSubjectName().length()>50 || event.getDescription().length()>50){
+            throw new InputTooLong();
+        }
         if (!planService.checkConflictingEvents(event)) {
-            System.out.println("@@@@@@@@@@@@@weszlo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             throw new TimeAndDayIsTaken();
         }
         System.out.println(event);
