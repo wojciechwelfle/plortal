@@ -5,7 +5,7 @@ import { deleteUserById, getUsers } from "../../../services/userService";
 import { getLoginRequest } from "../../../routes/userAuthorization";
 
 const UserPanel = () => {
-    const fields = ["UserId", "Email", "Role", "Actions"];
+    const fields = ["Id", "Email", "Role", "Akcje"];
     const [users, setUsers] = useState([]);
 
     const deleteUser = (id) => {
@@ -56,7 +56,7 @@ const UserPanel = () => {
                                     onClick={() => deleteUser(user.id)}
                                     variant="danger"
                                 >
-                                    Delete
+                                    Usuń
                                 </Button>
                             </td>
                         </tr>

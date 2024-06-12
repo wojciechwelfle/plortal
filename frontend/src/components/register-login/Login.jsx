@@ -28,12 +28,14 @@ const Login = () => {
                 console.log(response.status);
                 showAlertNotification(
                     "success",
-                    "Login success!",
-                    "Moving to main page in 3 sec..."
+                    "Logowanie pomyślne",
+                    "Trwa przenoszenie na stronę główną..."
                 );
                 const role = response.data.role;
                 const id = response.data.id;
-                setLoginUser(email, password, role,id);
+                const firstName = response.data.firstName;
+                const lastName = response.data.lastName;
+                setLoginUser(email, password, role, id, firstName, lastName);
                 setTimeout(() => {
                     window.location.href = "/news";
                 }, 3000);
@@ -43,26 +45,26 @@ const Login = () => {
                 if (!error.response) {
                     showAlertNotification(
                         "danger",
-                        "Error",
-                        "Run backend server!"
+                        "Błąd",
+                        "Brak odpowiedzi serwera!"
                     );
                 } else if (error.response.status === 409) {
                     showAlertNotification(
                         "danger",
-                        "User is not in the base!",
-                        "Enter new email or click to register"
+                        "Użytkownik nie istnieje",
+                        "Wprowadź poprawny email lub zarejestruj się"
                     );
                 } else if (error.response.status === 401) {
                     showAlertNotification(
                         "danger",
-                        "Wrong email or password!",
-                        "Enter correct data"
+                        "Błędy email lub hasło",
+                        "Wprowadź poprawne dane"
                     );
                 } else {
                     showAlertNotification(
                         "danger",
-                        "Other error occured!",
-                        "Contact administrator"
+                        "Nieznany błąd",
+                        "Skontaktuj się z administatorem"
                     );
                 }
             });
@@ -78,7 +80,7 @@ const Login = () => {
     return (
         <>
             <div className="register">
-                <h1 className="register-header">Login</h1>
+                <h1 className="register-header">Logowanie</h1>
 
                 <Form onSubmit={handleLogin}>
                     <Form.Group
@@ -94,7 +96,7 @@ const Login = () => {
                         controlId="password"
                         size="lg"
                     >
-                        <Form.Label> Password </Form.Label>
+                        <Form.Label> Hasło </Form.Label>
                         <Form.Control type="password" name="password" />
                     </Form.Group>
 
@@ -107,7 +109,7 @@ const Login = () => {
 
                     <div className="d-grid gap-2">
                         <Button variant="dark" className="btn" type="submit" style={{backgroundColor: "var(--main-color)"}}>
-                            Login
+                            Zaloguj się
                         </Button>
                     </div>
                 </Form>

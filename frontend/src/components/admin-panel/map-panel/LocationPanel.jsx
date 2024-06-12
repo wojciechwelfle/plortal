@@ -2,7 +2,7 @@ import { Button, Table } from "react-bootstrap";
 import { deleteLocation } from "../../../services/locationService";
 
 const LocationPanel = ({locations, setLocations}) => {
-    const fields = ["LocationId", "Building Name", "Latitude", "Longitude", "Building Type", "Actions"];
+    const fields = ["Id", "Nazwa Budynku", "Szerokość Geograficzna", "Długość geograficzna", "Typ Budynku", "Akcja"];
 
     const deleteLocationById = (id) => {
         deleteLocation(id)
@@ -45,7 +45,7 @@ const LocationPanel = ({locations, setLocations}) => {
                                     onClick={() => deleteLocationById(location.id)}
                                     variant="danger"
                                 >
-                                    Delete
+                                    Usuń
                                 </Button>
                             </td>
                         </tr>

@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import './ProfileCard.css';
 
 const ProfileCard = () => {
-  const avatarUrl = useRef("https://avatarfiles.alphacoders.com/161/161002.jpg");
+  const avatarUrl = useRef("https://th.bing.com/th/id/OIP.qw42y3S9KyR2Wn9JVAWArgHaHa?rs=1&pid=ImgDetMain");
   const [modalOpen, setModalOpen] = useState(false);
 
 
@@ -32,8 +32,8 @@ const ProfileCard = () => {
           <PencilIcon />
         </Button>
       </div>
-      <h3 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>Szymon Muszyński</h3>
-      <p className="user-role" style={{ fontSize: `${fontSize}px` }}>Student</p>
+      <h3 className="user-name" style={{ fontSize: `${fontSize + 5}px` }}>{localStorage.getItem("firstname")} {localStorage.getItem("lastname")}</h3>
+      <p className="user-role" style={{ fontSize: `${fontSize}px` }}>{localStorage.getItem("role")}</p>
       {modalOpen && (
         <Modal updateAvatar={updateAvatar} closeModal={() => setModalOpen(false)} skipBackdrop={true} />
       )}

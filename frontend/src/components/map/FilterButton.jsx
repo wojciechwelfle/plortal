@@ -129,19 +129,19 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         variant="dark"
                         style={{ backgroundColor: "var(--main-color)" }}
                     >
-                        Filter
+                        Filtruj
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
                         <NavDropdown
-                            title="Parks"
+                            title="Parki"
                             id="nav-dropdown-parks"
                             autoClose="outside"
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetParks} variant="dark" size="sm" className="custom-button">Reset all</Button>
-                                    <Button onClick={handleSelectAllParks} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                    <Button onClick={handleResetParks} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllParks} variant="dark" size="sm" className="custom-button">Pokaż</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {parks.map((location, index) => (
@@ -154,14 +154,14 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         </NavDropdown>
 
                         <NavDropdown
-                            title="Restaurants"
+                            title="Restauracje"
                             id="nav-dropdown-restaurants"
                             autoClose="outside"
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetRestaurants} variant="dark" size="sm" className="custom-button">Reset all</Button>
-                                    <Button onClick={handleSelectAllRestaurants} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                    <Button onClick={handleResetRestaurants} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllRestaurants} variant="dark" size="sm" className="custom-button">Pokaż</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {restaurants.map((location, index) => (
@@ -174,14 +174,14 @@ const FilterButton = ({ setSelectedRestaurants, setSelectedParks, setSelectedBui
                         </NavDropdown>
 
                         <NavDropdown
-                            title="PŁ Buildings"
+                            title="Budynki PŁ"
                             id="nav-dropdown-buildings"
                             autoClose="outside"
                         >
                             <Dropdown.ItemText>
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Button onClick={handleResetBuildings} variant="dark" size="sm" className="custom-button">Reset all</Button>
-                                    <Button onClick={handleSelectAllBuildings} variant="dark" size="sm" className="custom-button">Select all</Button>
+                                    <Button onClick={handleResetBuildings} variant="dark" size="sm" className="custom-button">Schowaj</Button>
+                                    <Button onClick={handleSelectAllBuildings} variant="dark" size="sm" className="custom-button">Wybierz</Button>
                                 </div>
                             </Dropdown.ItemText>
                             {buildings.map((location, index) => (
