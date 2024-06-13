@@ -110,7 +110,8 @@ body.modal-open {
   width: 100%;
 }
 
-.logoImg,.logoImg2 {
+.logoImg,
+.logoImg2 {
   height: 90px;
   width: 90px;
   padding: 1px;

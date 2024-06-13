@@ -1,0 +1,65 @@
+@import "../../GlobalColors.css";
+.calendar {
+  margin-top: 10px;
+}
+
+.calendar-table {
+  margin-left: 13%;
+}
+
+.calendar-form {
+  margin-right: 0%;
+  margin: auto;
+}
+
+.calendar table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.calendar th {
+  background-color: var(--schedule-notes-background);
+  color:var(--text-color);
+  text-align: center;
+}
+
+.calendar-event-item {
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  color:var(--text-color);
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.calendar-event-item {
+  color: var(--text-color);
+}
+.del-btn {
+  max-width: 30px;
+  bottom: 5px;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  text-align: center;
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.del-btn:hover {
+  background-color: var(--button-gray);
+}
