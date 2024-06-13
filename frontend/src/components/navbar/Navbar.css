@@ -87,13 +87,6 @@ body {
   color: var(--text-color);
 }
 
-#bug{
-  overflow: inherit;
-  min-width: 100%;
-  padding-right: inherit !important;
-  padding: 0% !important;
-}
-
 #navibar {
   padding: 0;
   margin: 0;
@@ -117,7 +110,8 @@ body.modal-open {
   width: 100%;
 }
 
-.logoImg,.logoImg2 {
+.logoImg,
+.logoImg2 {
   height: 90px;
   width: 90px;
   padding: 1px;

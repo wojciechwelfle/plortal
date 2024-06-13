@@ -32,7 +32,7 @@ const Formular = ({ daysOfWeek, hoursOfDay, events }) => {
     setSelectedEvent(event.target.value);
   };
   const addEvent = () => {
-    let arraySize=events.length;
+    let arraySize = events.length;
     console.log("event");
     if (selectedDay && selectedTime && eventInput && selectedEvent) {
       addEventToData(
@@ -42,15 +42,12 @@ const Formular = ({ daysOfWeek, hoursOfDay, events }) => {
         userId,
         selectedEvent
       );
-      
+
       showEventNotification("warning", "Przekazano nowe wydarzenie do bazy.");
-      
     } else {
       console.error("Selected date or note input is missing!");
       showEventNotification("warning", "Wypełnij poprawnie wszystkie pola!");
-    } 
-    
-
+    }
   };
 
   const addEventToData = (eventName, day, time, userId, selectedEvent) => {

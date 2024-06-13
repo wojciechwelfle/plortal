@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/plans")
@@ -37,7 +38,7 @@ public class PlanController {
 
     @PostMapping
     public ResponseEntity<Plan> createEvent(@Valid @RequestBody Plan event) {
-        if(event.getSubjectName().length()>50 || event.getDescription().length()>50){
+        if (event.getSubjectName().length() > 50 || event.getDescription().length() > 50) {
             throw new InputTooLong();
         }
         if (!planService.checkConflictingEvents(event)) {
@@ -57,11 +58,9 @@ public class PlanController {
         try {
             planService.deleteEventById(id);
             return ResponseEntity.ok("Plan id = " + id + " has been deleted!");
-        }
-        catch (PlanNotFoundException e) {
+        } catch (PlanNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
         }
     }

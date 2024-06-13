@@ -17,21 +17,22 @@ public class Plan {
     private int id;
 
     @NonNull
-    @Column(name = "subjectName", length = 50,nullable = false)
+    @Column(name = "subjectName", length = 50, nullable = false)
     private String subjectName;
 
     @NonNull
-    @Column(name = "description", length = 50,nullable = false)
+    @Column(name = "description", length = 50, nullable = false)
     private String description;
 
     @NonNull
-    @Column(name = "weekday", length = 10,nullable = false)
+    @Column(name = "weekday", length = 10, nullable = false)
     private String weekday;
 
     @NonNull
-    @Column(name = "time", length = 10,  nullable = false)
+    @Column(name = "time", length = 10, nullable = false)
     private String time;
 
+    @NonNull
     @Column(name = "userId", nullable = false)
     private Long userId;
 }

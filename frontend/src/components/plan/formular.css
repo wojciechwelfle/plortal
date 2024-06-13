@@ -1,25 +1,25 @@
 @import "../../GlobalColors.css";
 .calendar-form {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .calendar-form h5 {
-    text-align: center;
-  }
-  
-  .calendar-form .form-control {
-    text-align: center;
-  }
-  .btn-notes{
-    background-color: var(--main-color);
-    color:white;
-  }
-  .calendar-form .btn-notes {
-    display: block;
-    text-align: center;
-  }
-  .btn-notes:hover{
-    background-color:  var(--button-gray);
-  }
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.calendar-form h5 {
+  text-align: center;
+}
+
+.calendar-form .form-control {
+  text-align: center;
+}
+.btn-notes {
+  background-color: var(--main-color);
+  color: white;
+}
+.calendar-form .btn-notes {
+  display: block;
+  text-align: center;
+}
+.btn-notes:hover {
+  background-color: var(--button-gray);
+}

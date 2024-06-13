@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PlanServiceImpl implements PlanService {
     private final PlanRepository planRepository;
@@ -16,7 +17,8 @@ public class PlanServiceImpl implements PlanService {
     public PlanServiceImpl(PlanRepository repository) {
         planRepository = repository;
     }
-    public Plan saveOrUpdate(Plan plan){
+
+    public Plan saveOrUpdate(Plan plan) {
         return planRepository.save(plan);
     }
 
@@ -30,16 +32,17 @@ public class PlanServiceImpl implements PlanService {
     }
 
     @Override
-    public boolean checkConflictingEvents(Plan plan){
-        return planRepository.findByUserIdAndWeekdayAndTime(plan.getUserId(),plan.getWeekday(), plan.getTime()).isEmpty();
+    public boolean checkConflictingEvents(Plan plan) {
+        return planRepository.findByUserIdAndWeekdayAndTime(plan.getUserId(), plan.getWeekday(), plan.getTime()).isEmpty();
     }
+
     @Override
-    public void createEvent(Plan plan){
+    public void createEvent(Plan plan) {
         planRepository.save(plan);
     }
 
     @Override
-    public void deleteEventById(Long id){
+    public void deleteEventById(Long id) {
         planRepository.deleteById(id);
     }
 }
