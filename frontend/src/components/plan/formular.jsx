@@ -5,7 +5,7 @@ import NotesNotification from "../schedule/NotesNotification";
 import "../schedule/NotesNotification.css";
 import "./formular.css";
 
-const Formular = ({ daysOfWeek, hoursOfDay, events }) => {
+const Formular = ({ daysOfWeek, hoursOfDay, events,setEvents }) => {
   const savedFontSize = parseInt(localStorage.getItem("fontSize"), 10) || 20;
   const [fontSize, setFontSize] = useState(savedFontSize);
   const eventType = ["wykład", "labolatorium", "ćwiczenia"];

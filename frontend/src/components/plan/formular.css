@@ -1,9 +1,5 @@
 @import "../../GlobalColors.css";
-.calendar-form {
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
+
 
 .calendar-form h5 {
   text-align: center;

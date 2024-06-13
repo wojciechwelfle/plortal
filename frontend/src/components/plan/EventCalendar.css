@@ -9,11 +9,11 @@
 
 .calendar-form {
   margin-right: 0%;
-  margin-left: auto;
+  margin: auto;
 }
 
 .calendar table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
 }
 
@@ -24,37 +24,37 @@
 }
 
 .calendar th {
-  background-color: #f2f2f2;
+  background-color: var(--schedule-notes-background);
+  color:var(--text-color);
   text-align: center;
 }
 
 .calendar-event-item {
   border: 2px solid var(--main-color);
-  color: black;
-  padding: 5px;
-  margin: 2px;
+  background-color: var(--main-color);
+  color:var(--text-color);
+  padding: 0px;
+  margin: 0px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 90%;
 }
-.event-td {
-  background-color: aqua;
-  color: black;
-}
+
 .calendar-event-item {
-  color: black;
+  color: var(--text-color);
 }
 .del-btn {
-  max-width: 40px;
-  bottom: 10px;
-  right: 10px;
+  max-width: 30px;
+  bottom: 5px;
   background-color: var(--main-color);
-  color: white;
+  color: var(--text-color);
+  text-align: center;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 5px;
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid black;

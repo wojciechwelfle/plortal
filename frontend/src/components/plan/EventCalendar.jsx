@@ -5,6 +5,7 @@ import "./EventCalendar.css";
 import { getEventByUserId, deleteEvent } from "../../services/planService";
 import Button from "react-bootstrap/Button";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useTheme } from '../theme-context/ThemeContext';
 
 const EventCalendar = () => {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -27,7 +28,7 @@ const EventCalendar = () => {
     "16:15",
     "17:15",
   ];
-
+  const { fontSize, theme } = useTheme();
   const [events, setEvents] = useState([]);
   const userId = localStorage.getItem("id");
 
@@ -48,7 +49,7 @@ const EventCalendar = () => {
     } else {
       console.log("User ID is not set");
     }
-  }, [userId,events]);
+  }, [userId]);
 
   const deleteEventById = (id) => {
     deleteEvent(id)
@@ -63,9 +64,9 @@ const EventCalendar = () => {
 
   return (
     <div className="calendar">
-      <Container fluid style={{ marginTop: "10px" }}>
-        <Row>
-          <Col className="calendar-table" style={{ marginLeft: "10%" }}>
+      <Container fluid >
+        
+          <div className="calendar-table" >
             <Table bordered>
               <thead>
                 <tr>
@@ -103,8 +104,9 @@ const EventCalendar = () => {
                                     className="calendar-event-item"
                                     style={{ width: `100%` }}
                                   >
-                                    <strong>{event.subjectName}</strong>
-                                    <p>{event.description}</p>
+                                    <div>{event.subjectName}</div>
+                                    <div>{event.description}</div>
+                                   
                                     <Button
                                       className="del-btn bi bi-trash"
                                       variant="null"
@@ -122,11 +124,11 @@ const EventCalendar = () => {
                 ))}
               </tbody>
             </Table>
-          </Col>
-          <Col md={4} className="calendar-form" style={{ marginRight: "15%" }}>
-            <Formular daysOfWeek={daysOfWeek} hoursOfDay={hoursOfDay} events={events}/>
-          </Col>
-        </Row>
+          </div>
+          <div className="calendar-form" style={{paddingLeft:"40%"}}>
+            <Formular daysOfWeek={daysOfWeek} hoursOfDay={hoursOfDay} events={events} setEvents={setEvents}/>
+          </div>
+      
       </Container>
     </div>
   );
